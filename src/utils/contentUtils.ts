@@ -49,3 +49,7 @@ export const getPublicationsContent = (): Content | undefined => {
 export const getResearchGroupContent = (): Content | undefined => {
   return getContent('research-group');
 };
+
+export const getLaboratoryVisionContent = (): Content | undefined => {
+  return getContent('laboratory-vision');
+};
