@@ -127,7 +127,25 @@ const AboutRenderer = ({ content, className }: { content: string; className: str
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
         <div>
           <div className="prose prose-lg dark:prose-invert">
-            <ReactMarkdown>
+            <ReactMarkdown
+              components={{
+                p: ({ children }) => (
+                  <p className="mb-6 text-muted-foreground leading-relaxed">
+                    {children}
+                  </p>
+                ),
+                h1: ({ children }) => (
+                  <h1 className="text-3xl font-bold mb-6 text-foreground">
+                    {children}
+                  </h1>
+                ),
+                h2: ({ children }) => (
+                  <h2 className="text-2xl font-semibold mb-4 text-primary">
+                    {children}
+                  </h2>
+                ),
+              }}
+            >
               {sections[0] || content.split('#')[1]?.split('##')[0] || content}
             </ReactMarkdown>
           </div>
