@@ -5,8 +5,11 @@ const Header = () => {
     <header className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
       <div className="container mx-auto px-4 py-4">
         <nav className="flex items-center justify-between">
-          <div className="font-bold text-xl text-primary">
-            BioinfoBlogs
+          <div className="flex flex-col">
+            <div className="font-bold text-xl text-primary">LIIA</div>
+            <div className="text-xs text-muted-foreground">
+              Laboratório de pesquisa em Imunooncologia e Inteligência Artificial
+            </div>
           </div>
           <div className="hidden md:flex items-center space-x-8">
             <a href="/" className="text-foreground hover:text-primary transition-colors">
@@ -15,8 +18,8 @@ const Header = () => {
             <a href="#vision" className="text-foreground hover:text-primary transition-colors">
               Vision
             </a>
-            <a href="/research-group" className="text-foreground hover:text-primary transition-colors">
-              Research Group
+            <a href="/people" className="text-foreground hover:text-primary transition-colors">
+              People
             </a>
             <a href="/publications" className="text-foreground hover:text-primary transition-colors">
               Publications

@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
 import { getResearchGroupContent } from "@/utils/contentUtils";
 
-const ResearchGroup = () => {
+const People = () => {
   const researchGroupContent = getResearchGroupContent();
 
   if (!researchGroupContent) {
@@ -40,4 +40,4 @@ const ResearchGroup = () => {
   );
 };
 
-export default ResearchGroup;
+export default People;

@@ -1,5 +1,6 @@
 import MarkdownRenderer from "./MarkdownRenderer";
 import { getLaboratoryVisionContent } from "@/utils/contentUtils";
+import { Button } from "@/components/ui/button";
 
 const LaboratoryVision = () => {
   const visionContent = getLaboratoryVisionContent();
@@ -32,6 +33,13 @@ const LaboratoryVision = () => {
             content={visionContent.content} 
             type="laboratory-vision"
           />
+          <div className="text-center mt-12">
+            <a href="/people">
+              <Button size="lg" variant="default" className="text-lg px-8">
+                Meet Our People
+              </Button>
+            </a>
+          </div>
         </div>
       </div>
     </section>
