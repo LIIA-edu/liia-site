@@ -64,7 +64,7 @@ show_help() {
 start_dev() {
     print_info "Starting development server..."
     check_docker
-    docker-compose up --build liia-dev
+    docker compose up --build liia-dev
     print_success "Development server started at http://localhost:5173"
 }
 
@@ -72,7 +72,7 @@ start_dev() {
 start_preview() {
     print_info "Starting preview server..."
     check_docker
-    docker-compose up --build liia-preview
+    docker compose up --build liia-preview
     print_success "Preview server started at http://localhost:4173"
 }
 
@@ -80,7 +80,7 @@ start_preview() {
 start_prod() {
     print_info "Starting production server..."
     check_docker
-    docker-compose up --build liia-prod
+    docker compose up --build liia-prod
     print_success "Production server started at http://localhost:8080"
 }
 
@@ -88,14 +88,14 @@ start_prod() {
 build_all() {
     print_info "Building all Docker images..."
     check_docker
-    docker-compose build
+    docker compose build
     print_success "All images built successfully"
 }
 
 # Function to stop all containers
 stop_all() {
     print_info "Stopping all containers..."
-    docker-compose down
+    docker compose down
     print_success "All containers stopped"
 }
 
@@ -106,7 +106,7 @@ clean_all() {
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         print_info "Cleaning up containers and images..."
-        docker-compose down --rmi all --volumes --remove-orphans
+        docker compose down --rmi all --volumes --remove-orphans
         print_success "Cleanup completed"
     else
         print_info "Cleanup cancelled"
@@ -116,7 +116,7 @@ clean_all() {
 # Function to show logs
 show_logs() {
     print_info "Showing logs for all containers..."
-    docker-compose logs -f
+    docker compose logs -f
 }
 
 # Function to open shell in development container
@@ -129,7 +129,7 @@ open_shell() {
         docker exec -it liia-website-dev /bin/sh
     else
         print_warning "Development container not running. Starting it first..."
-        docker-compose up -d liia-dev
+        docker compose up -d liia-dev
         sleep 5
         docker exec -it liia-website-dev /bin/sh
     fi
