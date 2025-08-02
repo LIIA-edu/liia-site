@@ -25,8 +25,10 @@ const About = () => {
               About
             </h2>
           </div>
-          
-          <MarkdownRenderer content={aboutContent.content} />
+          <MarkdownRenderer 
+            content={aboutContent.content} 
+            type="about"
+          />
         </div>
       </div>
     </section>

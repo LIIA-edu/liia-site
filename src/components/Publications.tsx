@@ -28,8 +28,10 @@ const Publications = () => {
               Our research contributions to computational biology and machine learning.
             </p>
           </div>
-          
-          <MarkdownRenderer content={publicationsContent.content} />
+          <MarkdownRenderer 
+            content={publicationsContent.content} 
+            type="publications"
+          />
         </div>
       </div>
     </section>
