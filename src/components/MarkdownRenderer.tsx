@@ -64,6 +64,11 @@ const MarkdownRenderer = ({ content, type = 'default', className = "" }: Markdow
               {children}
             </p>
           ),
+          em: ({ children }) => (
+            <em className="italic text-foreground">
+              {children}
+            </em>
+          ),
           code: ({ children, className }) => {
             const isInline = !className;
             if (isInline) {
@@ -99,16 +104,34 @@ const MarkdownRenderer = ({ content, type = 'default', className = "" }: Markdow
               {children}
             </blockquote>
           ),
-          a: ({ children, href }) => (
-            <a 
-              href={href} 
-              className="text-primary hover:text-primary/80 underline transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {children}
-            </a>
-          ),
+          a: ({ href, children, ...props }) => {
+            // Check if this is a DOI link
+            if (href && href.includes('doi.org')) {
+              const doiText = children?.toString() || href;
+              const cleanDoi = doiText.replace(/^\[DOI:\s*/, '').replace(/\]$/, '');
+              return (
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="h-6 px-2 py-1 text-xs ml-2"
+                  onClick={() => window.open(href, '_blank')}
+                >
+                  DOI: {cleanDoi}
+                </Button>
+              );
+            }
+            return (
+              <a 
+                href={href} 
+                className="text-primary hover:text-primary/80 underline transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+                {...props}
+              >
+                {children}
+              </a>
+            );
+          },
         }}
       >
         {content}
@@ -144,6 +167,38 @@ const AboutRenderer = ({ content, className }: { content: string; className: str
                     {children}
                   </h2>
                 ),
+                em: ({ children }) => (
+                  <em className="italic text-foreground">
+                    {children}
+                  </em>
+                ),
+                a: ({ href, children, ...props }) => {
+                  if (href && href.includes('doi.org')) {
+                    const doiText = children?.toString() || href;
+                    const cleanDoi = doiText.replace(/^\[DOI:\s*/, '').replace(/\]$/, '');
+                    return (
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        className="h-6 px-2 py-1 text-xs ml-2"
+                        onClick={() => window.open(href, '_blank')}
+                      >
+                        DOI: {cleanDoi}
+                      </Button>
+                    );
+                  }
+                  return (
+                    <a 
+                      href={href} 
+                      className="text-primary hover:text-primary/80 underline transition-colors" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      {...props}
+                    >
+                      {children}
+                    </a>
+                  );
+                },
               }}
             >
               {sections[0] || content.split('#')[1]?.split('##')[0] || content}

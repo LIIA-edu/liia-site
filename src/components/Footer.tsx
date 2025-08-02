@@ -4,12 +4,12 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-xl font-bold mb-4">BioinfoBlogs</h3>
+            <h3 className="text-xl font-bold mb-4">LIIA</h3>
             <p className="text-primary-foreground/80 mb-4">
-              Exploring computational biology through research, tutorials, and open science.
+              Laboratório de pesquisa em Imunooncologia e Inteligência Artificial - Explorando biologia computacional através de pesquisa, inovação e ciência aberta.
             </p>
             <p className="text-sm text-primary-foreground/60">
-              © 2024 BioinfoBlogs. All rights reserved.
+              © 2024 LIIA. All rights reserved.
             </p>
           </div>
           
