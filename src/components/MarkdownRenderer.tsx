@@ -387,6 +387,14 @@ const PublicationsRenderer = ({ content, className, limited = false }: { content
           const yearMatch = pub.match(/\((\d{4})\)/);
           const year = yearMatch ? yearMatch[1] : '2024';
           
+          // Extract DOI link from the publication
+          const doiMatch = pub.match(/\[DOI:\s*([^\]]+)\]\(([^)]+)\)/);
+          const doiText = doiMatch ? doiMatch[1] : null;
+          const doiUrl = doiMatch ? doiMatch[2] : null;
+          
+          // Remove DOI from the main text for display
+          const cleanPub = pub.replace(/\s*\[DOI:\s*[^\]]+\]\([^)]+\)/, '');
+          
           // Generate mock data for IF and citations
           const impact_factor = (Math.random() * 10 + 5).toFixed(1);
           const citations = Math.floor(Math.random() * 100 + 10);
@@ -412,37 +420,20 @@ const PublicationsRenderer = ({ content, className, limited = false }: { content
                           {children}
                         </strong>
                       ),
-                      a: ({ href, children, ...props }) => {
-                        // Check if this is a DOI link
-                        if (href && href.includes('doi.org')) {
-                          const doiText = children?.toString() || href;
-                          const cleanDoi = doiText.replace(/^\[DOI:\s*/, '').replace(/\]$/, '');
-                          return (
-                            <Button 
-                              variant="outline" 
-                              size="sm" 
-                              className="h-7 px-3 text-xs ml-2"
-                              onClick={() => window.open(href, '_blank')}
-                            >
-                              DOI: {cleanDoi}
-                            </Button>
-                          );
-                        }
-                        return (
-                          <a 
-                            href={href} 
-                            className="text-primary hover:text-primary/80 underline transition-colors"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            {...props}
-                          >
-                            {children}
-                          </a>
-                        );
-                      },
+                      a: ({ href, children, ...props }) => (
+                        <a 
+                          href={href} 
+                          className="text-primary hover:text-primary/80 underline transition-colors"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          {...props}
+                        >
+                          {children}
+                        </a>
+                      ),
                     }}
                   >
-                    {pub.replace(/^\d+\.\s*/, '')}
+                    {cleanPub.replace(/^\d+\.\s*/, '')}
                   </ReactMarkdown>
                 </div>
                 
@@ -450,6 +441,16 @@ const PublicationsRenderer = ({ content, className, limited = false }: { content
                   <Badge variant="outline">{year}</Badge>
                   <Badge variant="secondary">IF: {impact_factor}</Badge>
                   <span className="text-sm text-muted-foreground">{citations} citations</span>
+                  {doiText && doiUrl && (
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="h-7 px-3 text-xs ml-auto"
+                      onClick={() => window.open(doiUrl, '_blank')}
+                    >
+                      DOI: {doiText}
+                    </Button>
+                  )}
                 </div>
               </CardContent>
             </Card>
