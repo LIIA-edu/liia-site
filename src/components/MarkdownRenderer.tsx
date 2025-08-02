@@ -209,47 +209,69 @@ const AboutRenderer = ({ content, className }: { content: string; className: str
 
 // Laboratory Vision renderer
 const LaboratoryVisionRenderer = ({ content, className }: { content: string; className: string }) => {
+  const sections = content.split(/(?=^##)/gm).filter(section => section.trim());
+  
   return (
     <div className={className}>
-      <div className="prose prose-lg max-w-none dark:prose-invert">
-        <ReactMarkdown
-          components={{
-            h1: ({ children }) => (
-              <h1 className="text-3xl font-bold mb-8 text-foreground text-center">
-                {children}
-              </h1>
-            ),
-            h2: ({ children }) => (
-              <h2 className="text-2xl font-semibold mt-12 mb-6 text-primary border-b border-border pb-2">
-                {children}
-              </h2>
-            ),
-            h3: ({ children }) => (
-              <h3 className="text-xl font-semibold mt-8 mb-4 text-foreground">
-                {children}
-              </h3>
-            ),
-            p: ({ children }) => (
-              <p className="mb-6 text-muted-foreground leading-relaxed text-center">
-                {children}
-              </p>
-            ),
-            ul: ({ children }) => (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                {children}
-              </div>
-            ),
-            li: ({ children }) => (
-              <div className="bg-gradient-card p-6 rounded-lg border border-border">
-                <div className="text-muted-foreground leading-relaxed">
-                  {children}
+      <div className="space-y-12">
+        {/* Main Vision Section */}
+        {sections.map((section, index) => {
+          const lines = section.trim().split('\n');
+          const isMainHeading = lines[0].startsWith('# ');
+          
+          if (isMainHeading) {
+            return (
+              <div key={index} className="text-center space-y-6">
+                <div className="prose prose-xl max-w-4xl mx-auto dark:prose-invert">
+                  <ReactMarkdown 
+                    components={{
+                      h1: ({ children }) => (
+                        <h1 className="text-3xl font-bold mb-6 text-foreground">
+                          {children}
+                        </h1>
+                      ),
+                      p: ({ children }) => (
+                        <p className="text-lg text-muted-foreground leading-relaxed">
+                          {children}
+                        </p>
+                      ),
+                    }}
+                  >
+                    {section}
+                  </ReactMarkdown>
                 </div>
               </div>
-            ),
-          }}
-        >
-          {content}
-        </ReactMarkdown>
+            );
+          }
+          
+          return null; // Skip non-main headings for separate card rendering
+        })}
+        
+        {/* Render Philosophy, Values, and Goals as cards */}
+        <div className="grid md:grid-cols-3 gap-6">
+          {sections.slice(1).map((section, index) => (
+            <Card key={index} className="p-6 h-full shadow-card">
+              <div className="prose prose-sm max-w-none dark:prose-invert">
+                <ReactMarkdown 
+                  components={{
+                    h2: ({ children }) => (
+                      <h3 className="text-xl font-semibold mb-4 text-primary">
+                        {children}
+                      </h3>
+                    ),
+                    p: ({ children }) => (
+                      <p className="text-muted-foreground leading-relaxed">
+                        {children}
+                      </p>
+                    ),
+                  }}
+                >
+                  {section}
+                </ReactMarkdown>
+              </div>
+            </Card>
+          ))}
+        </div>
       </div>
     </div>
   );

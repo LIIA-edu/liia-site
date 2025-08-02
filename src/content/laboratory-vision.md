@@ -10,22 +10,12 @@ We envision a future where computational biology serves as the cornerstone for u
 
 ## Research Philosophy
 
-### Interdisciplinary Collaboration
-We combine expertise from computer science, biology, mathematics, and medicine to tackle complex biological questions that no single field could solve alone.
-
-### Open Science & Reproducibility
-We are committed to transparency through open code, rigorous documentation, and contributing to open-source ecosystems.
-
-### Innovation Through Method Development
-We develop novel computational approaches, pushing the boundaries of biological data analysis through machine learning innovation and methodological rigor.
+Interdisciplinary collaboration combining expertise from computer science, biology, mathematics, and medicine. We are committed to open science, transparency through open code, and developing novel computational approaches that push the boundaries of biological data analysis.
 
 ## Core Values
 
-- **Excellence in Research**: Highest standards from design to publication
-- **Mentorship & Education**: Training the next generation of computational biologists
-- **Ethical Computing**: Fair, unbiased methods beneficial to diverse populations
-- **Work-Life Integration**: Sustainable careers with personal well-being
+Excellence in research from design to publication. Training the next generation of computational biologists. Developing fair, unbiased methods beneficial to diverse populations. Promoting sustainable careers with work-life integration.
 
 ## Impact Goals
 
-Our research creates lasting impact through methodological innovation, biological discovery, clinical translation, and community building in computational biology.
+Creating lasting impact through methodological innovation, biological discovery, clinical translation, and community building in computational biology.
