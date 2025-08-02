@@ -20,7 +20,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.PROD ? "/your-actual-repo-name" : ""}>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/people" element={<People />} />
