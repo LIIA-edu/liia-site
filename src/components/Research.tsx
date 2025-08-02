@@ -1,4 +1,7 @@
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 const Research = () => {
   const researchLines = [
@@ -63,6 +66,15 @@ const Research = () => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+          
+          <div className="text-center mt-12">
+            <Button asChild size="lg" className="hover-scale">
+              <Link to="/research" className="flex items-center gap-2">
+                Ver Todos os Projetos
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
           </div>
         </div>
       </div>
