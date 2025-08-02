@@ -74,49 +74,49 @@ This project could revolutionize drug discovery, protein engineering, and unders
   },
   {
     id: "single-cell-atlas",
-    title: "Atlas Single-Cell do Câncer Brasileiro",
-    description: "Criação de um atlas abrangente de células de câncer usando sequenciamento single-cell RNA-seq, com foco em tumores prevalentes na população brasileira.",
+    title: "Brazilian Cancer Single-Cell Atlas",
+    description: "Creating a comprehensive atlas of cancer cells using single-cell RNA-seq sequencing, focusing on tumors prevalent in the Brazilian population.",
     fullDescription: `
-# Atlas Single-Cell do Câncer Brasileiro
+# Brazilian Cancer Single-Cell Atlas
 
-## Visão Geral
-O Atlas Single-Cell do Câncer Brasileiro é um projeto colaborativo que visa criar o maior banco de dados de células cancerígenas da América Latina, utilizando tecnologias de sequenciamento single-cell de última geração.
+## Overview
+The Brazilian Cancer Single-Cell Atlas is a collaborative project that aims to create the largest cancer cell database in Latin America, using state-of-the-art single-cell sequencing technologies.
 
-## Objetivos
-- Caracterizar tipos celulares em 10 tipos de câncer mais prevalentes no Brasil
-- Identificar biomarcadores específicos para a população brasileira
-- Desenvolver métodos computacionais para análise de heterogeneidade tumoral
-- Criar plataforma web pública para acesso aos dados
+## Objectives
+- Characterize cell types in 10 most prevalent cancer types in Brazil
+- Identify specific biomarkers for the Brazilian population
+- Develop computational methods for tumor heterogeneity analysis
+- Create public web platform for data access
 
-## Metodologia
+## Methodology
 ### Experimental
-- Coleta de amostras em 15 hospitais parceiros
-- Sequenciamento 10x Genomics Chromium
-- Análise de ~2 milhões de células individuais
+- Sample collection in 15 partner hospitals
+- 10x Genomics Chromium sequencing
+- Analysis of ~2 million individual cells
 
-### Computacional
-- Pipeline automatizado de processamento
-- Algoritmos de clustering hierárquico
-- Análise de trajetórias celulares
-- Predição de tipos celulares raros
+### Computational
+- Automated processing pipeline
+- Hierarchical clustering algorithms
+- Cell trajectory analysis
+- Rare cell type prediction
 
-## Colaborações
+## Collaborations
 - Hospital A.C.Camargo Cancer Center
 - INCA - Instituto Nacional de Câncer
 - Hospital das Clínicas - FMUSP
 - MD Anderson Cancer Center (EUA)
 
-## Impacto Esperado
-Este atlas será fundamental para:
-- Medicina personalizada para pacientes brasileiros
-- Descoberta de novos alvos terapêuticos
-- Compreensão da diversidade genética tumoral
-- Desenvolvimento de biomarcadores prognósticos
+## Expected Impact
+This atlas will be fundamental for:
+- Personalized medicine for Brazilian patients
+- Discovery of new therapeutic targets
+- Understanding tumor genetic diversity
+- Development of prognostic biomarkers
     `,
     status: 'ongoing',
     startDate: '2023-06-01',
     endDate: '2026-05-31',
-    funding: 'FAPESP Temático - R$ 1.200.000, CNPq INCT - R$ 800.000',
+    funding: 'FAPESP Thematic - $300,000, CNPq INCT - $200,000',
     collaborators: [
       'A.C.Camargo Cancer Center',
       'INCA',
@@ -142,54 +142,54 @@ Este atlas será fundamental para:
   },
   {
     id: "drug-discovery-ai",
-    title: "IA para Descoberta de Medicamentos Tropicais",
-    description: "Aplicação de inteligência artificial para descoberta de novos medicamentos contra doenças tropicais negligenciadas, com foco em malária, dengue e Chagas.",
+    title: "AI for Tropical Drug Discovery",
+    description: "Application of artificial intelligence for discovering new drugs against neglected tropical diseases, focusing on malaria, dengue, and Chagas disease.",
     fullDescription: `
-# IA para Descoberta de Medicamentos Tropicais
+# AI for Tropical Drug Discovery
 
-## Visão Geral
-Este projeto revolucionário aplica técnicas avançadas de inteligência artificial para acelerar a descoberta de medicamentos contra doenças tropicais negligenciadas, que afetam milhões de pessoas em países em desenvolvimento.
+## Overview
+This revolutionary project applies advanced artificial intelligence techniques to accelerate drug discovery against neglected tropical diseases, which affect millions of people in developing countries.
 
-## Desafio
-Doenças tropicais como malária, dengue, Chagas e leishmaniose recebem investimento limitado da indústria farmacêutica devido ao baixo retorno econômico, criando uma lacuna crítica no desenvolvimento de novos tratamentos.
+## Challenge
+Tropical diseases like malaria, dengue, Chagas, and leishmaniasis receive limited investment from the pharmaceutical industry due to low economic returns, creating a critical gap in new treatment development.
 
-## Nossa Abordagem
-### Machine Learning para Drug Discovery
-- **Redes Neurais Gráficas**: Para predição de propriedades moleculares
-- **Modelos Generativos**: Geração de novas estruturas químicas
-- **Transfer Learning**: Aproveitamento de dados de outras doenças
-- **Multi-Objective Optimization**: Balanceamento de eficácia, segurança e custo
+## Our Approach
+### Machine Learning for Drug Discovery
+- **Graph Neural Networks**: For molecular property prediction
+- **Generative Models**: Generation of new chemical structures
+- **Transfer Learning**: Leveraging data from other diseases
+- **Multi-Objective Optimization**: Balancing efficacy, safety, and cost
 
-### Targets Principais
-1. **Malária**: Plasmodium falciparum e P. vivax
-2. **Dengue**: Proteases virais NS2B-NS3
-3. **Chagas**: Cruzipaína do Trypanosoma cruzi
-4. **Leishmaniose**: Enzimas do metabolismo de folato
+### Main Targets
+1. **Malaria**: Plasmodium falciparum and P. vivax
+2. **Dengue**: Viral proteases NS2B-NS3
+3. **Chagas**: Cruzipain from Trypanosoma cruzi
+4. **Leishmaniasis**: Folate metabolism enzymes
 
-## Metodologia Computacional
-- Screening virtual de ~10 milhões de compostos
-- Docking molecular de alta precisão
-- Simulações de dinâmica molecular
-- Predição ADMET usando deep learning
-- Otimização de propriedades farmacocinéticas
+## Computational Methodology
+- Virtual screening of ~10 million compounds
+- High-precision molecular docking
+- Molecular dynamics simulations
+- ADMET prediction using deep learning
+- Pharmacokinetic property optimization
 
-## Validação Experimental
-Parcerias com laboratórios de síntese química para:
-- Síntese dos compostos mais promissores
-- Ensaios biológicos in vitro
-- Estudos de citotoxicidade
-- Testes em modelos animais
+## Experimental Validation
+Partnerships with chemical synthesis laboratories for:
+- Synthesis of most promising compounds
+- In vitro biological assays
+- Cytotoxicity studies
+- Animal model testing
 
-## Impacto Social
-- Medicamentos acessíveis para populações vulneráveis
-- Redução de custos de desenvolvimento
-- Fortalecimento da pesquisa nacional
-- Contribuição para os ODS da ONU
+## Social Impact
+- Accessible medicines for vulnerable populations
+- Reduced development costs
+- Strengthening national research
+- Contribution to UN SDGs
     `,
     status: 'ongoing',
     startDate: '2024-01-01',
     endDate: '2027-12-31',
-    funding: 'Gates Foundation - $500.000, CNPq INCT - R$ 600.000',
+    funding: 'Gates Foundation - $500,000, CNPq INCT - $150,000',
     collaborators: [
       'Fundação Oswaldo Cruz (Fiocruz)',
       'Institute for OneWorld Health',
@@ -215,60 +215,60 @@ Parcerias com laboratórios de síntese química para:
   },
   {
     id: "protein-networks",
-    title: "Redes de Interação Proteína-Proteína em Doenças Neurológicas",
-    description: "Análise computacional de redes de interação proteína-proteína para compreender mecanismos moleculares em Alzheimer, Parkinson e outras doenças neurodegenerativas.",
+    title: "Protein-Protein Interaction Networks in Neurological Diseases",
+    description: "Computational analysis of protein-protein interaction networks to understand molecular mechanisms in Alzheimer's, Parkinson's, and other neurodegenerative diseases.",
     fullDescription: `
-# Redes de Interação Proteína-Proteína em Doenças Neurológicas
+# Protein-Protein Interaction Networks in Neurological Diseases
 
-## Contexto
-Doenças neurodegenerativas como Alzheimer, Parkinson e ELA representam um dos maiores desafios da medicina moderna. A compreensão dos mecanismos moleculares dessas doenças através da análise de redes de interação proteica pode revelar novos alvos terapêuticos.
+## Context
+Neurodegenerative diseases like Alzheimer's, Parkinson's, and ALS represent one of modern medicine's greatest challenges. Understanding the molecular mechanisms of these diseases through protein interaction network analysis can reveal new therapeutic targets.
 
-## Objetivos
-- Mapear redes de interação proteica em tecido neuronal
-- Identificar hubs críticos nas redes patológicas
-- Desenvolver biomarcadores baseados em topologia de rede
-- Predizer efeitos de perturbações terapêuticas
+## Objectives
+- Map protein interaction networks in neural tissue
+- Identify critical hubs in pathological networks
+- Develop network topology-based biomarkers
+- Predict effects of therapeutic perturbations
 
-## Abordagem Metodológica
-### Construção de Redes
-- Integração de dados de proteômica, transcriptômica e interactômica
-- Uso de técnicas de graph neural networks
-- Validação experimental via co-imunoprecipitação
-- Análise temporal da evolução das redes
+## Methodological Approach
+### Network Construction
+- Integration of proteomics, transcriptomics, and interactomics data
+- Use of graph neural network techniques
+- Experimental validation via co-immunoprecipitation
+- Temporal analysis of network evolution
 
-### Análise Topológica
-- Identificação de módulos funcionais
-- Análise de centralidade e clustering
-- Detecção de comunidades patológicas
-- Estudo de robustez e vulnerabilidade
+### Topological Analysis
+- Identification of functional modules
+- Centrality and clustering analysis
+- Detection of pathological communities
+- Study of robustness and vulnerability
 
 ### Machine Learning
-- Classificação de fenótipos patológicos
-- Predição de progressão da doença
-- Identificação de biomarcadores de rede
-- Drug repurposing baseado em topologia
+- Classification of pathological phenotypes
+- Disease progression prediction
+- Network biomarker identification
+- Topology-based drug repurposing
 
-## Dados e Recursos
-- Bancos de dados: STRING, BioGRID, IntAct
-- Dados clínicos: ADNI, PPMI, ALS databases
-- Expressão gênica: Allen Brain Atlas
-- Proteômica: Human Protein Atlas
+## Data and Resources
+- Databases: STRING, BioGRID, IntAct
+- Clinical data: ADNI, PPMI, ALS databases
+- Gene expression: Allen Brain Atlas
+- Proteomics: Human Protein Atlas
 
-## Colaborações Clínicas
-- Hospital das Clínicas - Neurologia
-- Associação Brasil Parkinson
-- Instituto do Cérebro - UFRN
-- Mayo Clinic (colaboração internacional)
+## Clinical Collaborations
+- Hospital das Clínicas - Neurology
+- Brazil Parkinson Association
+- Brain Institute - UFRN
+- Mayo Clinic (international collaboration)
 
-## Ferramentas Desenvolvidas
-- **NeuroNetAnalyzer**: Software para análise de redes neurológicas
-- **ProteinHubFinder**: Identificação de proteínas críticas
-- **NetworkDrugTarget**: Predição de alvos terapêuticos
+## Developed Tools
+- **NeuroNetAnalyzer**: Software for neurological network analysis
+- **ProteinHubFinder**: Critical protein identification
+- **NetworkDrugTarget**: Therapeutic target prediction
     `,
     status: 'ongoing',
     startDate: '2023-09-01',
     endDate: '2026-08-31',
-    funding: 'FAPESP Regular - R$ 280.000, Alzheimer Association - $75.000',
+    funding: 'FAPESP Regular - $70,000, Alzheimer Association - $75,000',
     collaborators: [
       'Hospital das Clínicas - FMUSP',
       'Instituto do Cérebro - UFRN',
