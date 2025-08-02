@@ -15,8 +15,8 @@ const BlogCard = ({ title, description, date, tags, readTime, featured = false, 
   const href = slug ? `/blog/${slug}` : '#';
   
   return (
-    <a href={href}>
-      <Card className={`group cursor-pointer transition-all duration-300 hover:shadow-elegant ${
+    <a href={href} className="h-full">
+      <Card className={`group cursor-pointer transition-all duration-300 hover:shadow-elegant h-full flex flex-col ${
         featured ? 'bg-gradient-card border-primary/20' : ''
       }`}>
       <CardHeader>
@@ -31,7 +31,7 @@ const BlogCard = ({ title, description, date, tags, readTime, featured = false, 
           {description}
         </CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="mt-auto">
         <div className="flex flex-wrap gap-2">
           {tags.map((tag, index) => (
             <Badge key={index} variant="secondary" className="text-xs">

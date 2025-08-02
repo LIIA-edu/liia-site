@@ -265,8 +265,11 @@ const PublicationsRenderer = ({ content, className, limited = false }: { content
   lines.forEach(line => {
     if (line.match(/^\d+\./)) { // Publication entry
       if (currentPub.title) publications.push(currentPub);
+      let title = line.replace(/^\d+\.\s*/, '');
+      // Remove markdown formatting from title
+      title = title.replace(/^\*\*/, '').replace(/\*\*$/, '').replace(/\*\*/g, '');
       currentPub = { 
-        title: line.replace(/^\d+\.\s*/, ''),
+        title: title,
         year: '2024',
         impact_factor: (Math.random() * 10 + 5).toFixed(1),
         citations: Math.floor(Math.random() * 100 + 10)
@@ -310,22 +313,23 @@ const PublicationsRenderer = ({ content, className, limited = false }: { content
         {displayedPublications.map((pub, index) => (
           <Card key={index} className="shadow-card hover:shadow-elegant transition-shadow">
             <CardHeader>
-              <div className="flex items-start justify-between">
-                <div className="flex-1">
-                  <CardTitle className="text-lg leading-tight mb-3">
-                    {pub.title}
-                  </CardTitle>
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    <Badge variant="outline">{pub.year}</Badge>
-                    <Badge variant="secondary">IF: {pub.impact_factor}</Badge>
-                    <Badge variant="outline">{pub.citations} citations</Badge>
-                  </div>
+              <CardTitle className="text-lg leading-tight mb-3">
+                {pub.title}
+              </CardTitle>
+              <div className="flex items-center justify-between">
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="outline">{pub.year}</Badge>
+                  <Badge variant="secondary">IF: {pub.impact_factor}</Badge>
+                  <span className="text-sm text-muted-foreground">{pub.citations} citations</span>
                 </div>
                 {pub.doi && (
-                  <Button variant="ghost" size="sm" asChild>
-                    <a href={`https://doi.org/${pub.doi}`} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="h-4 w-4" />
-                    </a>
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="h-6 px-2 text-xs"
+                    onClick={() => window.open(`https://doi.org/${pub.doi}`, '_blank')}
+                  >
+                    DOI
                   </Button>
                 )}
               </div>
