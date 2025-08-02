@@ -28,7 +28,7 @@ const TeamMember = () => {
                 <Button asChild variant="ghost" className="hover-scale">
                   <Link to="/people" className="flex items-center gap-2">
                     <ArrowLeft className="h-4 w-4" />
-                    Voltar para Equipe
+                    Back to Team
                   </Link>
                 </Button>
               </div>
@@ -55,7 +55,7 @@ const TeamMember = () => {
                       <Button asChild className="hover-scale">
                         <a href={`mailto:${member.email}`} className="flex items-center gap-2">
                           <Mail className="h-4 w-4" />
-                          Contato
+                          Contact
                         </a>
                       </Button>
                       {member.socialLinks?.linkedin && (
@@ -86,7 +86,7 @@ const TeamMember = () => {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <BookOpen className="h-5 w-5 text-primary" />
-                      Interesses de Pesquisa
+                      Research Interests
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -105,7 +105,7 @@ const TeamMember = () => {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <GraduationCap className="h-5 w-5 text-primary" />
-                      Formação Acadêmica
+                      Education
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -124,7 +124,7 @@ const TeamMember = () => {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <BookOpen className="h-5 w-5 text-primary" />
-                      Publicações Selecionadas
+                      Selected Publications
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -146,7 +146,7 @@ const TeamMember = () => {
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
                         <Award className="h-5 w-5 text-primary" />
-                        Prêmios e Reconhecimentos
+                        Awards and Recognition
                       </CardTitle>
                     </CardHeader>
                     <CardContent>

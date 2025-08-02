@@ -17,40 +17,40 @@ export interface ResearchProject {
 export const researchProjects: ResearchProject[] = [
   {
     id: "deepfold-evolution",
-    title: "DeepFold Evolution: Predição Avançada de Estrutura Proteica",
-    description: "Desenvolvimento de arquiteturas neurais de próxima geração para predição de estrutura e função de proteínas usando técnicas de deep learning e análise conformacional.",
+    title: "DeepFold Evolution: Advanced Protein Structure Prediction",
+    description: "Development of next-generation neural architectures for protein structure and function prediction using deep learning techniques and conformational analysis.",
     fullDescription: `
 # DeepFold Evolution
 
-## Visão Geral
-O projeto DeepFold Evolution representa nossa iniciativa mais ambiciosa no desenvolvimento de métodos computacionais para predição de estrutura proteica. Utilizando arquiteturas de deep learning de última geração, incluindo transformers e redes neurais gráficas, nosso objetivo é superar as limitações atuais na predição de conformações proteicas complexas.
+## Overview
+The DeepFold Evolution project represents our most ambitious initiative in developing computational methods for protein structure prediction. Using state-of-the-art deep learning architectures, including transformers and graph neural networks, our goal is to overcome current limitations in predicting complex protein conformations.
 
-## Objetivos Principais
-- Desenvolver novas arquiteturas neurais que incorporem informações evolutivas e físico-químicas
-- Melhorar a precisão na predição de loops e regiões desordenadas
-- Implementar métodos para predição de mudanças conformacionais
-- Criar pipelines automatizados para análise estrutural em larga escala
+## Main Objectives
+- Develop new neural architectures that incorporate evolutionary and physicochemical information
+- Improve accuracy in predicting loops and disordered regions
+- Implement methods for conformational change prediction
+- Create automated pipelines for large-scale structural analysis
 
-## Metodologia
-Nosso approach combina:
-1. **Transformers Evolutivos**: Modelos que aprendem padrões evolutivos a partir de alinhamentos múltiplos
-2. **Graph Neural Networks**: Para capturar interações espaciais entre resíduos
-3. **Physics-Informed Neural Networks**: Incorporando princípios físicos nas arquiteturas
-4. **Multi-Task Learning**: Predição simultânea de estrutura, função e dinâmica
+## Methodology
+Our approach combines:
+1. **Evolutionary Transformers**: Models that learn evolutionary patterns from multiple alignments
+2. **Graph Neural Networks**: To capture spatial interactions between residues
+3. **Physics-Informed Neural Networks**: Incorporating physical principles into architectures
+4. **Multi-Task Learning**: Simultaneous prediction of structure, function, and dynamics
 
-## Resultados Esperados
-- Melhoria de 15-20% na precisão de predição comparado ao estado-da-arte
-- Redução do tempo computacional em 50%
-- Disponibilização de servidor web para a comunidade científica
-- Publicação em periódicos de alto impacto (Nature Methods, Science)
+## Expected Results
+- 15-20% improvement in prediction accuracy compared to state-of-the-art
+- 50% reduction in computational time
+- Web server availability for the scientific community
+- Publication in high-impact journals (Nature Methods, Science)
 
-## Impacto
-Este projeto pode revolucionar a descoberta de medicamentos, engenharia de proteínas e compreensão de doenças relacionadas ao enovelamento incorreto de proteínas.
+## Impact
+This project could revolutionize drug discovery, protein engineering, and understanding of diseases related to protein misfolding.
     `,
     status: 'ongoing',
     startDate: '2023-01-01',
     endDate: '2025-12-31',
-    funding: 'CNPq Universal - R$ 350.000, FAPESP Jovem Pesquisador - R$ 250.000',
+    funding: 'CNPq Universal - $85,000, FAPESP Young Researcher - $62,000',
     collaborators: [
       'Stanford University - Prof. John Smith',
       'Cambridge University - Dr. Mary Johnson',

@@ -58,19 +58,19 @@ export const teamMembers: TeamMember[] = [
     name: "Dr. Michael Rodriguez, PhD",
     position: "Postdoctoral Research Fellow",
     image: "/placeholder.svg",
-    bio: "Michael ingressou em nosso laboratório em 2022 após completar seu PhD em redes neurais gráficas. Especializa-se em desenvolvimento de algoritmos para análise de dados single-cell e métodos de deep learning para descoberta de medicamentos.",
+    bio: "Michael joined our laboratory in 2022 after completing his PhD work on graph neural networks. He specializes in developing algorithms for single-cell data analysis and deep learning methods for drug discovery.",
     email: "michael.rodriguez@liia.edu.br",
     researchInterests: [
       "Graph Neural Networks",
-      "Análise de Dados Single-Cell",
-      "Deep Learning para Descoberta de Medicamentos",
-      "Redes Biológicas",
-      "Algoritmos de Clustering"
+      "Single-Cell Data Analysis",
+      "Deep Learning for Drug Discovery",
+      "Biological Networks",
+      "Clustering Algorithms"
     ],
     education: [
-      "PhD em Machine Learning - University of Cambridge (2022)",
-      "MSc em Matemática Aplicada - ETH Zurich (2018)",
-      "BSc em Física - UNESP (2016)"
+      "PhD in Machine Learning - University of Cambridge (2022)",
+      "MSc in Applied Mathematics - ETH Zurich (2018)",
+      "BSc in Physics - UNESP (2016)"
     ],
     publications: [
       "Rodriguez, M., Chen, S. (2024). Single-Cell RNA Sequencing Analysis Using Deep Graph Networks. Cell Systems, 18(4), 301-315.",
@@ -90,27 +90,27 @@ export const teamMembers: TeamMember[] = [
     name: "Jennifer Liu",
     position: "PhD Student (4th year)",
     image: "/placeholder.svg",
-    bio: "Jennifer está desenvolvendo métodos de machine learning para análise de dados single-cell. Seu trabalho foca em identificação de tipos celulares raros e trajetórias de diferenciação celular usando técnicas avançadas de deep learning.",
+    bio: "Jennifer is developing machine learning methods for single-cell data analysis. Her work focuses on identifying rare cell types and cellular differentiation trajectories using advanced deep learning techniques.",
     email: "jennifer.liu@liia.edu.br",
     researchInterests: [
       "Single-Cell Genomics",
-      "Identificação de Tipos Celulares",
-      "Trajetórias de Diferenciação",
+      "Cell Type Identification",
+      "Differentiation Trajectories",
       "Deep Learning",
-      "Análise de Expressão Gênica"
+      "Gene Expression Analysis"
     ],
     education: [
-      "PhD em Bioinformática - UNICAMP (em andamento, 2021-presente)",
-      "MSc em Biotecnologia - USP (2021)",
-      "BSc em Biologia Molecular - UFRJ (2019)"
+      "PhD in Bioinformatics - UNICAMP (ongoing, 2021-present)",
+      "MSc in Biotechnology - USP (2021)",
+      "BSc in Molecular Biology - UFRJ (2019)"
     ],
     publications: [
       "Liu, J., Chen, S. (2024). CellTrack: Deep Learning for Single-Cell Trajectory Analysis. Nature Communications, 15, 1234.",
       "Liu, J., et al. (2023). Identifying Rare Cell Types Using Variational Autoencoders. Bioinformatics, 39(16), 2789-2797."
     ],
     awards: [
-      "Melhor Apresentação de Poster - X-Meeting (2023)",
-      "Bolsa de Doutorado CNPq (2021-2025)"
+      "Best Poster Presentation - X-Meeting (2023)",
+      "PhD Scholarship CNPq (2021-2025)"
     ],
     socialLinks: {
       linkedin: "https://linkedin.com/in/jennifer-liu-phd-student"
@@ -121,27 +121,27 @@ export const teamMembers: TeamMember[] = [
     name: "David Kim",
     position: "PhD Student (3rd year)",
     image: "/placeholder.svg",
-    bio: "David foca na aplicação de machine learning baseado em grafos para redes biológicas. Seu trabalho envolve o desenvolvimento de novos algoritmos para predição de interações proteína-proteína e análise de vias metabólicas.",
+    bio: "David focuses on applying graph-based machine learning to biological networks. His work involves developing new algorithms for protein-protein interaction prediction and metabolic pathway analysis.",
     email: "david.kim@liia.edu.br",
     researchInterests: [
-      "Redes Biológicas",
-      "Interações Proteína-Proteína",
+      "Biological Networks",
+      "Protein-Protein Interactions",
       "Graph Machine Learning",
-      "Vias Metabólicas",
+      "Metabolic Pathways",
       "Network Biology"
     ],
     education: [
-      "PhD em Ciência da Computação - UNICAMP (em andamento, 2022-presente)",
-      "MSc em Bioinformática - UFMG (2022)",
-      "BSc em Ciência da Computação - UFSC (2020)"
+      "PhD in Computer Science - UNICAMP (ongoing, 2022-present)",
+      "MSc in Bioinformatics - UFMG (2022)",
+      "BSc in Computer Science - UFSC (2020)"
     ],
     publications: [
       "Kim, D., Rodriguez, M., Chen, S. (2024). ProteinNet: Graph-Based Protein Interaction Prediction. Molecular Systems Biology, 20(3), 145-162.",
       "Kim, D., Liu, J. (2023). Network Analysis of Metabolic Pathways Using Graph Neural Networks. BMC Bioinformatics, 24, 289."
     ],
     awards: [
-      "Bolsa de Doutorado FAPESP (2022-2026)",
-      "Prêmio Jovem Talento - SBC (2023)"
+      "PhD Scholarship FAPESP (2022-2026)",
+      "Young Talent Award - SBC (2023)"
     ],
     socialLinks: {
       linkedin: "https://linkedin.com/in/david-kim-cs"

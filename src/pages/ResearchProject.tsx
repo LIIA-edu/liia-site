@@ -29,9 +29,9 @@ const ResearchProject = () => {
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case 'ongoing': return 'Em Andamento';
-      case 'completed': return 'Concluído';
-      case 'planned': return 'Planejado';
+      case 'ongoing': return 'Ongoing';
+      case 'completed': return 'Completed';
+      case 'planned': return 'Planned';
       default: return status;
     }
   };
@@ -50,7 +50,7 @@ const ResearchProject = () => {
                 <Button asChild variant="ghost" className="hover-scale">
                   <Link to="/research" className="flex items-center gap-2">
                     <ArrowLeft className="h-4 w-4" />
-                    Voltar para Projetos
+                    Back to Projects
                   </Link>
                 </Button>
               </div>
@@ -81,13 +81,13 @@ const ResearchProject = () => {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <Calendar className="h-5 w-5 text-primary" />
-                      Cronograma
+                      Timeline
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-2">
                       <div className="text-sm">
-                        <span className="text-muted-foreground">Início:</span>
+                        <span className="text-muted-foreground">Start:</span>
                         <div className="font-medium">
                           {new Date(project.startDate).toLocaleDateString('pt-BR', { 
                             year: 'numeric', 
@@ -97,7 +97,7 @@ const ResearchProject = () => {
                       </div>
                       {project.endDate && (
                         <div className="text-sm">
-                          <span className="text-muted-foreground">Previsão de término:</span>
+                          <span className="text-muted-foreground">Expected completion:</span>
                           <div className="font-medium">
                             {new Date(project.endDate).toLocaleDateString('pt-BR', { 
                               year: 'numeric', 
@@ -115,7 +115,7 @@ const ResearchProject = () => {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <DollarSign className="h-5 w-5 text-primary" />
-                      Financiamento
+                      Funding
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -130,7 +130,7 @@ const ResearchProject = () => {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <Users className="h-5 w-5 text-primary" />
-                      Equipe
+                      Team
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -138,7 +138,7 @@ const ResearchProject = () => {
                       {project.team.length}
                     </div>
                     <div className="text-sm text-muted-foreground">
-                      pesquisadores envolvidos
+                      researchers involved
                     </div>
                   </CardContent>
                 </Card>
@@ -150,7 +150,7 @@ const ResearchProject = () => {
                 <div className="lg:col-span-2">
                   <Card className="shadow-card hover:shadow-elegant transition-shadow animate-fade-in">
                     <CardHeader>
-                      <CardTitle>Descrição Detalhada</CardTitle>
+                      <CardTitle>Detailed Description</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <div className="prose prose-lg max-w-none dark:prose-invert">
@@ -167,7 +167,7 @@ const ResearchProject = () => {
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
                         <Users className="h-5 w-5 text-primary" />
-                        Equipe do Projeto
+                        Project Team
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -202,7 +202,7 @@ const ResearchProject = () => {
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
                         <Beaker className="h-5 w-5 text-primary" />
-                        Tecnologias
+                        Technologies
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -221,7 +221,7 @@ const ResearchProject = () => {
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
                         <Award className="h-5 w-5 text-primary" />
-                        Colaboradores
+                        Collaborators
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -241,7 +241,7 @@ const ResearchProject = () => {
                       <CardHeader>
                         <CardTitle className="flex items-center gap-2">
                           <BookOpen className="h-5 w-5 text-primary" />
-                          Publicações
+                          Publications
                         </CardTitle>
                       </CardHeader>
                       <CardContent>
