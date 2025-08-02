@@ -5,66 +5,14 @@ import BlogCard from "@/components/BlogCard";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Search } from "lucide-react";
+import { getAllPosts, getAllTags } from "@/utils/postUtils";
 
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTag, setSelectedTag] = useState("");
 
-  const blogPosts = [
-    {
-      title: "CRISPR-Cas9 Analysis Pipeline: From Raw Data to Insights",
-      description: "A comprehensive guide to analyzing CRISPR-Cas9 screening data using R and Python. We explore statistical methods for identifying essential genes and compare different normalization approaches.",
-      date: "Dec 15, 2024",
-      tags: ["CRISPR", "R", "Python", "Statistics"],
-      readTime: "12 min read",
-      featured: true
-    },
-    {
-      title: "Single-Cell RNA-seq: Unveiling Cellular Heterogeneity",
-      description: "Deep dive into single-cell RNA sequencing analysis, covering quality control, dimensionality reduction, and cell type identification using Seurat and scanpy.",
-      date: "Dec 8, 2024",
-      tags: ["scRNA-seq", "Seurat", "Python", "Cell Biology"],
-      readTime: "15 min read",
-      featured: true
-    },
-    {
-      title: "Machine Learning in Drug Discovery: A Practical Approach",
-      description: "Exploring how machine learning algorithms can accelerate drug discovery processes, with hands-on examples using molecular descriptors and deep learning models.",
-      date: "Nov 28, 2024",
-      tags: ["Machine Learning", "Drug Discovery", "Cheminformatics"],
-      readTime: "18 min read"
-    },
-    {
-      title: "Genome Assembly Algorithms: Understanding the Fundamentals",
-      description: "A technical overview of modern genome assembly algorithms, comparing overlap-layout-consensus and string graph approaches with practical examples.",
-      date: "Nov 20, 2024",
-      tags: ["Genome Assembly", "Algorithms", "Bioinformatics"],
-      readTime: "10 min read"
-    },
-    {
-      title: "Phylogenetic Analysis in the Age of Big Data",
-      description: "Modern approaches to phylogenetic reconstruction using large genomic datasets, including maximum likelihood methods and Bayesian inference.",
-      date: "Nov 12, 2024",
-      tags: ["Phylogenetics", "Evolution", "Genomics"],
-      readTime: "14 min read"
-    },
-    {
-      title: "Protein Structure Prediction with AlphaFold2",
-      description: "Understanding how AlphaFold2 revolutionized protein structure prediction and how to integrate these predictions into your research workflow.",
-      date: "Oct 30, 2024",
-      tags: ["Protein Structure", "AlphaFold", "Deep Learning"],
-      readTime: "11 min read"
-    }
-  ];
-
-  // Get all unique tags
-  const allTags = useMemo(() => {
-    const tags = new Set();
-    blogPosts.forEach(post => {
-      post.tags.forEach(tag => tags.add(tag));
-    });
-    return Array.from(tags) as string[];
-  }, []);
+  const blogPosts = getAllPosts();
+  const allTags = getAllTags();
 
   // Filter posts based on search term and selected tag
   const filteredPosts = useMemo(() => {

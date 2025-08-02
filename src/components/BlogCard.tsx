@@ -8,13 +8,17 @@ interface BlogCardProps {
   tags: string[];
   readTime: string;
   featured?: boolean;
+  slug?: string;
 }
 
-const BlogCard = ({ title, description, date, tags, readTime, featured = false }: BlogCardProps) => {
+const BlogCard = ({ title, description, date, tags, readTime, featured = false, slug }: BlogCardProps) => {
+  const href = slug ? `/blog/${slug}` : '#';
+  
   return (
-    <Card className={`group cursor-pointer transition-all duration-300 hover:shadow-elegant ${
-      featured ? 'bg-gradient-card border-primary/20' : ''
-    }`}>
+    <a href={href}>
+      <Card className={`group cursor-pointer transition-all duration-300 hover:shadow-elegant ${
+        featured ? 'bg-gradient-card border-primary/20' : ''
+      }`}>
       <CardHeader>
         <div className="flex items-center justify-between mb-2">
           <span className="text-sm text-muted-foreground">{date}</span>
@@ -37,6 +41,7 @@ const BlogCard = ({ title, description, date, tags, readTime, featured = false }
         </div>
       </CardContent>
     </Card>
+    </a>
   );
 };
 
