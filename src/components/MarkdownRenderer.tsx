@@ -354,7 +354,7 @@ const LaboratoryVisionRenderer = ({ content, className }: { content: string; cla
 const PublicationsRenderer = ({ content, className, limited = false }: { content: string; className: string; limited?: boolean }) => {
   // Extract publications from numbered list items
   const publicationEntries = content.match(/^\d+\.\s+.+$/gm) || [];
-  const displayedPublications = limited ? publicationEntries.slice(0, 10) : publicationEntries;
+  const displayedPublications = limited ? publicationEntries.slice(0, 5) : publicationEntries;
 
   return (
     <div className="space-y-8">
@@ -458,7 +458,7 @@ const PublicationsRenderer = ({ content, className, limited = false }: { content
         })}
       </div>
 
-      {limited && publicationEntries.length > 10 && (
+      {limited && publicationEntries.length > 5 && (
         <div className="text-center mt-12">
           <Button asChild>
             <a href="/publications">View All Publications ({publicationEntries.length})</a>
