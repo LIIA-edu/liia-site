@@ -5,9 +5,11 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { researchProjects } from "@/data/researchProjects";
+import { getAllProjects } from "@/utils/projectUtils";
 
 const ResearchProjects = () => {
+  const researchProjects = getAllProjects();
+  
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'ongoing': return 'bg-green-500/20 text-green-700 border-green-500/30';
@@ -19,9 +21,9 @@ const ResearchProjects = () => {
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case 'ongoing': return 'Em Andamento';
-      case 'completed': return 'Concluído';
-      case 'planned': return 'Planejado';
+      case 'ongoing': return 'Ongoing';
+      case 'completed': return 'Completed';
+      case 'planned': return 'Planned';
       default: return status;
     }
   };
@@ -72,29 +74,20 @@ const ResearchProjects = () => {
                         </div>
                         <div className="flex items-center gap-2 text-sm text-muted-foreground">
                           <Users className="h-4 w-4" />
-                          <span>{project.team.length} pesquisadores</span>
+                          <span>{project.team.length} researchers</span>
                         </div>
                         <div className="flex items-center gap-2 text-sm text-muted-foreground">
                           <Beaker className="h-4 w-4" />
                           <span>{project.technologies.slice(0, 3).join(', ')}</span>
-                          {project.technologies.length > 3 && <span>+{project.technologies.length - 3} mais</span>}
+                          {project.technologies.length > 3 && <span>+{project.technologies.length - 3} more</span>}
                         </div>
                       </div>
-
-                      {/* Publications Count */}
-                      {project.publications.length > 0 && (
-                        <div className="bg-muted/50 rounded-lg p-3">
-                          <div className="text-sm text-muted-foreground">
-                            <strong className="text-foreground">{project.publications.length}</strong> publicações relacionadas
-                          </div>
-                        </div>
-                      )}
 
                       {/* Actions */}
                       <div className="flex gap-2 pt-2">
                         <Button asChild className="flex-1 hover-scale">
                           <Link to={`/research/${project.id}`} className="flex items-center gap-2 justify-center">
-                            Ver Detalhes
+                            View Details
                             <ExternalLink className="h-4 w-4" />
                           </Link>
                         </Button>

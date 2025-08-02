@@ -6,13 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
-import { researchProjects } from "@/data/researchProjects";
-import { teamMembers } from "@/data/teamMembers";
+import { getProjectById } from "@/utils/projectUtils";
+import { getAllProfiles } from "@/utils/profileUtils";
 import NotFound from "./NotFound";
 
 const ResearchProject = () => {
   const { id } = useParams<{ id: string }>();
-  const project = researchProjects.find(p => p.id === id);
+  const project = getProjectById(id || '');
+  const teamMembers = getAllProfiles();
 
   if (!project) {
     return <NotFound />;
@@ -153,9 +154,9 @@ const ResearchProject = () => {
                       <CardTitle>Detailed Description</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <div className="prose prose-lg max-w-none dark:prose-invert">
-                        <MarkdownRenderer content={project.fullDescription} />
-                      </div>
+                    <div className="prose prose-lg max-w-none dark:prose-invert">
+                      <MarkdownRenderer content={project.content} />
+                    </div>
                     </CardContent>
                   </Card>
                 </div>
@@ -171,29 +172,29 @@ const ResearchProject = () => {
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <div className="space-y-3">
-                        {projectTeam.map((member) => (
-                          <Link 
-                            key={member.id} 
-                            to={`/people/${member.id}`}
-                            className="flex items-center gap-3 p-3 rounded-lg border border-border hover:bg-muted/50 transition-colors group"
-                          >
-                            <img 
-                              src={member.image} 
-                              alt={member.name}
-                              className="w-10 h-10 rounded-full object-cover"
-                            />
-                            <div className="flex-1">
-                              <div className="font-medium text-sm group-hover:text-primary transition-colors">
-                                {member.name}
-                              </div>
-                              <div className="text-xs text-muted-foreground">
-                                {member.position}
-                              </div>
+                    <div className="space-y-3">
+                      {projectTeam.map((member) => (
+                        <Link 
+                          key={member.id} 
+                          to={`/people/${member.id}`}
+                          className="flex items-center gap-3 p-3 rounded-lg border border-border hover:bg-muted/50 transition-colors group"
+                        >
+                          <img 
+                            src={member.image} 
+                            alt={member.name}
+                            className="w-10 h-10 rounded-full object-cover"
+                          />
+                          <div className="flex-1">
+                            <div className="font-medium text-sm group-hover:text-primary transition-colors">
+                              {member.name}
                             </div>
-                          </Link>
-                        ))}
-                      </div>
+                            <div className="text-xs text-muted-foreground">
+                              {member.position}
+                            </div>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
                     </CardContent>
                   </Card>
 
@@ -236,27 +237,19 @@ const ResearchProject = () => {
                   </Card>
 
                   {/* Publications */}
-                  {project.publications.length > 0 && (
-                    <Card className="shadow-card hover:shadow-elegant transition-shadow animate-fade-in">
-                      <CardHeader>
-                        <CardTitle className="flex items-center gap-2">
-                          <BookOpen className="h-5 w-5 text-primary" />
-                          Publications
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="space-y-3">
-                          {project.publications.map((pub, index) => (
-                            <div key={index} className="p-3 border border-border rounded-lg bg-muted/30">
-                              <p className="text-xs text-foreground leading-relaxed">
-                                {pub}
-                              </p>
-                            </div>
-                          ))}
-                        </div>
-                      </CardContent>
-                    </Card>
-                  )}
+                  <Card className="shadow-card hover:shadow-elegant transition-shadow animate-fade-in">
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <BookOpen className="h-5 w-5 text-primary" />
+                        Publications
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="prose prose-sm max-w-none dark:prose-invert">
+                        <MarkdownRenderer content={project.content.split('## Publications')[1] || 'No publications listed yet.'} />
+                      </div>
+                    </CardContent>
+                  </Card>
                 </div>
               </div>
             </div>

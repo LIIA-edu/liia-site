@@ -6,10 +6,11 @@ import MarkdownRenderer from "@/components/MarkdownRenderer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { getResearchGroupContent } from "@/utils/contentUtils";
-import { teamMembers } from "@/data/teamMembers";
+import { getAllProfiles } from "@/utils/profileUtils";
 
 const People = () => {
   const researchGroupContent = getResearchGroupContent();
+  const teamMembers = getAllProfiles();
 
   return (
     <div className="min-h-screen bg-background">

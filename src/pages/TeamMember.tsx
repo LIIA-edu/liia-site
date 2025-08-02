@@ -5,12 +5,13 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { teamMembers } from "@/data/teamMembers";
+import MarkdownRenderer from "@/components/MarkdownRenderer";
+import { getProfileById } from "@/utils/profileUtils";
 import NotFound from "./NotFound";
 
 const TeamMember = () => {
   const { id } = useParams<{ id: string }>();
-  const member = teamMembers.find(m => m.id === id);
+  const member = getProfileById(id || '');
 
   if (!member) {
     return <NotFound />;
@@ -128,14 +129,8 @@ const TeamMember = () => {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-4">
-                      {member.publications.map((pub, index) => (
-                        <div key={index} className="p-4 border border-border rounded-lg bg-muted/30">
-                          <p className="text-sm text-foreground leading-relaxed">
-                            {pub}
-                          </p>
-                        </div>
-                      ))}
+                    <div className="prose prose-lg max-w-none dark:prose-invert">
+                      <MarkdownRenderer content={member.content} />
                     </div>
                   </CardContent>
                 </Card>
