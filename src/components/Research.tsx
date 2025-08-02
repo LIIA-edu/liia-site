@@ -71,7 +71,7 @@ const Research = () => {
           <div className="text-center mt-12">
             <Button asChild size="lg" className="hover-scale">
               <Link to="/research" className="flex items-center gap-2">
-                Ver Todos os Projetos
+                View All Projects
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>

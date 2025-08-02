@@ -35,11 +35,11 @@ const ResearchProjects = () => {
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-16">
                 <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-                  Projetos de Pesquisa
+                  Research Projects
                 </h1>
                 <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                  Nossos projetos de pesquisa abordam questões fundamentais em biologia computacional, 
-                  inteligência artificial e medicina personalizada.
+                  Our research projects address fundamental questions in computational biology, 
+                  artificial intelligence, and personalized medicine.
                 </p>
               </div>
 
@@ -107,15 +107,15 @@ const ResearchProjects = () => {
               {/* CTA Section */}
               <div className="text-center mt-16 p-8 bg-gradient-subtle rounded-2xl">
                 <h2 className="text-2xl font-bold mb-4 text-foreground">
-                  Interessado em Colaborar?
+                  Interested in Collaborating?
                 </h2>
                 <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                  Estamos sempre abertos a novas colaborações e parcerias de pesquisa. 
-                  Entre em contato para discutir oportunidades de trabalho conjunto.
+                  We are always open to new collaborations and research partnerships. 
+                  Contact us to discuss joint work opportunities.
                 </p>
                 <Button asChild size="lg" className="hover-scale">
                   <Link to="/#contact">
-                    Entre em Contato
+                    Contact Us
                   </Link>
                 </Button>
               </div>

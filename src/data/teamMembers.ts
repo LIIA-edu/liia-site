@@ -23,19 +23,19 @@ export const teamMembers: TeamMember[] = [
     name: "Dr. Sarah Chen, PhD",
     position: "Principal Investigator",
     image: "/placeholder.svg",
-    bio: "Dr. Chen estabeleceu o laboratório em 2018 e publicou mais de 50 artigos em biologia computacional. Sua pesquisa foca em aprendizado de máquina aplicado à análise de dados genômicos e desenvolvimento de métodos computacionais para medicina personalizada.",
+    bio: "Dr. Chen established the laboratory in 2018 and has published over 50 papers in computational biology. Her research focuses on machine learning applied to genomic data analysis and developing computational methods for personalized medicine.",
     email: "sarah.chen@liia.edu.br",
     researchInterests: [
-      "Machine Learning em Biologia Computacional",
-      "Análise de Dados Genômicos",
-      "Medicina Personalizada",
-      "Redes Neurais para Predição de Estrutura Proteica",
-      "Bioinformática Translacional"
+      "Machine Learning in Computational Biology",
+      "Genomic Data Analysis",
+      "Personalized Medicine",
+      "Neural Networks for Protein Structure Prediction",
+      "Translational Bioinformatics"
     ],
     education: [
-      "PhD em Bioinformática - Stanford University (2015)",
-      "MSc em Ciência da Computação - MIT (2011)",
-      "BSc em Biotecnologia - USP (2009)"
+      "PhD in Bioinformatics - Stanford University (2015)",
+      "MSc in Computer Science - MIT (2011)",
+      "BSc in Biotechnology - USP (2009)"
     ],
     publications: [
       "Chen, S., et al. (2024). DeepFold2: Advanced Neural Architecture for Protein Structure Prediction. Nature Methods, 21(3), 234-245.",
@@ -43,7 +43,7 @@ export const teamMembers: TeamMember[] = [
       "Chen, S. (2023). Machine Learning Approaches in Precision Medicine. Nature Reviews Drug Discovery, 22(8), 612-628."
     ],
     awards: [
-      "Prêmio Jovem Pesquisador CNPq (2023)",
+      "Young Researcher Award CNPq (2023)",
       "Best Paper Award - ISMB (2022)",
       "Early Career Researcher Award - ISCB (2021)"
     ],

@@ -18,23 +18,23 @@ const People = () => {
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-              Nossa Equipe
+              Our Team
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-              Conheça os pesquisadores que formam o LIIA - Laboratório de pesquisa em Imunooncologia e Inteligência Artificial.
+              Meet the researchers who form LIIA - Laboratory of Research in Immunooncology and Artificial Intelligence.
             </p>
             
             {/* LIIA Description */}
             <div className="bg-gradient-subtle rounded-2xl p-8 mb-12 text-left">
-              <h2 className="text-2xl font-bold mb-4 text-foreground">Sobre o LIIA</h2>
+              <h2 className="text-2xl font-bold mb-4 text-foreground">About LIIA</h2>
               <p className="text-muted-foreground leading-relaxed">
-                O LIIA é um laboratório de pesquisa multidisciplinar que combina inteligência artificial, 
-                biologia computacional e imunooncologia para desenvolver soluções inovadoras no combate ao câncer. 
-                Nossa equipe trabalha na intersecção entre ciência da computação, biologia e medicina, 
-                desenvolvendo algoritmos avançados de machine learning para análise de dados genômicos, 
-                descoberta de biomarcadores e desenvolvimento de terapias personalizadas. Através de 
-                colaborações nacionais e internacionais, buscamos transformar a pesquisa básica em 
-                aplicações clínicas que beneficiem pacientes oncológicos.
+                LIIA is a multidisciplinary research laboratory that combines artificial intelligence, 
+                computational biology, and immunooncology to develop innovative solutions in the fight against cancer. 
+                Our team works at the intersection of computer science, biology, and medicine, 
+                developing advanced machine learning algorithms for genomic data analysis, 
+                biomarker discovery, and personalized therapy development. Through national and 
+                international collaborations, we seek to transform basic research into clinical 
+                applications that benefit cancer patients.
               </p>
             </div>
           </div>
@@ -60,7 +60,7 @@ const People = () => {
                   </p>
                   <Button asChild className="w-full hover-scale">
                     <Link to={`/people/${member.id}`} className="flex items-center gap-2 justify-center">
-                      Ver Perfil
+                      View Profile
                       <ExternalLink className="h-4 w-4" />
                     </Link>
                   </Button>
