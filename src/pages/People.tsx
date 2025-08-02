@@ -68,16 +68,6 @@ const People = () => {
               </Card>
             ))}
           </div>
-
-          {/* Research Group Content */}
-          {researchGroupContent && (
-            <div className="bg-muted/30 rounded-2xl p-8">
-              <MarkdownRenderer 
-                content={researchGroupContent.content} 
-                type="research-group"
-              />
-            </div>
-          )}
         </div>
       </main>
       <Footer />
