@@ -442,7 +442,7 @@ const ResearchGroupRenderer = ({ content }: { content: string; className: string
   return (
     <div>
       {/* Team grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {teamMembers.map((member, index) => (
           <Card key={index} className="shadow-card hover:shadow-elegant transition-all duration-300">
             <CardContent className="p-6 text-center">
@@ -463,29 +463,6 @@ const ResearchGroupRenderer = ({ content }: { content: string; className: string
             </CardContent>
           </Card>
         ))}
-      </div>
-
-      {/* Lab culture */}
-      <div className="bg-gradient-subtle rounded-lg p-8 border border-border">
-        <h2 className="text-3xl font-semibold mb-6 text-foreground text-center">
-          Our Lab Culture
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            { icon: "🔬", title: "Open Science", desc: "All our methods and data are publicly available" },
-            { icon: "🤝", title: "Collaboration", desc: "Working across disciplines to solve problems" },
-            { icon: "📚", title: "Learning", desc: "Continuous professional development" },
-            { icon: "⚖️", title: "Balance", desc: "Work-life balance and personal well-being" }
-          ].map((item, index) => (
-            <div key={index} className="text-center">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">{item.icon}</span>
-              </div>
-              <h3 className="font-semibold text-foreground mb-2">{item.title}</h3>
-              <p className="text-sm text-muted-foreground">{item.desc}</p>
-            </div>
-          ))}
-        </div>
       </div>
     </div>
   );

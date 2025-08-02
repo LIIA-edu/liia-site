@@ -20,14 +20,6 @@ const Hero = () => {
             A computational biologist's journey through data, algorithms, and biological discovery. 
             Sharing insights from the intersection of biology and technology.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button size="lg" variant="secondary" className="text-lg px-8">
-              Latest Posts
-            </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 border-white text-white hover:bg-white hover:text-primary">
-              View Research
-            </Button>
-          </div>
         </div>
       </div>
     </section>

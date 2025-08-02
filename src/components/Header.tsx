@@ -12,17 +12,17 @@ const Header = () => {
             <a href="/" className="text-foreground hover:text-primary transition-colors">
               Home
             </a>
+            <a href="#vision" className="text-foreground hover:text-primary transition-colors">
+              Vision
+            </a>
             <a href="/research-group" className="text-foreground hover:text-primary transition-colors">
               Research Group
-            </a>
-            <a href="/blog" className="text-foreground hover:text-primary transition-colors">
-              Blog
             </a>
             <a href="/publications" className="text-foreground hover:text-primary transition-colors">
               Publications
             </a>
-            <a href="#vision" className="text-foreground hover:text-primary transition-colors">
-              Vision
+            <a href="/blog" className="text-foreground hover:text-primary transition-colors">
+              Blog
             </a>
             <a href="#contact" className="text-foreground hover:text-primary transition-colors">
               Contact
