@@ -353,25 +353,25 @@ const PublicationsRenderer = ({ content, className, limited = false }: { content
         {displayedPublications.map((pub, index) => (
           <Card key={index} className="shadow-card hover:shadow-elegant transition-shadow">
             <CardHeader>
-              <CardTitle className="text-lg leading-tight mb-3">
+              <CardTitle className="text-lg leading-tight mb-4">
                 {pub.title}
               </CardTitle>
               <div className="flex items-center justify-between">
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap items-center gap-3">
                   <Badge variant="outline">{pub.year}</Badge>
                   <Badge variant="secondary">IF: {pub.impact_factor}</Badge>
                   <span className="text-sm text-muted-foreground">{pub.citations} citations</span>
+                  {pub.doi && (
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="h-7 px-3 text-xs"
+                      onClick={() => window.open(`https://doi.org/${pub.doi}`, '_blank')}
+                    >
+                      DOI
+                    </Button>
+                  )}
                 </div>
-                {pub.doi && (
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    className="h-6 px-2 text-xs"
-                    onClick={() => window.open(`https://doi.org/${pub.doi}`, '_blank')}
-                  >
-                    DOI
-                  </Button>
-                )}
               </div>
             </CardHeader>
           </Card>
