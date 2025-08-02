@@ -68,8 +68,8 @@ const BlogSection = () => {
         </div>
 
         <div className="text-center">
-          <Button variant="outline" size="lg" className="px-8">
-            View All Posts
+          <Button variant="outline" size="lg" className="px-8" asChild>
+            <a href="/blog">View All Posts</a>
           </Button>
         </div>
       </div>
