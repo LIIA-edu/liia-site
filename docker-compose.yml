@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  # Development server
+  liia-dev:
+    build:
+      context: .
+      target: development
+    ports:
+      - "5173:5173"
+    volumes:
+      # Mount source code for hot reload
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    container_name: liia-website-dev
+
+  # Production preview (built version)
+  liia-preview:
+    build:
+      context: .
+      target: preview
+    ports:
+      - "4173:4173"
+    environment:
+      - NODE_ENV=production
+    container_name: liia-website-preview
+
+  # Full production with Nginx
+  liia-prod:
+    build:
+      context: .
+      target: production
+    ports:
+      - "8080:80"
+    environment:
+      - NODE_ENV=production
+    container_name: liia-website-prod
