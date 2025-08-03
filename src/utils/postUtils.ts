@@ -1,12 +1,6 @@
-import matter from 'gray-matter';
-import { Buffer } from 'buffer';
+import { createContentLoader, BaseMetadata } from '@/lib/content-loader';
 
-// Polyfill Buffer for browser environment
-if (typeof window !== 'undefined') {
-  window.Buffer = Buffer;
-}
-
-export interface PostMetadata {
+export interface PostMetadata extends BaseMetadata {
   title: string;
   date: string;
   tags: string[];
@@ -20,31 +14,19 @@ export interface Post extends PostMetadata {
   content: string;
 }
 
-// Import all markdown files
-const postModules = import.meta.glob('/src/posts/*.md', { 
-  as: 'raw',
-  eager: true 
-});
+// Create post loader
+const postLoader = createContentLoader<PostMetadata>(
+  '/src/posts/*.md', 
+  '/src/posts/'
+);
 
 export const getAllPosts = (): Post[] => {
-  const posts: Post[] = [];
-  
-  Object.entries(postModules).forEach(([path, content]) => {
-    const { data, content: markdownContent } = matter(content as string);
-    
-    posts.push({
-      ...(data as PostMetadata),
-      content: markdownContent,
-    });
-  });
-  
-  // Sort by date (newest first)
+  const posts = postLoader.getAllContent() as Post[];
   return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 };
 
 export const getPostBySlug = (slug: string): Post | undefined => {
-  const posts = getAllPosts();
-  return posts.find(post => post.slug === slug);
+  return postLoader.getContentByKey('slug', slug) as Post | undefined;
 };
 
 export const getFeaturedPosts = (): Post[] => {

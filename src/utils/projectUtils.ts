@@ -1,12 +1,6 @@
-import matter from 'gray-matter';
-import { Buffer } from 'buffer';
+import { createContentLoader, BaseMetadata } from '@/lib/content-loader';
 
-// Polyfill Buffer for browser environment
-if (typeof window !== 'undefined') {
-  window.Buffer = Buffer;
-}
-
-export interface ProjectMetadata {
+export interface ProjectMetadata extends BaseMetadata {
   id: string;
   title: string;
   description: string;
@@ -25,31 +19,19 @@ export interface Project extends ProjectMetadata {
   content: string;
 }
 
-// Import all project files
-const projectModules = import.meta.glob('/src/projects/*.md', { 
-  as: 'raw',
-  eager: true 
-});
+// Create project loader
+const projectLoader = createContentLoader<ProjectMetadata>(
+  '/src/projects/*.md', 
+  '/src/projects/'
+);
 
 export const getAllProjects = (): Project[] => {
-  const projects: Project[] = [];
-  
-  Object.entries(projectModules).forEach(([path, content]) => {
-    const { data, content: markdownContent } = matter(content as string);
-    
-    projects.push({
-      ...(data as ProjectMetadata),
-      content: markdownContent,
-    });
-  });
-  
-  // Sort by start date (newest first)
+  const projects = projectLoader.getAllContent() as Project[];
   return projects.sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime());
 };
 
 export const getProjectById = (id: string): Project | undefined => {
-  const projects = getAllProjects();
-  return projects.find(project => project.id === id);
+  return projectLoader.getContentByKey('id', id) as Project | undefined;
 };
 
 export const getFeaturedProjects = (): Project[] => {

@@ -1,12 +1,6 @@
-import matter from 'gray-matter';
-import { Buffer } from 'buffer';
+import { createContentLoader, BaseMetadata } from '@/lib/content-loader';
 
-// Polyfill Buffer for browser environment
-if (typeof window !== 'undefined') {
-  window.Buffer = Buffer;
-}
-
-export interface ProfileMetadata {
+export interface ProfileMetadata extends BaseMetadata {
   id: string;
   name: string;
   position: string;
@@ -28,23 +22,14 @@ export interface Profile extends ProfileMetadata {
   content: string;
 }
 
-// Import all profile files
-const profileModules = import.meta.glob('/src/profiles/*.md', { 
-  as: 'raw',
-  eager: true 
-});
+// Create profile loader
+const profileLoader = createContentLoader<ProfileMetadata>(
+  '/src/profiles/*.md', 
+  '/src/profiles/'
+);
 
 export const getAllProfiles = (): Profile[] => {
-  const profiles: Profile[] = [];
-  
-  Object.entries(profileModules).forEach(([path, content]) => {
-    const { data, content: markdownContent } = matter(content as string);
-    
-    profiles.push({
-      ...(data as ProfileMetadata),
-      content: markdownContent,
-    });
-  });
+  const profiles = profileLoader.getAllContent() as Profile[];
   
   // Sort by position hierarchy
   const positionOrder = ['Principal Investigator', 'Postdoctoral Research Fellow', 'PhD Student'];
@@ -56,6 +41,5 @@ export const getAllProfiles = (): Profile[] => {
 };
 
 export const getProfileById = (id: string): Profile | undefined => {
-  const profiles = getAllProfiles();
-  return profiles.find(profile => profile.id === id);
+  return profileLoader.getContentByKey('id', id) as Profile | undefined;
 };
