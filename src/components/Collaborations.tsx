@@ -1,11 +1,18 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Building2, Globe, Users, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { getCollaborationsContent } from "@/utils/contentUtils";
+import { useMemo } from "react";
 
 const Collaborations = () => {
-  const collaborations = [
+  const content = useMemo(() => getCollaborationsContent(), []);
+  
+  if (!content) {
+    return null;
+  }
+
+  // Extract preview information from markdown content
+  const collaborationPreviews = [
     {
       name: "Stanford Cancer Institute",
       type: "Academic Partnership",
@@ -15,7 +22,7 @@ const Collaborations = () => {
     },
     {
       name: "MIT Computer Science",
-      type: "Research Collaboration",
+      type: "Research Collaboration", 
       focus: "AI Model Development",
       status: "Active",
       icon: Users
@@ -23,46 +30,47 @@ const Collaborations = () => {
     {
       name: "Genentech Inc.",
       type: "Industry Partnership",
-      focus: "Drug Discovery Platform",
+      focus: "Drug Discovery Platform", 
       status: "Active",
       icon: Globe
     }
   ];
+
+  // Extract title and description from content
+  const sectionTitle = "Global Collaborations";
+  const sectionDescription = content.description || "Partnering with leading institutions and organizations worldwide to accelerate cancer immunotherapy research and bring AI-driven solutions to patients faster.";
 
   return (
     <section id="collaborations" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4 text-foreground">
-            Global <span className="text-primary">Collaborations</span>
+            {sectionTitle.split(' ').map((word, index) => 
+              index === 1 ? <span key={index} className="text-primary">{word}</span> : word + ' '
+            )}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Partnering with leading institutions and organizations worldwide to accelerate 
-            cancer immunotherapy research and bring AI-driven solutions to patients faster.
+            {sectionDescription}
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {collaborations.map((collab, index) => {
+          {collaborationPreviews.map((collab, index) => {
             const IconComponent = collab.icon;
             return (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="p-2 bg-primary/10 rounded-lg">
-                      <IconComponent className="h-6 w-6 text-primary" />
-                    </div>
-                    <Badge variant="secondary">{collab.status}</Badge>
+              <div key={index} className="bg-card rounded-lg p-6 border hover:shadow-lg transition-shadow">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <IconComponent className="h-6 w-6 text-primary" />
                   </div>
-                  <CardTitle className="text-xl">{collab.name}</CardTitle>
-                  <CardDescription className="text-sm font-medium text-accent">
-                    {collab.type}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">{collab.focus}</p>
-                </CardContent>
-              </Card>
+                  <span className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
+                    {collab.status}
+                  </span>
+                </div>
+                <h3 className="text-xl font-semibold mb-2">{collab.name}</h3>
+                <p className="text-sm font-medium text-accent mb-3">{collab.type}</p>
+                <p className="text-muted-foreground">{collab.focus}</p>
+              </div>
             );
           })}
         </div>
