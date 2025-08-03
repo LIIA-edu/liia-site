@@ -16,62 +16,65 @@ const PublicationsRenderer = memo(({ content, className, limited = false }: Publ
   const publicationEntries = content.match(/^\d+\.\s+.+$/gm) || [];
   const displayedPublications = limited ? publicationEntries.slice(0, 5) : publicationEntries;
 
-  // Extract software tools from the Software & Tools section
-  console.log('Full content length:', content.length);
-  
-  // First try to find the Software & Tools section
-  const softwareMainSection = content.match(/## Software & Tools[\s\S]*?(?=##|$)/);
-  console.log('Software main section found:', !!softwareMainSection);
-  
-  // Then look for Open Source Software subsection
+  // Extract software tools from the Open Source Software section - simplified approach
   const softwareSection = content.match(/### Open Source Software[\s\S]*?(?=###|##|$)/);
-  console.log('Open Source Software section found:', !!softwareSection);
+  const softwareTools: any[] = [];
   
   if (softwareSection) {
-    console.log('Software section content:', softwareSection[0].substring(0, 200));
-  }
-  
-  const softwareTools = [];
-  
-  if (softwareSection) {
-    // Look for tool entries with the exact markdown format
-    const toolEntries = softwareSection[0].match(/- \*\*[^*]+\*\*:[^\n]*(?:\n  - [^\n]*)*(?=\n- \*\*|\n###|\n##|$)/g) || [];
-    console.log('Tool entries found:', toolEntries.length);
-    console.log('First tool entry:', toolEntries[0]);
+    // Split by lines starting with "- **" to get each tool
+    const lines = softwareSection[0].split('\n');
+    let currentTool: any = null;
     
-    toolEntries.forEach((entry, index) => {
-      const nameMatch = entry.match(/- \*\*([^*]+)\*\*:/);
-      const name = nameMatch ? nameMatch[1] : `Tool ${index + 1}`;
-      
-      // Extract GitHub link
-      const githubMatch = entry.match(/GitHub:\s*\[.*?\]\(([^)]+)\)/i);
-      const github = githubMatch ? githubMatch[1] : null;
-      
-      // Extract downloads and citations
-      const downloadsMatch = entry.match(/Downloads:\s*([^\n]+)/i);
-      const downloads = downloadsMatch ? downloadsMatch[1].trim() : '0 downloads';
-      
-      const citationsMatch = entry.match(/Citations:\s*([^\n]+)/i);
-      const citations = citationsMatch ? `${citationsMatch[1].trim()} citations` : '0 citations';
-      
-      // Extract description (text after the colon and before newline)
-      const descMatch = entry.match(/- \*\*[^*]+\*\*:\s*([^\n]+)/);
-      const description = descMatch ? descMatch[1].trim() : 'Computational biology tool';
-      
-      softwareTools.push({
-        name,
-        description,
-        downloads,
-        citations,
-        github
-      });
+    lines.forEach((line) => {
+      // Check if this is a tool name line
+      const toolNameMatch = line.match(/^- \*\*([^*]+)\*\*:\s*(.+)/);
+      if (toolNameMatch) {
+        // Save previous tool if exists
+        if (currentTool) {
+          softwareTools.push(currentTool);
+        }
+        // Start new tool
+        currentTool = {
+          name: toolNameMatch[1],
+          description: toolNameMatch[2],
+          downloads: '0 downloads',
+          citations: '0 citations',
+          github: null
+        };
+      }
+      // Check for GitHub link
+      else if (line.includes('GitHub:') && currentTool) {
+        const githubMatch = line.match(/GitHub:\s*\[.*?\]\(([^)]+)\)/);
+        if (githubMatch) {
+          currentTool.github = githubMatch[1];
+        }
+      }
+      // Check for Downloads
+      else if (line.includes('Downloads:') && currentTool) {
+        const downloadsMatch = line.match(/Downloads:\s*(.+)/);
+        if (downloadsMatch) {
+          currentTool.downloads = downloadsMatch[1].trim();
+        }
+      }
+      // Check for Citations
+      else if (line.includes('Citations:') && currentTool) {
+        const citationsMatch = line.match(/Citations:\s*(.+)/);
+        if (citationsMatch) {
+          currentTool.citations = citationsMatch[1].trim();
+        }
+      }
     });
+    
+    // Don't forget the last tool
+    if (currentTool) {
+      softwareTools.push(currentTool);
+    }
   }
 
   // Extract metrics from frontmatter
-  const totalPublications = content.match(/total_publications:\s*(\d+)/)?.[1] || '50+';
+  const totalPublications = content.match(/totalPublications:\s*(\d+)/)?.[1] || '50+';
   const totalCitations = content.match(/total_citations:\s*(\d+)/)?.[1] || '2,500+';
-  const hIndex = content.match(/h_index:\s*(\d+)/)?.[1] || '25';
+  const hIndex = content.match(/hIndex:\s*(\d+)/)?.[1] || '25';
 
   return (
     <div className={className}>
@@ -165,7 +168,7 @@ const PublicationsRenderer = memo(({ content, className, limited = false }: Publ
 
         {limited && publicationEntries.length > 5 && (
           <div className="text-center mt-12">
-            <Button asChild>
+            <Button size="lg" className="px-8" asChild>
               <Link to="/publications">View All Publications ({publicationEntries.length})</Link>
             </Button>
           </div>
