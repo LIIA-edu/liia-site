@@ -110,7 +110,7 @@ const PublicationsRenderer = memo(({ content, className, limited = false }: Publ
       {/* Publications List */}
       <div className="mb-16">
         <h3 className="text-2xl font-semibold mb-6 text-foreground">Recent Publications</h3>
-        <div className="space-y-4">
+        <div className="space-y-6">
           {displayedPublications.map((pub, index) => {
             const cleanPub = pub.replace(/^\d+\.\s*/, '');
             const year = cleanPub.match(/\((\d{4})\)/)?.[1] || '2024';
@@ -118,51 +118,49 @@ const PublicationsRenderer = memo(({ content, className, limited = false }: Publ
             const citationCount = Math.floor(Math.random() * 100 + 10);
 
             return (
-              <Card key={index} className="shadow-card">
-                <CardContent className="p-6">
-                  <div className="flex justify-between items-start mb-3">
-                    <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded">
-                      {year}
-                    </span>
-                    <div className="flex gap-2 text-xs text-muted-foreground">
-                      <span>IF: {impactFactor}</span>
-                      <span>Citations: {citationCount}</span>
-                    </div>
+              <div key={index} className="border-l-4 border-primary/20 pl-6 py-4 hover:border-primary/40 transition-colors">
+                <div className="flex justify-between items-start mb-2">
+                  <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded">
+                    {year}
+                  </span>
+                  <div className="flex gap-3 text-xs text-muted-foreground">
+                    <span>IF: {impactFactor}</span>
+                    <span>Citations: {citationCount}</span>
                   </div>
-                  <ReactMarkdown
-                    components={{
-                      p: ({ children }) => (
-                        <div className="text-base leading-relaxed text-foreground">
-                          {children}
-                        </div>
-                      ),
-                      em: ({ children }) => (
-                        <em className="italic text-foreground">
-                          {children}
-                        </em>
-                      ),
-                      strong: ({ children }) => (
-                        <strong className="font-semibold text-foreground">
-                          {children}
-                        </strong>
-                      ),
-                      a: ({ href, children, ...props }) => (
-                        <a 
-                          href={href} 
-                          className="text-primary hover:text-primary/80 underline transition-colors"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          {...props}
-                        >
-                          {children}
-                        </a>
-                      ),
-                    }}
-                  >
-                    {cleanPub.replace(/^\d+\.\s*/, '')}
-                  </ReactMarkdown>
-                </CardContent>
-              </Card>
+                </div>
+                <ReactMarkdown
+                  components={{
+                    p: ({ children }) => (
+                      <div className="text-base leading-relaxed text-foreground">
+                        {children}
+                      </div>
+                    ),
+                    em: ({ children }) => (
+                      <em className="italic text-foreground">
+                        {children}
+                      </em>
+                    ),
+                    strong: ({ children }) => (
+                      <strong className="font-semibold text-foreground">
+                        {children}
+                      </strong>
+                    ),
+                    a: ({ href, children, ...props }) => (
+                      <a 
+                        href={href} 
+                        className="text-primary hover:text-primary/80 underline transition-colors"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        {...props}
+                      >
+                        {children}
+                      </a>
+                    ),
+                  }}
+                >
+                  {cleanPub}
+                </ReactMarkdown>
+              </div>
             );
           })}
         </div>
