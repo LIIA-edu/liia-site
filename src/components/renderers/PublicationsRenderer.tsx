@@ -16,12 +16,28 @@ const PublicationsRenderer = memo(({ content, className, limited = false }: Publ
   const publicationEntries = content.match(/^\d+\.\s+.+$/gm) || [];
   const displayedPublications = limited ? publicationEntries.slice(0, 5) : publicationEntries;
 
-  // Extract software tools from the Open Source Software section
+  // Extract software tools from the Software & Tools section
+  console.log('Full content length:', content.length);
+  
+  // First try to find the Software & Tools section
+  const softwareMainSection = content.match(/## Software & Tools[\s\S]*?(?=##|$)/);
+  console.log('Software main section found:', !!softwareMainSection);
+  
+  // Then look for Open Source Software subsection
   const softwareSection = content.match(/### Open Source Software[\s\S]*?(?=###|##|$)/);
+  console.log('Open Source Software section found:', !!softwareSection);
+  
+  if (softwareSection) {
+    console.log('Software section content:', softwareSection[0].substring(0, 200));
+  }
+  
   const softwareTools = [];
   
   if (softwareSection) {
-    const toolEntries = softwareSection[0].match(/- \*\*([^*]+)\*\*:[^\n]*(?:\n  - [^\n]*)*(?=\n- \*\*|\n###|\n##|$)/g) || [];
+    // Look for tool entries with the exact markdown format
+    const toolEntries = softwareSection[0].match(/- \*\*[^*]+\*\*:[^\n]*(?:\n  - [^\n]*)*(?=\n- \*\*|\n###|\n##|$)/g) || [];
+    console.log('Tool entries found:', toolEntries.length);
+    console.log('First tool entry:', toolEntries[0]);
     
     toolEntries.forEach((entry, index) => {
       const nameMatch = entry.match(/- \*\*([^*]+)\*\*:/);
