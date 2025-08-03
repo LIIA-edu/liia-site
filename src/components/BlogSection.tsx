@@ -25,7 +25,7 @@ const BlogSection = () => {
         </div>
 
         <div className="text-center">
-          <Button variant="outline" size="lg" className="px-8" asChild>
+          <Button size="lg" className="px-8" asChild>
             <Link to="/blog">View All Posts</Link>
           </Button>
         </div>

@@ -1,6 +1,7 @@
 import MarkdownRenderer from "./MarkdownRenderer";
 import { getLaboratoryVisionContent } from "@/utils/contentUtils";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const LaboratoryVision = () => {
   const visionContent = getLaboratoryVisionContent();
@@ -34,11 +35,9 @@ const LaboratoryVision = () => {
             type="laboratory-vision"
           />
           <div className="text-center mt-12">
-            <a href="/people">
-              <Button size="lg" variant="default" className="text-lg px-8">
-                Meet Our People
-              </Button>
-            </a>
+            <Button size="lg" className="px-8" asChild>
+              <Link to="/people">Meet Our People</Link>
+            </Button>
           </div>
         </div>
       </div>
