@@ -16,12 +16,12 @@ const PublicationsRenderer = memo(({ content, className, limited = false }: Publ
   const publicationEntries = content.match(/^\d+\.\s+.+$/gm) || [];
   const displayedPublications = limited ? publicationEntries.slice(0, 5) : publicationEntries;
 
-  // Extract software tools from the Software & Tools section
-  const softwareSection = content.match(/## Software & Tools[\s\S]*?(?=##|$)/);
+  // Extract software tools from the Open Source Software section
+  const softwareSection = content.match(/### Open Source Software[\s\S]*?(?=###|##|$)/);
   const softwareTools = [];
   
   if (softwareSection) {
-    const toolEntries = softwareSection[0].match(/- \*\*([^*]+)\*\*:[\s\S]*?(?=- \*\*|$)/g) || [];
+    const toolEntries = softwareSection[0].match(/- \*\*([^*]+)\*\*:[^\n]*(?:\n  - [^\n]*)*(?=\n- \*\*|\n###|\n##|$)/g) || [];
     
     toolEntries.forEach((entry, index) => {
       const nameMatch = entry.match(/- \*\*([^*]+)\*\*:/);
@@ -36,9 +36,9 @@ const PublicationsRenderer = memo(({ content, className, limited = false }: Publ
       const downloads = downloadsMatch ? downloadsMatch[1].trim() : '0 downloads';
       
       const citationsMatch = entry.match(/Citations:\s*([^\n]+)/i);
-      const citations = citationsMatch ? citationsMatch[1].trim() : '0 citations';
+      const citations = citationsMatch ? `${citationsMatch[1].trim()} citations` : '0 citations';
       
-      // Extract description (text after the colon and before GitHub)
+      // Extract description (text after the colon and before newline)
       const descMatch = entry.match(/- \*\*[^*]+\*\*:\s*([^\n]+)/);
       const description = descMatch ? descMatch[1].trim() : 'Computational biology tool';
       
