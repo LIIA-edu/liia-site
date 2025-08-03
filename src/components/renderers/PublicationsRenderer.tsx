@@ -33,6 +33,41 @@ const DEFAULT_SOFTWARE_TOOLS = [
     downloads: '30,000+ downloads',
     citations: '120+ citations',
     github: 'https://github.com/yourlab/crispr-ml'
+  },
+  {
+    name: 'GenomeAssembler',
+    description: 'High-performance genome assembly toolkit with error correction',
+    downloads: '15,000+ downloads',
+    citations: '65+ citations',
+    github: 'https://github.com/yourlab/genome-assembler'
+  },
+  {
+    name: 'ProteomicsAnalyzer',
+    description: 'Comprehensive suite for mass spectrometry data analysis',
+    downloads: '18,000+ downloads',
+    citations: '90+ citations',
+    github: 'https://github.com/yourlab/proteomics-analyzer'
+  },
+  {
+    name: 'MetagenomeClassifier',
+    description: 'Taxonomic classification of metagenomic sequences',
+    downloads: '12,000+ downloads',
+    citations: '45+ citations',
+    github: 'https://github.com/yourlab/metagenome-classifier'
+  },
+  {
+    name: 'DrugTargetPredictor',
+    description: 'AI-powered drug-target interaction prediction platform',
+    downloads: '8,000+ downloads',
+    citations: '75+ citations',
+    github: 'https://github.com/yourlab/drug-target-predictor'
+  },
+  {
+    name: 'CancerPathways',
+    description: 'Cancer pathway analysis and biomarker discovery tool',
+    downloads: '20,000+ downloads',
+    citations: '110+ citations',
+    github: 'https://github.com/yourlab/cancer-pathways'
   }
 ];
 
