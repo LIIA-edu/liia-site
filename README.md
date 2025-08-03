@@ -2,1023 +2,984 @@
 
 A modern, responsive website for the Laboratory of Research in Immunooncology and Artificial Intelligence (LIIA), built with React, TypeScript, and Tailwind CSS.
 
-## Features
+## ✨ Features
 
-- **Team Profiles**: Detailed individual researcher profiles with publications and research interests
-- **Research Projects**: Comprehensive project pages with descriptions, collaborators, and outcomes
-- **Publications**: Formatted publication listings with DOI links and proper citations
-- **Blog System**: File-based blog with markdown support
-- **Responsive Design**: Mobile-first design with beautiful animations
-- **SEO Optimized**: Proper meta tags, semantic HTML, and structured data
+- **🔬 Research Focus**: Showcase laboratory research, publications, and projects
+- **👥 Team Profiles**: Individual researcher profiles with publications and expertise
+- **📚 Publications**: Comprehensive publication management with DOI integration
+- **🧪 Research Projects**: Detailed project descriptions with collaboration details
+- **📝 Blog System**: File-based content management with Markdown support
+- **📱 Mobile-First**: Fully responsive design with smooth animations
+- **⚡ Fast Performance**: Built with Vite for optimal loading speeds
+- **🎨 Modern Design**: Beautiful UI with dark/light mode support
+- **♿ Accessible**: WCAG compliant with semantic HTML
+- **🚀 SEO Optimized**: Meta tags, structured data, and semantic markup
 
-## Tech Stack
+## 🛠️ Tech Stack
 
-- **React 18** with TypeScript
-- **Vite** for fast development and building
-- **Tailwind CSS** for styling
-- **React Router** for navigation
-- **React Markdown** for content rendering
+- **React 18** with TypeScript for robust development
+- **Vite** for lightning-fast development and building
+- **Tailwind CSS** for consistent, responsive styling
+- **React Router** for client-side navigation
+- **React Markdown** with syntax highlighting for content rendering
 - **Gray Matter** for frontmatter parsing
-- **Shadcn/ui** for UI components
+- **Shadcn/ui** for consistent, accessible UI components
 
-## Getting Started
+## 🚀 Quick Start
 
 ### Prerequisites
 
-- Node.js 18+ 
-- npm or yarn
-- Basic knowledge of Markdown
-- Text editor (VS Code recommended)
+- **Node.js** 18 or higher
+- **npm** or **yarn** package manager
+- Basic knowledge of **Markdown** for content editing
+- **Git** for version control
 
 ### Installation
 
-1. Clone the repository:
-```bash
-git clone <your-repo-url>
-cd liia-website
-```
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/your-username/liia-website.git
+   cd liia-website
+   ```
 
-2. Install dependencies:
-```bash
-npm install
-```
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-3. Start the development server:
-```bash
-npm run dev
-```
+3. **Start development server**:
+   ```bash
+   npm run dev
+   ```
 
-4. Open [http://localhost:5173](http://localhost:5173) in your browser.
+4. **Open your browser**:
+   Navigate to [http://localhost:5173](http://localhost:5173)
 
-## File-Based Content Management System
+That's it! Your development environment is ready. 🎉
 
-This website uses a file-based content management system where all content is stored in Markdown files with YAML frontmatter. This approach provides version control, easy editing, and flexibility.
+## 📝 Content Management
 
-### Understanding the System
+This website uses a **file-based content management system** where all content is stored in Markdown files with YAML frontmatter. This approach provides:
 
-The content management system consists of three main types:
+- ✅ **Version Control**: Track all changes with Git
+- ✅ **Easy Editing**: Write content in simple Markdown
+- ✅ **Flexibility**: Full control over content structure
+- ✅ **Performance**: Static content loads instantly
 
-1. **Blog Posts** (`src/posts/`) - News, research updates, announcements
-2. **Team Profiles** (`src/profiles/`) - Individual researcher information
-3. **Research Projects** (`src/projects/`) - Detailed project descriptions
+### 📄 Content Types
 
-Each type uses:
-- **YAML Frontmatter**: Structured metadata at the top of the file
-- **Markdown Content**: Rich text content below the frontmatter
+| Type | Location | Purpose | URL Structure |
+|------|----------|---------|---------------|
+| **Blog Posts** | `src/posts/` | Research updates, news | `/blog/post-slug` |
+| **Team Profiles** | `src/profiles/` | Individual researcher pages | `/people/person-id` |
+| **Research Projects** | `src/projects/` | Project descriptions | `/research/project-id` |
+| **Static Content** | `src/content/` | About, publications, etc. | Various |
 
-### Blog Posts Management
+---
 
-#### Creating a New Blog Post
+## 📰 Blog Posts
 
-1. Navigate to the `src/posts/` directory
-2. Create a new file: `YYYY-MM-DD-post-title.md`
-3. Add the required frontmatter and content
+### Creating a New Blog Post
 
-#### Blog Post Structure
+1. Navigate to `src/posts/`
+2. Create a file: `YYYY-MM-DD-descriptive-title.md`
+3. Add frontmatter and content
+
+### Blog Post Template
 
 ```markdown
 ---
-title: "Your Post Title"
-date: "2024-01-15"
-slug: "your-post-slug"
+title: "Your Compelling Post Title"
+date: "2024-03-15"
+slug: "descriptive-url-slug"
 tags: 
   - "Machine Learning"
   - "Bioinformatics"
   - "Research"
-description: "Brief description of the post for SEO and previews"
-readTime: "5 min read"
+description: "Brief, engaging description for SEO and social sharing (max 160 characters)"
+readTime: "8 min read"
 featured: true
 author: "Dr. Sarah Chen"
-image: "/blog-images/post-image.jpg"
+image: "/blog-images/featured-image.jpg"
 ---
 
 # Your Post Title
 
 ## Introduction
 
-Write your introduction here. You can use all standard Markdown features:
-
-- **Bold text**
-- *Italic text*
-- [Links](https://example.com)
-- `Code snippets`
+Start with a compelling hook that draws readers in...
 
 ## Main Content
 
-### Subsections
+### Use Clear Subheadings
 
-You can include:
+Break your content into digestible sections:
 
-1. Numbered lists
-2. Code blocks
-3. Images
-4. Tables
+- **Bold points** for emphasis
+- *Italics* for subtle emphasis
+- `Code snippets` for technical terms
+- [Descriptive links](https://example.com) for references
+
+### Code Examples
 
 ```python
-# Code example
-def analyze_data(data):
-    return processed_data
+# Include syntax-highlighted code
+def analyze_protein_structure(sequence):
+    """Analyze protein structure using ML models."""
+    result = model.predict(sequence)
+    return result
 ```
+
+### Images and Figures
+
+![Descriptive alt text for accessibility](/blog-images/results-chart.png)
+
+*Figure 1: Results showing 95% accuracy improvement*
 
 ## Conclusion
 
-Wrap up your post here.
+Summarize key findings and implications...
+
+### Key Takeaways
+
+1. **Main finding**: Brief explanation
+2. **Secondary finding**: Brief explanation
+3. **Future directions**: What's next
+
+### References
+
+- Paper, A. et al. (2024). "Title". *Journal*, 12(3), 45-67. [DOI: 10.1000/example](https://doi.org/10.1000/example)
 ```
 
-#### Required Frontmatter Fields
+### ⚙️ Frontmatter Fields
 
-| Field | Type | Description | Example |
-|-------|------|-------------|---------|
-| `title` | string | Post title | `"Machine Learning in Drug Discovery"` |
-| `date` | string | Publication date (YYYY-MM-DD) | `"2024-01-15"` |
-| `slug` | string | URL slug | `"ml-drug-discovery"` |
-| `tags` | array | Category tags | `["AI", "Research"]` |
-| `description` | string | SEO description | `"Overview of ML applications..."` |
-| `readTime` | string | Estimated read time | `"5 min read"` |
+| Field | Required | Description | Example |
+|-------|----------|-------------|---------|
+| `title` | ✅ | Post title (50-60 chars) | `"AI Revolutionizes Drug Discovery"` |
+| `date` | ✅ | Publication date | `"2024-03-15"` |
+| `slug` | ✅ | URL-friendly identifier | `"ai-drug-discovery"` |
+| `tags` | ✅ | Categories (3-5 tags) | `["AI", "Drug Discovery", "Research"]` |
+| `description` | ✅ | SEO description (150-160 chars) | `"How AI is transforming..."` |
+| `readTime` | ✅ | Estimated reading time | `"8 min read"` |
+| `featured` | ❌ | Show on homepage | `true` or `false` |
+| `author` | ❌ | Author name | `"Dr. Sarah Chen"` |
+| `image` | ❌ | Featured image | `"/blog-images/post.jpg"` |
 
-#### Optional Frontmatter Fields
-
-| Field | Type | Description | Default |
-|-------|------|-------------|---------|
-| `featured` | boolean | Show on homepage | `false` |
-| `author` | string | Author name | `"LIIA Team"` |
-| `image` | string | Featured image path | `"/placeholder.svg"` |
-
-#### Blog Post Examples
-
-**Research Update Post:**
-```markdown
----
-title: "New Breakthrough in Protein Structure Prediction"
-date: "2024-01-15"
-slug: "protein-structure-breakthrough"
-tags: ["Protein Folding", "Deep Learning", "Research"]
-description: "Our latest research achieves 95% accuracy in protein structure prediction using novel neural architectures."
-readTime: "8 min read"
-featured: true
-author: "Dr. Sarah Chen"
 ---
 
-# New Breakthrough in Protein Structure Prediction
+## 👥 Team Profiles
 
-We are excited to announce a significant advancement in our protein structure prediction research...
+### Creating a New Team Profile
 
-## Key Findings
+1. Navigate to `src/profiles/`
+2. Create a file: `firstname-lastname.md`
+3. Use consistent naming (lowercase, hyphenated)
 
-Our novel approach demonstrates:
-- 95% accuracy on benchmark datasets
-- 50% reduction in computational time
-- Improved prediction of disordered regions
-
-## Methodology
-
-[Detailed methodology description...]
-```
-
-**Conference Announcement:**
-```markdown
----
-title: "LIIA Team Presents at ISMB 2024"
-date: "2024-07-20"
-slug: "ismb-2024-presentation"
-tags: ["Conference", "Presentation", "ISMB"]
-description: "Our team presented three papers at the International Conference on Intelligent Systems for Molecular Biology."
-readTime: "3 min read"
-author: "Jennifer Liu"
----
-
-# LIIA Team Presents at ISMB 2024
-
-Last week, our research team had the opportunity to present our latest findings...
-```
-
-### Team Profiles Management
-
-#### Creating a New Team Profile
-
-1. Navigate to the `src/profiles/` directory
-2. Create a new file: `firstname-lastname.md`
-3. Use the person's name as the filename (lowercase, hyphenated)
-
-#### Team Profile Structure
+### Team Profile Template
 
 ```markdown
 ---
 id: "sarah-chen"
 name: "Dr. Sarah Chen, PhD"
-position: "Principal Investigator"
+position: "Principal Investigator & Laboratory Director"
 image: "/team-photos/sarah-chen.jpg"
-email: "sarah.chen@liia.edu.br"
-bio: "Dr. Chen established the laboratory in 2018 and has published over 50 papers in computational biology."
+email: "sarah.chen@university.edu"
+bio: "Leading researcher in computational biology with 15+ years experience developing AI solutions for drug discovery and personalized medicine."
 researchInterests: 
   - "Machine Learning in Computational Biology"
+  - "Protein Structure Prediction"
+  - "Drug-Target Interaction Modeling"
   - "Genomic Data Analysis"
   - "Personalized Medicine"
-  - "Neural Networks for Protein Structure Prediction"
 education:
   - "PhD in Bioinformatics - Stanford University (2015)"
   - "MSc in Computer Science - MIT (2011)"
-  - "BSc in Biotechnology - USP (2009)"
+  - "BSc in Biotechnology - University of São Paulo (2009)"
 awards:
-  - "Young Researcher Award CNPq (2023)"
+  - "Young Researcher Award - CNPq (2023)"
   - "Best Paper Award - ISMB (2022)"
+  - "Excellence in Teaching Award (2021)"
 socialLinks:
   linkedin: "https://linkedin.com/in/sarah-chen-phd"
   google_scholar: "https://scholar.google.com/citations?user=abc123"
   orcid: "https://orcid.org/0000-0000-0000-0001"
+  twitter: "https://twitter.com/sarahchen_ai"
 ---
 
-Extended biography and research focus. This section can include:
+## Research Philosophy
 
-## Research Focus
+Dr. Chen believes in the transformative potential of artificial intelligence to solve complex biological problems. Her work focuses on developing interpretable machine learning models that can provide insights into biological mechanisms while maintaining clinical relevance.
 
-Detailed description of current research directions...
+## Current Research Directions
+
+### Protein Structure Prediction
+Leading the development of next-generation neural architectures that incorporate evolutionary information and physical constraints to achieve unprecedented accuracy in protein structure prediction.
+
+### Drug Discovery Pipeline
+Creating end-to-end AI systems for drug discovery, from target identification through lead optimization, with particular focus on rare diseases and personalized therapeutics.
+
+### Multi-omics Integration
+Developing novel approaches to integrate genomic, proteomic, and clinical data for precision medicine applications.
 
 ## Selected Publications
 
-- Chen, S., et al. (2024). DeepFold2: Advanced Neural Architecture for Protein Structure Prediction. *Nature Methods*, 21(3), 234-245. [DOI: 10.1038/s41592-024-0123-4](https://doi.org/10.1038/s41592-024-0123-4)
+### Recent Work (2023-2024)
 
-- Rodriguez, M., Chen, S. (2023). Graph Neural Networks for Drug-Target Interaction Prediction. *Bioinformatics*, 39(12), 2156-2164. [DOI: 10.1093/bioinformatics/btad456](https://doi.org/10.1093/bioinformatics/btad456)
+- **Chen, S.**, Rodriguez, M., Liu, J. (2024). "DeepFold2: Evolutionary-informed neural networks for protein structure prediction." *Nature Methods*, 21(3), 234-245. [DOI: 10.1038/s41592-024-0123-4](https://doi.org/10.1038/s41592-024-0123-4)
 
-## Current Projects
+- Liu, J., **Chen, S.** (2024). "Graph attention networks for drug-target interaction prediction." *Bioinformatics*, 40(8), 1234-1242. [DOI: 10.1093/bioinformatics/btad456](https://doi.org/10.1093/bioinformatics/btad456)
 
-Brief overview of ongoing research projects...
+### Breakthrough Publications
+
+- **Chen, S.**, et al. (2022). "Transformer-based models for protein sequence analysis." *Nature Biotechnology*, 40(12), 1789-1798. [DOI: 10.1038/s41587-022-01234-5](https://doi.org/10.1038/s41587-022-01234-5) **[Cited 450+ times]**
+
+## Leadership & Service
+
+### Editorial Activities
+- Associate Editor, *Bioinformatics* (2023-present)
+- Editorial Board Member, *Journal of Computational Biology* (2022-present)
+
+### Professional Service
+- Program Committee Member, ISMB 2024
+- Reviewer for Nature Methods, Science, Cell
+- Grant Review Panel, NIH Special Emphasis Panel (2023)
+
+## Mentorship
+
+Dr. Chen has mentored 12 PhD students, 8 postdoctoral researchers, and numerous undergraduate students. Her mentees have gone on to positions at leading universities and biotech companies worldwide.
+
+### Current Lab Members
+- 4 PhD students
+- 2 Postdoctoral researchers
+- 3 Undergraduate researchers
+
+## Contact & Collaboration
+
+Interested in collaboration or joining the lab? Dr. Chen welcomes inquiries about:
+- Research collaborations
+- Graduate student positions
+- Postdoctoral opportunities
+- Industry partnerships
+
+**Office**: Room 301, Computational Biology Building  
+**Phone**: +55 (11) 1234-5678  
+**Office Hours**: Tuesdays & Thursdays, 2-4 PM (by appointment)
 ```
 
-#### Profile Frontmatter Fields
+---
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `id` | string | ✓ | Unique identifier for URL |
-| `name` | string | ✓ | Full name with titles |
-| `position` | string | ✓ | Job title/position |
-| `image` | string | ✓ | Photo path |
-| `email` | string | ✓ | Contact email |
-| `bio` | string | ✓ | Brief biography |
-| `researchInterests` | array | ✓ | List of research areas |
-| `education` | array | ✓ | Educational background |
-| `awards` | array | ✗ | Awards and honors |
-| `socialLinks` | object | ✗ | Social media profiles |
+## 🔬 Research Projects
 
-#### Team Profile Best Practices
+### Creating a New Research Project
 
-1. **Images**: Use high-quality, professional photos (300x300px minimum)
-2. **Bio Length**: Keep the frontmatter bio to 2-3 sentences; use content area for details
-3. **Research Interests**: Use 3-6 specific, searchable terms
-4. **Publications**: Include DOI links formatted as `[DOI: xxx](https://doi.org/xxx)`
-5. **Social Links**: Only include professional profiles
+1. Navigate to `src/projects/`
+2. Create a file: `descriptive-project-name.md`
+3. Use URL-friendly naming
 
-### Research Projects Management
-
-#### Creating a New Research Project
-
-1. Navigate to the `src/projects/` directory
-2. Create a new file: `project-slug.md`
-3. Use a descriptive, URL-friendly filename
-
-#### Research Project Structure
+### Research Project Template
 
 ```markdown
 ---
-id: "deepfold-evolution"
-title: "DeepFold Evolution: Advanced Protein Structure Prediction"
-description: "Development of next-generation neural architectures for protein structure and function prediction using deep learning techniques."
+id: "ai-drug-discovery-platform"
+title: "AI-Powered Drug Discovery Platform"
+description: "Development of an integrated artificial intelligence platform for accelerated drug discovery, from target identification to clinical candidate selection."
 status: "ongoing"
 startDate: "2023-01-01"
 endDate: "2025-12-31"
-funding: "CNPq Universal - $85,000, FAPESP Young Researcher - $62,000"
+funding: 
+  - "NIH R01 Grant - $450,000"
+  - "NSF CAREER Award - $350,000"
+  - "Industry Partnership - $200,000"
 collaborators:
-  - "Stanford University - Prof. John Smith"
-  - "Cambridge University - Dr. Mary Johnson"
-  - "EMBL-EBI - Dr. Alex Thompson"
+  - "Stanford University - Prof. John Smith (Structural Biology)"
+  - "MIT - Dr. Maria Garcia (Machine Learning)"
+  - "Genentech - Dr. Alex Wilson (Drug Development)"
 technologies:
   - "PyTorch"
+  - "TensorFlow"
   - "AlphaFold2"
   - "CUDA"
   - "Docker"
-image: "/project-images/deepfold.jpg"
+  - "Kubernetes"
+image: "/project-images/ai-drug-discovery.jpg"
 team: 
   - "sarah-chen"
   - "michael-rodriguez"
+  - "jennifer-liu"
 featured: true
+publications:
+  - "10.1038/s41592-024-0123-4"
+  - "10.1093/bioinformatics/btad456"
 ---
 
-# DeepFold Evolution
+# AI-Powered Drug Discovery Platform
 
-## Overview
+## 🎯 Project Overview
 
-The DeepFold Evolution project represents our most ambitious initiative in developing computational methods for protein structure prediction...
+The AI-Powered Drug Discovery Platform represents a paradigm shift in pharmaceutical research, leveraging cutting-edge artificial intelligence to accelerate the traditionally lengthy and expensive drug development process. Our platform integrates multiple AI technologies to create a comprehensive pipeline from target identification to clinical candidate selection.
 
-## Objectives
+### 🚀 Vision Statement
+
+To democratize drug discovery by creating an AI platform that reduces development time from 10-15 years to 3-5 years while maintaining safety and efficacy standards.
+
+## 📊 Key Achievements
+
+| Metric | Achievement | Impact |
+|--------|-------------|---------|
+| **Time Reduction** | 60% faster target identification | 2-3 years saved per project |
+| **Success Rate** | 40% improvement in hit-to-lead conversion | Higher quality candidates |
+| **Cost Savings** | $50M+ in computational screening | Reduced wet lab experiments |
+| **Publications** | 12 peer-reviewed papers | Knowledge advancement |
+
+## 🎯 Research Objectives
 
 ### Primary Goals
-- Develop new neural architectures incorporating evolutionary information
-- Improve accuracy in predicting loops and disordered regions
-- Create automated pipelines for large-scale analysis
+
+1. **Target Identification**
+   - Develop AI models to identify novel therapeutic targets
+   - Predict target druggability and safety profiles
+   - Integrate multi-omics data for target validation
+
+2. **Drug Design**
+   - Create generative models for novel molecule design
+   - Optimize ADMET properties computationally
+   - Predict drug-target interactions with high accuracy
+
+3. **Clinical Prediction**
+   - Forecast clinical trial outcomes
+   - Identify patient stratification strategies
+   - Predict adverse drug reactions
 
 ### Success Metrics
-- 15-20% improvement over current state-of-the-art
-- 50% reduction in computational time
-- Publication in high-impact journals
 
-## Methodology
+- **Technical**: 90% accuracy in target prediction, 70% hit rate in virtual screening
+- **Clinical**: 3 compounds entering clinical trials, 2 successful Phase I completions
+- **Academic**: 20+ publications in high-impact journals
 
-Our approach combines several cutting-edge techniques:
+## 🧬 Scientific Approach
 
-1. **Evolutionary Transformers**: Models that learn patterns from multiple sequence alignments
-2. **Graph Neural Networks**: To capture spatial interactions between residues
-3. **Physics-Informed Networks**: Incorporating physical principles into architectures
+### Phase 1: Data Integration & Model Development (2023)
 
-## Timeline
+#### Multi-Omics Data Integration
+- **Genomics**: Whole-genome sequencing, GWAS data
+- **Transcriptomics**: RNA-seq, single-cell RNA-seq
+- **Proteomics**: Mass spectrometry, protein interactions
+- **Metabolomics**: Small molecule profiles
 
-### Year 1 (2023)
-- Literature review and method development
-- Initial prototype implementation
-- Preliminary validation studies
-
-### Year 2 (2024)
-- Large-scale experiments
-- Method refinement
-- Manuscript preparation
-
-### Year 3 (2025)
-- Final validation
-- Web server development
-- Dissemination activities
-
-## Publications
-
-- Chen, S., et al. (2024). DeepFold2: Advanced Neural Architecture for Protein Structure Prediction. *Nature Methods*, 21(3), 234-245. [DOI: 10.1038/s41592-024-0123-4](https://doi.org/10.1038/s41592-024-0123-4)
-
-## Impact
-
-This project could revolutionize drug discovery, protein engineering, and understanding of diseases related to protein misfolding.
+#### AI Model Architecture
+```python
+# Simplified model architecture
+class DrugDiscoveryPlatform:
+    def __init__(self):
+        self.target_predictor = TransformerTargetModel()
+        self.molecule_generator = VAEMoleculeGenerator()
+        self.interaction_predictor = GraphNeuralNetwork()
+        
+    def predict_targets(self, disease_profile):
+        return self.target_predictor.forward(disease_profile)
+        
+    def generate_molecules(self, target_profile):
+        return self.molecule_generator.sample(target_profile)
 ```
 
-#### Project Frontmatter Fields
+### Phase 2: Platform Integration & Validation (2024)
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `id` | string | ✓ | Unique identifier |
-| `title` | string | ✓ | Project title |
-| `description` | string | ✓ | Brief summary |
-| `status` | enum | ✓ | `"ongoing"`, `"completed"`, `"planned"` |
-| `startDate` | string | ✓ | Start date (YYYY-MM-DD) |
-| `endDate` | string | ✗ | End date (YYYY-MM-DD) |
-| `funding` | string | ✗ | Funding sources |
-| `collaborators` | array | ✗ | External collaborators |
-| `technologies` | array | ✗ | Technologies used |
-| `team` | array | ✓ | Team member IDs |
-| `featured` | boolean | ✗ | Show on homepage |
+#### Integrated Pipeline Development
+1. **Target Discovery Module**
+   - Disease pathway analysis
+   - Target prioritization algorithms
+   - Druggability assessment
 
-### Content Guidelines
+2. **Molecule Design Module**
+   - Structure-based drug design
+   - Ligand-based optimization
+   - ADMET prediction
 
-#### Markdown Best Practices
+3. **Clinical Prediction Module**
+   - Biomarker identification
+   - Patient stratification
+   - Efficacy prediction
 
-1. **Headers**: Use descriptive, hierarchical headers
-   ```markdown
-   # Main Title
-   ## Section Header
-   ### Subsection Header
-   ```
+#### Validation Strategy
+- **Retrospective Studies**: Validate on historical drug development data
+- **Prospective Studies**: Partner with pharmaceutical companies
+- **Wet Lab Validation**: Synthesize and test top predictions
 
-2. **Links**: Always use descriptive link text
-   ```markdown
-   ✓ [Read our Nature Methods paper](https://doi.org/10.1038/s41592-024-0123-4)
-   ✗ [Click here](https://doi.org/10.1038/s41592-024-0123-4)
-   ```
+### Phase 3: Clinical Translation & Deployment (2025)
 
-3. **Images**: Include alt text and use relative paths
-   ```markdown
-   ![Protein structure prediction results](/images/protein-results.png)
-   ```
+#### Platform Deployment
+- Cloud-based infrastructure for scalability
+- User-friendly interface for non-technical users
+- API integration with existing pharmaceutical workflows
 
-4. **Code**: Use syntax highlighting
-   ```markdown
-   ```python
-   def predict_structure(sequence):
-       return model.predict(sequence)
-   ```
-   ```
+#### Clinical Partnerships
+- Collaboration with biotech companies
+- Integration with clinical trial networks
+- Regulatory compliance and validation
+
+## 🤝 Collaborative Network
+
+### Academic Partnerships
+
+#### Stanford University
+- **Focus**: Structural biology and drug design
+- **Contribution**: Protein structure expertise and computational resources
+- **Key Personnel**: Prof. John Smith (20+ years drug discovery experience)
+
+#### MIT Computer Science
+- **Focus**: Machine learning methodology
+- **Contribution**: Novel AI architectures and optimization
+- **Key Personnel**: Dr. Maria Garcia (Expert in graph neural networks)
+
+### Industry Collaborations
+
+#### Genentech
+- **Role**: Clinical validation and regulatory guidance
+- **Resources**: Access to proprietary compound libraries
+- **Timeline**: 3-year partnership agreement
+
+#### Novartis AI Lab
+- **Focus**: Platform integration and deployment
+- **Contribution**: Real-world testing environment
+- **Impact**: Direct pathway to clinical application
+
+## 💰 Funding & Resources
+
+### Current Funding Status: $1,000,000 (Total)
+
+| Source | Amount | Period | Purpose |
+|--------|---------|---------|---------|
+| **NIH R01** | $450,000 | 2023-2026 | Core research activities |
+| **NSF CAREER** | $350,000 | 2023-2028 | Educational integration |
+| **Industry Partnership** | $200,000 | 2024-2025 | Clinical validation |
+
+### Resource Allocation
+- **Personnel** (60%): Graduate students, postdocs, staff scientists
+- **Computational** (25%): Cloud computing, software licenses
+- **Equipment** (10%): Hardware upgrades, specialized software
+- **Travel/Dissemination** (5%): Conferences, collaborations
+
+## 🗓️ Detailed Timeline
+
+### Year 1 (2023) - Foundation ✅
+- [x] Data collection and preprocessing
+- [x] Initial model development
+- [x] Partnership establishment
+- [x] Team assembly
+
+### Year 2 (2024) - Integration 🏗️
+- [x] Platform architecture design
+- [ ] Model validation and optimization
+- [ ] Pilot studies with industry partners
+- [ ] First clinical predictions
+
+### Year 3 (2025) - Translation 🚀
+- [ ] Full platform deployment
+- [ ] Clinical trial initiation
+- [ ] Regulatory submissions
+- [ ] Technology transfer
+
+## 📈 Impact & Outcomes
+
+### Scientific Impact
+
+#### Publications (12 total)
+- **Nature Methods** (1): AI methodology for drug discovery
+- **Science** (1): Platform validation and results
+- **Cell** (2): Specific disease applications
+- **Bioinformatics** (4): Computational methods
+- **Journal of Medicinal Chemistry** (4): Drug design applications
+
+#### Software & Tools
+- **DrugAI Platform**: Open-source components available on GitHub
+- **ChemGen**: Molecular generation toolkit
+- **TargetPredict**: Target identification software
+
+### Clinical Impact
+
+#### Drug Candidates
+1. **LIIA-001**: Alzheimer's disease therapeutic (entering Phase I)
+2. **LIIA-002**: Cancer immunotherapy enhancer (preclinical)
+3. **LIIA-003**: Rare disease treatment (target validation)
+
+#### Patient Benefit
+- Potential treatments for previously undruggable targets
+- Personalized medicine approaches
+- Reduced development costs leading to more affordable drugs
+
+### Economic Impact
+
+#### Cost Savings
+- **$50M+** saved in computational screening vs. traditional methods
+- **60% reduction** in time-to-candidate identification
+- **40% improvement** in clinical success rates
+
+#### Market Potential
+- Platform licensing to pharmaceutical companies
+- Spin-off company formation potential
+- Job creation in biotechnology sector
+
+## 🔬 Technical Details
+
+### Machine Learning Architecture
+
+#### Target Prediction Model
+```python
+class TargetPredictionModel(nn.Module):
+    def __init__(self, input_dim=2048, hidden_dim=512):
+        super().__init__()
+        self.encoder = TransformerEncoder(input_dim, hidden_dim)
+        self.classifier = nn.Linear(hidden_dim, num_targets)
+        
+    def forward(self, disease_features):
+        encoded = self.encoder(disease_features)
+        predictions = self.classifier(encoded)
+        return torch.sigmoid(predictions)
+```
+
+#### Molecule Generation Model
+- **Architecture**: Variational Autoencoder with Graph Neural Networks
+- **Training Data**: 10M+ molecular structures from ChEMBL
+- **Performance**: 85% valid molecules, 70% novel structures
+
+### Data Management
+
+#### Database Infrastructure
+- **Primary Storage**: 100TB+ multi-omics data
+- **Processing**: Distributed computing with Apache Spark
+- **Security**: HIPAA-compliant data handling
+
+#### Quality Control
+- Automated data validation pipelines
+- Version control for all datasets
+- Comprehensive metadata tracking
+
+## 🌟 Innovation Highlights
+
+### Novel Contributions
+
+1. **Multi-Modal AI Integration**
+   - First platform to seamlessly integrate genomics, proteomics, and clinical data
+   - Novel attention mechanisms for cross-modal learning
+
+2. **Interpretable AI for Drug Discovery**
+   - Developed explainable AI methods for regulatory compliance
+   - Created visualization tools for biological insight
+
+3. **Automated Hypothesis Generation**
+   - AI system that proposes novel drug-target hypotheses
+   - Continuously learning from experimental feedback
+
+### Technical Innovations
+
+#### Graph-based Molecular Representation
+```python
+# Novel molecular graph representation
+class MolecularGraph:
+    def __init__(self, molecule):
+        self.nodes = self.extract_atoms(molecule)
+        self.edges = self.extract_bonds(molecule)
+        self.features = self.compute_features()
+    
+    def compute_pharmacophore_features(self):
+        # Novel 3D pharmacophore encoding
+        return pharmacophore_encoder(self.structure_3d)
+```
+
+#### Adaptive Learning Framework
+- Models that improve with each prediction
+- Uncertainty quantification for risk assessment
+- Active learning for optimal experimental design
+
+## 🏆 Recognition & Awards
+
+### Project Recognition
+- **Best Paper Award**, ISMB 2024 - "AI Platform for Drug Discovery"
+- **Innovation Award**, BioIT World 2024
+- **Featured Article**, Nature Biotechnology (2024)
+
+### Media Coverage
+- Featured in Science Magazine "Breakthroughs of 2024"
+- MIT Technology Review "10 Breakthrough Technologies"
+- TED Talk: "AI is Revolutionizing Drug Discovery" (1M+ views)
+
+## 🔮 Future Directions
+
+### Next-Generation Platform (2026-2030)
+
+#### Advanced AI Integration
+- **Quantum Machine Learning**: Explore quantum algorithms for molecular simulation
+- **Federated Learning**: Enable multi-institutional collaboration while preserving data privacy
+- **Reinforcement Learning**: Optimize experimental design and clinical trial strategies
+
+#### Expanded Applications
+- **Precision Medicine**: Patient-specific drug predictions
+- **Combination Therapy**: AI-designed drug combinations
+- **Rare Diseases**: Focus on neglected conditions
+
+### Commercialization Strategy
+
+#### Technology Transfer
+1. **Spin-off Company**: LIIA Therapeutics (planned 2025)
+2. **Licensing Agreements**: Platform licensing to Big Pharma
+3. **Open Source Components**: Core algorithms available to academic community
+
+#### Market Entry
+- Initial focus on oncology and neurological diseases
+- Partnership with clinical research organizations
+- Regulatory pathway development
+
+## 📞 Get Involved
+
+### Collaboration Opportunities
+
+#### For Researchers
+- **Postdoctoral Positions**: 2 positions available in 2024
+- **Graduate Student Projects**: Multiple thesis opportunities
+- **Visiting Scholar Program**: 6-month collaborations welcome
+
+#### For Industry
+- **Beta Testing**: Early access to platform capabilities
+- **Joint Research**: Collaborative development projects
+- **Consulting**: Expert advice on AI in drug discovery
+
+#### For Investors
+- **Technology Licensing**: Commercial applications available
+- **Spin-off Investment**: Equity opportunities in 2025
+- **Research Sponsorship**: Directed research programs
+
+### Contact Information
+
+**Project Lead**: Dr. Sarah Chen  
+**Email**: sarah.chen@university.edu  
+**Phone**: +1 (555) 123-4567  
+**Office**: Computational Biology Building, Room 301
+
+**Business Development**: Jennifer Liu  
+**Email**: business@liia-lab.org  
+**LinkedIn**: [/in/jennifer-liu-biotech](https://linkedin.com/in/jennifer-liu-biotech)
+
+---
+
+*This project represents the future of drug discovery - where artificial intelligence accelerates healing for millions of patients worldwide.*
+```
+
+---
+
+## 🎨 Content Best Practices
+
+### ✍️ Writing Guidelines
+
+#### Tone & Style
+- **Professional yet accessible**: Avoid jargon, explain technical terms
+- **Engaging narratives**: Tell stories, not just facts
+- **Action-oriented**: Use active voice and strong verbs
+- **Inclusive language**: Welcome diverse audiences
+
+#### Structure
+- **Scannable content**: Use headers, bullet points, and short paragraphs
+- **Logical flow**: Introduction → Main content → Conclusion
+- **Clear hierarchy**: H1 → H2 → H3 for organization
 
 #### SEO Optimization
+- **Keywords**: Include relevant terms naturally
+- **Meta descriptions**: 150-160 characters, compelling
+- **Alt text**: Describe images for accessibility
+- **Internal linking**: Connect related content
 
-1. **Frontmatter**: Always include `description` field
-2. **Headers**: Use keywords in section headers
-3. **Alt Text**: Describe images for accessibility
-4. **Internal Links**: Link between related content
+### 🖼️ Image Guidelines
 
-### Adding Images and Assets
+#### Technical Specifications
+- **Team Photos**: 400x400px, WebP or JPEG
+- **Project Images**: 1200x600px for featured images
+- **Blog Images**: 800x400px minimum
+- **File Size**: Under 500KB per image
 
-#### Image Organization
-
+#### Organization Structure
 ```
 public/
-├── team-photos/          # Team member photos
-├── project-images/       # Project featured images
-├── blog-images/          # Blog post images
-└── assets/              # General assets
+├── team-photos/          # Professional headshots
+│   ├── sarah-chen.jpg
+│   └── michael-rodriguez.jpg
+├── project-images/       # Project banners and diagrams
+│   ├── ai-drug-discovery.jpg
+│   └── protein-folding.jpg
+├── blog-images/          # Article illustrations
+│   ├── 2024-03-15-breakthrough.jpg
+│   └── conference-photos/
+└── assets/              # Icons, logos, graphics
+    ├── logo.svg
+    └── icons/
 ```
 
-#### Image Best Practices
+#### Best Practices
+- **Compression**: Use tools like TinyPNG before uploading
+- **Alt Text**: Descriptive, keyword-rich descriptions
+- **Captions**: Add context and attribution when needed
+- **Copyright**: Only use licensed or original images
 
-1. **Formats**: Use WebP or JPEG for photos, SVG for graphics
-2. **Sizes**: 
-   - Team photos: 400x400px
-   - Project images: 800x400px
-   - Blog images: 1200x600px
-3. **Optimization**: Compress images before uploading
-4. **Naming**: Use descriptive, lowercase filenames with hyphens
+---
 
-### URL Structure
+## 🚀 Deployment Guide
 
-The website automatically generates URLs based on file structure:
+### 🔧 GitHub Pages Setup
 
-- **Blog Posts**: `/blog/post-slug`
-- **Team Profiles**: `/people/person-id`
-- **Research Projects**: `/research/project-id`
+#### Option 1: Using Lovable's GitHub Integration (Recommended)
 
-### Content Validation
-
-Before publishing, ensure:
-
-1. **Frontmatter Syntax**: Valid YAML formatting
-2. **Required Fields**: All required fields present
-3. **Dates**: Proper YYYY-MM-DD format
-4. **Links**: All links functional
-5. **Images**: All image paths valid
-6. **IDs**: Unique across all content
-
-## Deployment to GitHub Pages
-
-### Option 1: Using Lovable's GitHub Integration (Recommended)
-
-#### Step 1: Connect to GitHub
-
-1. **In Lovable Editor**:
-   - Click **GitHub** in the top navigation
-   - Select **Connect to GitHub**
-   - Authorize the Lovable GitHub App when prompted
-
-2. **Repository Creation**:
-   - Choose your GitHub account/organization
+1. **Connect to GitHub**:
+   - Click **GitHub** → **Connect to GitHub** in Lovable
+   - Authorize the Lovable GitHub App
+   - Select your GitHub account/organization
    - Click **Create Repository**
-   - Lovable will create a new repository with your project code
 
-#### Step 2: Configure GitHub Pages
+2. **Repository is Automatically Created**:
+   - Lovable creates a repository with your project code
+   - All changes sync automatically between Lovable and GitHub
+   - GitHub Actions workflow is pre-configured
 
-1. **Navigate to Repository Settings**:
-   - Go to your new repository on GitHub
-   - Click **Settings** tab
-   - Scroll to **Pages** section
-
-2. **Enable GitHub Actions**:
-   - Under "Source", select **GitHub Actions**
-   - This allows custom deployment workflows
-
-#### Step 3: Create Deployment Workflow
-
-1. **Create Workflow Directory**:
-   ```bash
-   mkdir -p .github/workflows
-   ```
-
-2. **Create Deployment File**:
-   Create `.github/workflows/deploy.yml` with the following content:
-
-```yaml
-name: Deploy to GitHub Pages
-
-on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: [ main ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
-jobs:
-  # Build job
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build with Vite
-        run: npm run build
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './dist'
-
-  # Deployment job
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-```
-
-#### Step 4: Configure Vite for GitHub Pages
-
-1. **Update vite.config.ts**:
-
-```typescript
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import path from "path"
-
-export default defineConfig({
-  plugins: [react()],
-  // IMPORTANT: Replace 'your-repository-name' with your actual repository name
-  base: '/your-repository-name/',
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
-  build: {
-    outDir: 'dist',
-    assetsDir: 'assets',
-  }
-})
-```
-
-**Special Cases**:
-- If your repository is named `username.github.io`, use `base: '/'`
-- For custom domains, use `base: '/'`
-
-#### Step 5: Update Router Configuration
-
-1. **Modify src/App.tsx**:
-
-```typescript
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-// ... other imports
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      {/* Add basename for GitHub Pages */}
-      <BrowserRouter basename="/your-repository-name">
-        <Routes>
-          {/* Your existing routes */}
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
-```
-
-#### Step 6: Deploy
-
-1. **Commit and Push**:
-   ```bash
-   git add .
-   git commit -m "Configure GitHub Pages deployment"
-   git push origin main
-   ```
-
-2. **Monitor Deployment**:
-   - Go to your repository's **Actions** tab
-   - Watch the deployment workflow run
-   - Check for any errors in the build logs
-
-3. **Access Your Site**:
+3. **Configure GitHub Pages**:
+   - Go to your repository → **Settings** → **Pages**
+   - Source: **GitHub Actions**
    - Your site will be available at: `https://username.github.io/repository-name/`
-   - The URL will be shown in the workflow logs
 
-### Option 2: Manual GitHub Setup
+#### Option 2: Manual GitHub Setup
 
-If you prefer to set up GitHub manually:
-
-#### Step 1: Create Repository
-
-1. **Initialize Git** (if not already done):
+1. **Create Repository**:
    ```bash
    git init
    git add .
    git commit -m "Initial commit"
-   ```
-
-2. **Create GitHub Repository**:
-   - Go to GitHub and create a new repository
-   - Don't initialize with README (since you already have files)
-
-3. **Connect and Push**:
-   ```bash
    git branch -M main
    git remote add origin https://github.com/username/repository-name.git
    git push -u origin main
    ```
 
-#### Step 2: Follow Steps 2-6 from Option 1
+2. **Configure GitHub Pages**:
+   - Repository → **Settings** → **Pages**
+   - Source: **GitHub Actions**
 
-Continue with the GitHub Pages configuration steps above.
+The GitHub Actions workflow (`.github/workflows/deploy.yml`) is automatically included and will:
+- Build the project on every push to main
+- Deploy to GitHub Pages
+- Handle all necessary configurations
 
-### Custom Domain Setup
+### 🌐 Custom Domain Setup
 
 #### Using GitHub Pages Custom Domain
 
 1. **Add CNAME File**:
-   Create `public/CNAME` with your domain:
+   Create `public/CNAME`:
    ```
    yourdomain.com
    ```
 
 2. **Configure DNS**:
-   - Add a CNAME record pointing to `username.github.io`
-   - Or add A records pointing to GitHub Pages IPs
+   Add a CNAME record pointing `yourdomain.com` to `username.github.io`
 
 3. **Update Vite Config**:
    ```typescript
+   // vite.config.ts
    export default defineConfig({
-     plugins: [react()],
      base: '/', // Use root for custom domain
-     // ... rest of config
+     // ... other config
    })
    ```
 
-#### Using Lovable Custom Domain
+#### Using Lovable Custom Domain (Easier)
 
-For easier domain setup, use Lovable's built-in custom domain feature:
+1. **In Lovable**: Project → Settings → Domains
+2. **Follow Setup Instructions**: Automatic SSL and CDN
+3. **Benefits**: Simplified setup, better performance
 
-1. **In Lovable**:
-   - Go to **Project > Settings > Domains**
-   - Click **Connect Domain**
-   - Follow the DNS configuration instructions
+### 🔧 Environment Configuration
 
-2. **Benefits**:
-   - Automatic SSL certificates
-   - CDN acceleration
-   - Simplified DNS setup
+#### For GitHub Pages Deployment
 
-### Troubleshooting Deployment
+If your repository is NOT named `username.github.io`, update these files:
 
-#### Common Issues and Solutions
-
-1. **Build Fails - Node Version**:
-   ```yaml
-   # In .github/workflows/deploy.yml
-   - name: Setup Node.js
-     uses: actions/setup-node@v4
-     with:
-       node-version: '18' # Ensure this matches your local version
-   ```
-
-2. **404 Errors on Refresh**:
+1. **vite.config.ts**:
    ```typescript
-   // This is expected with client-side routing on GitHub Pages
-   // Users need to navigate via the app, not direct URLs
+   export default defineConfig({
+     base: '/your-repository-name/', // Replace with your repo name
+     // ... other config
+   })
    ```
 
-3. **Assets Not Loading**:
+2. **src/App.tsx**:
    ```typescript
-   // Ensure base path is correct in vite.config.ts
-   base: '/your-exact-repository-name/',
+   <BrowserRouter basename="/your-repository-name">
+     {/* Your routes */}
+   </BrowserRouter>
    ```
 
-4. **Mixed Content Errors**:
+#### For Custom Domain
+
+1. **vite.config.ts**:
    ```typescript
-   // Ensure all assets use relative paths
-   // Use '/images/photo.jpg' not 'http://localhost:5173/images/photo.jpg'
+   export default defineConfig({
+     base: '/', // Root path for custom domain
+     // ... other config
+   })
    ```
 
-#### Debugging Steps
-
-1. **Check Build Logs**:
-   - Go to **Actions** tab in GitHub
-   - Click on failed workflow
-   - Expand error sections
-
-2. **Test Locally**:
-   ```bash
-   npm run build
-   npm run preview
-   ```
-
-3. **Validate Configuration**:
-   - Verify `base` path in `vite.config.ts`
-   - Check `basename` in `App.tsx`
-   - Ensure file paths are correct
-
-### Performance Optimization
-
-#### Build Optimization
-
-1. **Bundle Analysis**:
-   ```bash
-   npm install --save-dev rollup-plugin-analyzer
-   ```
-
-2. **Image Optimization**:
-   - Use WebP format when possible
-   - Implement lazy loading for images
-   - Compress images before uploading
-
-3. **Code Splitting**:
+2. **src/App.tsx**:
    ```typescript
-   // Use dynamic imports for large components
-   const LargeComponent = lazy(() => import('./LargeComponent'));
+   <BrowserRouter basename="/">
+     {/* Your routes */}
+   </BrowserRouter>
    ```
 
-## Development Workflow
+---
 
-### Local Development
+## 🛠️ Development
 
-1. **Start Development Server**:
-   ```bash
-   npm run dev
-   ```
-
-2. **Add New Content**:
-   - Create markdown files in appropriate directories
-   - Follow naming conventions
-   - Test locally before committing
-
-3. **Preview Production Build**:
-   ```bash
-   npm run build
-   npm run preview
-   ```
-
-### Content Creation Workflow
-
-1. **Plan Content**:
-   - Define target audience
-   - Outline key points
-   - Gather necessary assets
-
-2. **Create Markdown File**:
-   - Use appropriate template
-   - Fill in all required frontmatter
-   - Write clear, engaging content
-
-3. **Review and Test**:
-   - Check spelling and grammar
-   - Verify all links work
-   - Test responsive design
-
-4. **Publish**:
-   - Commit changes
-   - Push to repository
-   - Monitor deployment
-
-### Team Collaboration
-
-#### Content Contributors
-
-1. **Access Levels**:
-   - **Admin**: Full repository access
-   - **Contributor**: Can create pull requests
-   - **Viewer**: Read-only access
-
-2. **Workflow for Contributors**:
-   ```bash
-   # Fork repository
-   git clone https://github.com/your-username/liia-website.git
-   cd liia-website
-   
-   # Create feature branch
-   git checkout -b add-new-blog-post
-   
-   # Add content
-   # ... create/edit files ...
-   
-   # Commit and push
-   git add .
-   git commit -m "Add new blog post about machine learning"
-   git push origin add-new-blog-post
-   
-   # Create pull request on GitHub
-   ```
-
-#### Review Process
-
-1. **Content Review Checklist**:
-   - [ ] Proper frontmatter formatting
-   - [ ] All required fields present
-   - [ ] Content follows style guidelines
-   - [ ] Images optimized and accessible
-   - [ ] Links functional
-   - [ ] SEO metadata complete
-
-2. **Technical Review**:
-   - [ ] No build errors
-   - [ ] Responsive design maintained
-   - [ ] Performance not degraded
-   - [ ] Accessibility standards met
-
-## Available Scripts
-
-### Development Commands
+### Available Scripts
 
 ```bash
-# Start development server with hot reload
-npm run dev
+# Development
+npm run dev          # Start dev server with hot reload
+npm run build        # Build for production
+npm run preview      # Preview production build locally
 
-# Build for production
-npm run build
+# Code Quality
+npm run lint         # Run ESLint
+npm run type-check   # TypeScript type checking
 
-# Preview production build locally
-npm run preview
-
-# Run ESLint for code quality
-npm run lint
-
-# Type checking
-npm run type-check
+# Maintenance
+npm update           # Update dependencies
+npm audit            # Security audit
 ```
 
-### Maintenance Commands
-
-```bash
-# Update dependencies
-npm update
-
-# Security audit
-npm audit
-
-# Clean node_modules and reinstall
-rm -rf node_modules package-lock.json
-npm install
-```
-
-## Project Structure
+### Project Structure
 
 ```
 liia-website/
-├── .github/
-│   └── workflows/
-│       └── deploy.yml          # GitHub Pages deployment
-├── public/                     # Static assets
-│   ├── team-photos/           # Team member photos
-│   ├── project-images/        # Project images
-│   ├── blog-images/           # Blog post images
-│   └── assets/                # General assets
+├── .github/workflows/     # GitHub Actions
+├── public/               # Static assets
+│   ├── team-photos/
+│   ├── project-images/
+│   └── blog-images/
 ├── src/
-│   ├── components/            # React components
-│   │   ├── ui/               # Reusable UI components
-│   │   ├── Header.tsx        # Site header
-│   │   ├── Footer.tsx        # Site footer
-│   │   └── ...               # Other components
-│   ├── pages/                # Page components
-│   │   ├── Index.tsx         # Homepage
-│   │   ├── Blog.tsx          # Blog listing
-│   │   ├── People.tsx        # Team page
-│   │   └── ...               # Other pages
-│   ├── posts/                # Blog posts (markdown)
-│   │   ├── 2024-01-15-example-post.md
+│   ├── components/       # React components
+│   │   ├── ui/          # Reusable UI components (Shadcn)
+│   │   ├── Header.tsx
+│   │   ├── Footer.tsx
 │   │   └── ...
-│   ├── profiles/             # Team profiles (markdown)
-│   │   ├── sarah-chen.md
-│   │   ├── michael-rodriguez.md
+│   ├── pages/           # Page components
+│   │   ├── Index.tsx    # Homepage
+│   │   ├── Blog.tsx     # Blog listing
 │   │   └── ...
-│   ├── projects/             # Research projects (markdown)
-│   │   ├── deepfold-evolution.md
-│   │   └── ...
-│   ├── content/              # Other content (markdown)
-│   │   ├── about.md
-│   │   ├── publications.md
-│   │   └── ...
-│   ├── utils/                # Utility functions
-│   │   ├── postUtils.ts      # Blog post utilities
-│   │   ├── profileUtils.ts   # Profile utilities
-│   │   ├── projectUtils.ts   # Project utilities
-│   │   └── contentUtils.ts   # General content utilities
-│   ├── hooks/                # Custom React hooks
-│   ├── lib/                  # Library configurations
-│   └── ...                   # Other source files
-├── package.json              # Dependencies and scripts
-├── vite.config.ts           # Vite configuration
-├── tailwind.config.ts       # Tailwind CSS configuration
-├── tsconfig.json            # TypeScript configuration
-└── README.md                # This file
+│   ├── posts/           # Blog posts (Markdown)
+│   ├── profiles/        # Team profiles (Markdown)
+│   ├── projects/        # Research projects (Markdown)
+│   ├── content/         # Static content (Markdown)
+│   ├── utils/           # Utility functions
+│   └── hooks/           # Custom React hooks
+├── package.json
+├── vite.config.ts       # Vite configuration
+├── tailwind.config.ts   # Tailwind CSS config
+└── README.md           # This file
 ```
 
-## Contributing
+---
 
-### Getting Started
+## 🤝 Contributing
 
-1. **Fork the Repository**:
-   - Click "Fork" on GitHub
-   - Clone your fork locally
+### Quick Start for Contributors
 
-2. **Set Up Development Environment**:
+1. **Fork & Clone**:
    ```bash
    git clone https://github.com/your-username/liia-website.git
    cd liia-website
    npm install
-   npm run dev
    ```
 
-3. **Create Feature Branch**:
+2. **Create Feature Branch**:
    ```bash
-   git checkout -b feature/your-feature-name
+   git checkout -b feature/amazing-new-feature
    ```
 
-### Contribution Guidelines
-
-1. **Code Style**:
-   - Follow existing TypeScript/React patterns
-   - Use Tailwind CSS for styling
-   - Follow component naming conventions
-
-2. **Content Guidelines**:
-   - Use clear, concise language
-   - Follow markdown formatting standards
-   - Include proper frontmatter metadata
-
-3. **Commit Messages**:
+3. **Make Changes & Test**:
    ```bash
-   # Good commit messages
-   git commit -m "Add new blog post about protein folding"
-   git commit -m "Update team profile for Dr. Chen"
-   git commit -m "Fix responsive design on mobile"
-   
-   # Avoid
-   git commit -m "Updates"
-   git commit -m "Fix stuff"
+   npm run dev  # Test locally
+   npm run build && npm run preview  # Test production build
    ```
 
-4. **Pull Request Process**:
-   - Create descriptive PR title
-   - Include summary of changes
+4. **Submit Pull Request**:
+   - Clear description of changes
    - Reference any related issues
    - Ensure all checks pass
 
-### Reporting Issues
+### Contribution Guidelines
 
-1. **Bug Reports**:
-   - Use GitHub Issues
-   - Include steps to reproduce
-   - Provide browser/device information
-   - Include screenshots if relevant
+#### Code Standards
+- **TypeScript**: Strict type checking enabled
+- **React**: Functional components with hooks
+- **Tailwind**: Utility-first CSS approach
+- **Accessibility**: WCAG AA compliance
 
-2. **Feature Requests**:
-   - Describe the feature clearly
-   - Explain the use case
-   - Provide examples if possible
+#### Content Standards
+- **Markdown**: Consistent formatting
+- **Images**: Optimized and accessible
+- **SEO**: Meta descriptions and alt text
+- **Grammar**: Proofread all content
 
-## License
+#### Commit Messages
+```bash
+# Good examples
+git commit -m "Add protein folding research project"
+git commit -m "Update Dr. Chen's profile with recent publications"
+git commit -m "Fix mobile navigation accessibility"
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Support
-
-### Getting Help
-
-1. **Documentation**: Check this README first
-2. **GitHub Issues**: For bugs and feature requests
-3. **Discussions**: For questions and community support
-4. **Email**: Contact the LIIA team directly
-
-### Resources
-
-- [React Documentation](https://react.dev/)
-- [Vite Documentation](https://vitejs.dev/)
-- [Tailwind CSS Documentation](https://tailwindcss.com/)
-- [Markdown Guide](https://www.markdownguide.org/)
-- [GitHub Pages Documentation](https://docs.github.com/en/pages)
-
-### Community
-
-- **GitHub Discussions**: Ask questions and share ideas
-- **Issue Tracker**: Report bugs and request features
-- **Pull Requests**: Contribute code and content
+# Avoid
+git commit -m "Updates"
+git commit -m "Fix stuff"
+```
 
 ---
 
-For questions or support, please contact the LIIA team or create an issue in the GitHub repository.
+## 📞 Support & Resources
+
+### Getting Help
+
+| Type | Best Method | Response Time |
+|------|-------------|---------------|
+| **Bugs** | GitHub Issues | 1-2 business days |
+| **Features** | GitHub Discussions | 3-5 business days |
+| **Content** | Email team | 1 business day |
+| **Urgent** | Direct contact | Same day |
+
+### Useful Resources
+
+- 📚 [React Documentation](https://react.dev/)
+- ⚡ [Vite Documentation](https://vitejs.dev/)
+- 🎨 [Tailwind CSS Documentation](https://tailwindcss.com/)
+- 📝 [Markdown Guide](https://www.markdownguide.org/)
+- 🚀 [GitHub Pages Documentation](https://docs.github.com/en/pages)
+- 🎯 [Lovable Documentation](https://docs.lovable.dev/)
+
+### Community
+
+- **💬 GitHub Discussions**: Ask questions and share ideas
+- **🐛 Issue Tracker**: Report bugs and request features  
+- **🔄 Pull Requests**: Contribute code and content
+- **📧 Email**: contact@liia-lab.org for direct communication
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- **Lovable Platform** for the development environment
+- **Shadcn/ui** for the component library
+- **Tailwind CSS** for the styling framework
+- **React** and **Vite** communities for excellent tools
+
+---
+
+**Made with ❤️ by the LIIA Laboratory Team**
+
+*For questions or support, please contact us at contact@liia-lab.org or create an issue in the GitHub repository.*
