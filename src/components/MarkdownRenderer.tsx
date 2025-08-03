@@ -534,7 +534,7 @@ const PublicationsRenderer = ({ content, className, limited = false }: { content
       <div className="mt-16">
         <h3 className="text-2xl font-semibold mb-6 text-foreground">Open Source Software</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {softwareTools.slice(0, 3).map((tool, index) => (
+          {(limited ? softwareTools.slice(0, 3) : softwareTools).map((tool, index) => (
             <Card key={index} className="shadow-card h-full flex flex-col">
               <CardContent className="p-6 flex flex-col h-full">
                 <h4 className="font-semibold text-primary mb-2">{tool.name}</h4>
@@ -561,6 +561,14 @@ const PublicationsRenderer = ({ content, className, limited = false }: { content
             </Card>
           ))}
         </div>
+        
+        {limited && softwareTools.length > 3 && (
+          <div className="text-center mt-8">
+            <Button asChild variant="outline">
+              <Link to="/publications">View All Software ({softwareTools.length})</Link>
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );
