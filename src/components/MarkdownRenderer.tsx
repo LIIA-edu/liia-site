@@ -356,6 +356,69 @@ const PublicationsRenderer = ({ content, className, limited = false }: { content
   const publicationEntries = content.match(/^\d+\.\s+.+$/gm) || [];
   const displayedPublications = limited ? publicationEntries.slice(0, 5) : publicationEntries;
 
+  // Extract software tools from the Software & Tools section
+  const softwareSection = content.match(/## Software & Tools[\s\S]*?(?=##|$)/);
+  const softwareTools = [];
+  
+  if (softwareSection) {
+    const toolEntries = softwareSection[0].match(/\*\*([^*]+)\*\*[\s\S]*?(?=\*\*|$)/g) || [];
+    
+    toolEntries.forEach((entry, index) => {
+      const nameMatch = entry.match(/\*\*([^*]+)\*\*/);
+      const name = nameMatch ? nameMatch[1] : `Tool ${index + 1}`;
+      
+      // Extract GitHub link
+      const githubMatch = entry.match(/\[GitHub\]\(([^)]+)\)/i) || entry.match(/GitHub:\s*([^\s\n]+)/i);
+      const github = githubMatch ? githubMatch[1] : null;
+      
+      // Extract downloads and citations
+      const downloadsMatch = entry.match(/(\d+[\d,]*)\s*downloads/i);
+      const downloads = downloadsMatch ? `${downloadsMatch[1]} downloads` : '10,000+ downloads';
+      
+      const citationsMatch = entry.match(/(\d+[\d,]*)\s*citations/i);
+      const citations = citationsMatch ? `${citationsMatch[1]} citations` : '50+ citations';
+      
+      // Extract description (first sentence after the name)
+      const descMatch = entry.match(/\*\*[^*]+\*\*\s*[-:]?\s*([^.\n]+)/);
+      const description = descMatch ? descMatch[1].trim() : 'Advanced computational tool for biological analysis';
+      
+      softwareTools.push({
+        name,
+        description,
+        downloads,
+        citations,
+        github
+      });
+    });
+  }
+  
+  // Fallback data if no software section found
+  if (softwareTools.length === 0) {
+    softwareTools.push(
+      {
+        name: 'DeepFold2',
+        description: 'Advanced computational tool for protein structure prediction',
+        downloads: '50,000+ downloads',
+        citations: '150+ citations',
+        github: 'https://github.com/yourlab/deepfold2'
+      },
+      {
+        name: 'scRNA-Insight',
+        description: 'Single-cell RNA sequencing analysis pipeline',
+        downloads: '25,000+ downloads',
+        citations: '80+ citations',
+        github: 'https://github.com/yourlab/scrna-insight'
+      },
+      {
+        name: 'CRISPR-ML',
+        description: 'Machine learning framework for CRISPR guide design',
+        downloads: '30,000+ downloads',
+        citations: '120+ citations',
+        github: 'https://github.com/yourlab/crispr-ml'
+      }
+    );
+  }
+
   return (
     <div className="space-y-8">
       {/* Statistics */}
@@ -470,17 +533,29 @@ const PublicationsRenderer = ({ content, className, limited = false }: { content
       <div className="mt-16">
         <h3 className="text-2xl font-semibold mb-6 text-foreground">Open Source Software</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {['DeepFold2', 'scRNA-Insight', 'CRISPR-ML'].map((tool, index) => (
+          {softwareTools.map((tool, index) => (
             <Card key={index} className="shadow-card">
               <CardContent className="p-6">
-                <h4 className="font-semibold text-primary mb-2">{tool}</h4>
+                <h4 className="font-semibold text-primary mb-2">{tool.name}</h4>
                 <p className="text-sm text-muted-foreground mb-3">
-                  Advanced computational tool for biological analysis
+                  {tool.description}
                 </p>
-                <div className="flex justify-between text-xs text-muted-foreground">
-                  <span>50,000+ downloads</span>
-                  <span>150+ citations</span>
+                <div className="flex justify-between items-center mb-3">
+                  <div className="flex gap-4 text-xs text-muted-foreground">
+                    <span>{tool.downloads}</span>
+                    <span>{tool.citations}</span>
+                  </div>
                 </div>
+                {tool.github && (
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="w-full"
+                    onClick={() => window.open(tool.github, '_blank')}
+                  >
+                    View on GitHub
+                  </Button>
+                )}
               </CardContent>
             </Card>
           ))}
