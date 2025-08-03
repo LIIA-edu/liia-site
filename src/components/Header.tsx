@@ -16,9 +16,9 @@ const Header = () => {
             <Link to="/" className="text-foreground hover:text-primary transition-colors">
               Home
             </Link>
-            <Link to="/#vision" className="text-foreground hover:text-primary transition-colors">
+            <a href="/#vision" className="text-foreground hover:text-primary transition-colors">
               Vision
-            </Link>
+            </a>
             <Link to="/people" className="text-foreground hover:text-primary transition-colors">
               People
             </Link>
@@ -31,9 +31,9 @@ const Header = () => {
             <Link to="/blog" className="text-foreground hover:text-primary transition-colors">
               Blog
             </Link>
-            <Link to="/#contact" className="text-foreground hover:text-primary transition-colors">
+            <a href="/#contact" className="text-foreground hover:text-primary transition-colors">
               Contact
-            </Link>
+            </a>
           </div>
           <Button variant="outline" className="md:hidden">
             Menu
