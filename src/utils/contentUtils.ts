@@ -12,7 +12,8 @@ export interface Content extends ContentMetadata {
 
 // Import all content files
 const contentModules = import.meta.glob('/src/content/*.md', { 
-  as: 'raw',
+  query: '?raw',
+  import: 'default',
   eager: true 
 });
 

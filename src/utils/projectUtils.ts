@@ -1,6 +1,7 @@
-import { createContentLoader, BaseMetadata } from '@/lib/content-loader';
+import matter from 'gray-matter';
+import '../lib/buffer-polyfill';
 
-export interface ProjectMetadata extends BaseMetadata {
+export interface ProjectMetadata {
   id: string;
   title: string;
   description: string;
@@ -19,19 +20,29 @@ export interface Project extends ProjectMetadata {
   content: string;
 }
 
-// Create project loader
-const projectLoader = createContentLoader<ProjectMetadata>(
-  '/src/projects/*.md', 
-  '/src/projects/'
-);
+const projectModules = import.meta.glob('/src/projects/*.md', { 
+  query: '?raw',
+  import: 'default',
+  eager: true 
+});
 
 export const getAllProjects = (): Project[] => {
-  const projects = projectLoader.getAllContent() as Project[];
+  const projects: Project[] = [];
+  
+  Object.entries(projectModules).forEach(([path, content]) => {
+    const { data, content: markdownContent } = matter(content as string);
+    projects.push({
+      ...(data as ProjectMetadata),
+      content: markdownContent,
+    });
+  });
+  
   return projects.sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime());
 };
 
 export const getProjectById = (id: string): Project | undefined => {
-  return projectLoader.getContentByKey('id', id) as Project | undefined;
+  const projects = getAllProjects();
+  return projects.find(project => project.id === id);
 };
 
 export const getFeaturedProjects = (): Project[] => {

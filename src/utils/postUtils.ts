@@ -17,7 +17,8 @@ export interface Post extends PostMetadata {
 
 // Import all post files
 const postModules = import.meta.glob('/src/posts/*.md', { 
-  as: 'raw',
+  query: '?raw',
+  import: 'default',
   eager: true 
 });
 
