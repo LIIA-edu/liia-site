@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Mail, Phone, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface MarkdownRendererProps {
   content: string;
@@ -524,7 +525,7 @@ const PublicationsRenderer = ({ content, className, limited = false }: { content
       {limited && publicationEntries.length > 5 && (
         <div className="text-center mt-12">
           <Button asChild>
-            <a href="/publications">View All Publications ({publicationEntries.length})</a>
+            <Link to="/publications">View All Publications ({publicationEntries.length})</Link>
           </Button>
         </div>
       )}
@@ -534,10 +535,10 @@ const PublicationsRenderer = ({ content, className, limited = false }: { content
         <h3 className="text-2xl font-semibold mb-6 text-foreground">Open Source Software</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {softwareTools.map((tool, index) => (
-            <Card key={index} className="shadow-card">
-              <CardContent className="p-6">
+            <Card key={index} className="shadow-card h-full flex flex-col">
+              <CardContent className="p-6 flex flex-col h-full">
                 <h4 className="font-semibold text-primary mb-2">{tool.name}</h4>
-                <p className="text-sm text-muted-foreground mb-3">
+                <p className="text-sm text-muted-foreground mb-3 flex-grow">
                   {tool.description}
                 </p>
                 <div className="flex justify-between items-center mb-3">
@@ -550,7 +551,7 @@ const PublicationsRenderer = ({ content, className, limited = false }: { content
                   <Button 
                     variant="outline" 
                     size="sm" 
-                    className="w-full"
+                    className="w-full mt-auto"
                     onClick={() => window.open(tool.github, '_blank')}
                   >
                     View on GitHub
