@@ -10,10 +10,10 @@ import TeamMember from "./pages/TeamMember";
 import Publications from "./pages/Publications";
 import ResearchProjects from "./pages/ResearchProjects";
 import ResearchProject from "./pages/ResearchProject";
-import Blog from "./pages/Blog";
 import Post from "./pages/Post";
 import Collaborations from "./pages/Collaborations";
 import Resources from "./pages/Resources";
+import Blog from "./pages/Blog";
 
 const queryClient = new QueryClient();
 
