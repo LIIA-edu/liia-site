@@ -4,6 +4,8 @@ import BlogSection from "@/components/BlogSection";
 import LaboratoryVision from "@/components/LaboratoryVision";
 import Research from "@/components/Research";
 import Publications from "@/components/Publications";
+import Collaborations from "@/components/Collaborations";
+import ResourcesTools from "@/components/ResourcesTools";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -16,6 +18,8 @@ const Index = () => {
       <LaboratoryVision />
       <Research />
       <Publications />
+      <Collaborations />
+      <ResourcesTools />
       <Contact />
       <Footer />
     </div>

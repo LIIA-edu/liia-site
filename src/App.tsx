@@ -12,6 +12,8 @@ import ResearchProjects from "./pages/ResearchProjects";
 import ResearchProject from "./pages/ResearchProject";
 import Blog from "./pages/Blog";
 import Post from "./pages/Post";
+import Collaborations from "./pages/Collaborations";
+import Resources from "./pages/Resources";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +32,8 @@ const App = () => (
           <Route path="/publications" element={<Publications />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<Post />} />
+          <Route path="/collaborations" element={<Collaborations />} />
+          <Route path="/resources" element={<Resources />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
