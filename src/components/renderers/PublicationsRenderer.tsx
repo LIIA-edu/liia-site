@@ -121,7 +121,7 @@ const PublicationsRenderer = memo(({ content, className, limited = false }: Publ
             const doi = doiMatch ? doiMatch[1] : `10.1038/s41592-024-0123-${index}`;
 
             return (
-              <div key={index} className="p-6 border border-border rounded-lg">
+              <div key={index} className="p-6 border border-border rounded-lg bg-white hover:shadow-elegant transition-shadow duration-300">
                 <div className="prose prose-lg max-w-none dark:prose-invert mb-4">
                   <ReactMarkdown
                     components={{
