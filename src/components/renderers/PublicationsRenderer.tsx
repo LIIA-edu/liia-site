@@ -215,9 +215,9 @@ const PublicationsRenderer = memo(({ content, className, limited = false }: Publ
           ))}
         </div>
         
-        {limited && softwareTools.length > 3 && (
+        {limited && softwareTools.length >= 3 && (
           <div className="text-center mt-8">
-            <Button asChild variant="outline">
+            <Button size="lg" className="px-8" asChild>
               <Link to="/publications">View All Software ({softwareTools.length})</Link>
             </Button>
           </div>
