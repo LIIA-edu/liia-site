@@ -10,33 +10,33 @@ office: "Room 304, Computational Sciences Building"
 
 # About Our Research
 
-Welcome to the Computational Biology Research Lab! Our interdisciplinary team focuses on developing innovative computational methods to understand complex biological systems. We combine machine learning, statistical modeling, and bioinformatics to tackle challenging problems in genomics, proteomics, and systems biology.
+Welcome to LIIA - Laboratório de pesquisa em Imunooncologia e Inteligência Artificial! Our interdisciplinary research laboratory pioneers the application of artificial intelligence to advance cancer immunotherapy and personalized oncology. We develop cutting-edge computational methods that harness AI to understand cancer-immune system interactions, predict treatment responses, and accelerate the discovery of novel immunotherapeutic approaches.
 
 ## Research Focus Areas
 
-### Computational Genomics
-We develop algorithms and statistical methods for analyzing large-scale genomic data, including:
+### Cancer Immunogenomics
+We develop AI-driven approaches to understand cancer-immune interactions:
 
-- Genome-wide association studies (GWAS)
-- Population genomics and evolutionary analysis
-- Structural variant detection and analysis
-- Multi-omics data integration
+- Tumor neoantigen prediction and immunogenicity assessment
+- Immune repertoire analysis and T-cell receptor profiling
+- Cancer mutation burden analysis and biomarker discovery
+- Multi-omics integration for immunotherapy response prediction
 
-### Machine Learning in Biology
-Our lab applies cutting-edge machine learning techniques to biological problems:
+### AI for Immunotherapy
+Our lab applies advanced artificial intelligence to enhance cancer treatment:
 
-- Deep learning for protein structure prediction
-- Reinforcement learning for drug discovery
-- Graph neural networks for biological networks
-- Interpretable AI for biomedical applications
+- Machine learning models for immunotherapy response prediction
+- Deep learning for immune cell classification and functional analysis
+- Reinforcement learning for personalized treatment optimization
+- Computer vision for histopathological immune infiltration analysis
 
-### Systems Biology
-We study biological systems at multiple scales:
+### Computational Drug Discovery
+We accelerate the development of novel cancer immunotherapies:
 
-- Gene regulatory network inference
-- Metabolic pathway modeling
-- Cell signaling dynamics
-- Multi-scale modeling of disease progression
+- AI-powered immune checkpoint inhibitor design
+- Drug-target interaction prediction for oncology targets
+- Combination therapy optimization using machine learning
+- Virtual screening for immunomodulatory compounds
 
 ## Our Approach
 
@@ -49,14 +49,14 @@ We believe in:
 
 ## Recent Achievements
 
-- Developed novel deep learning architecture for protein folding prediction (Nature Methods, 2024)
-- Led international consortium for cancer genomics data standardization
-- Received NIH R01 grant for multi-omics integration methods ($2.1M, 2023-2028)
-- Published 45+ peer-reviewed papers in top-tier journals
+- Developed breakthrough AI model for neoantigen immunogenicity prediction (Nature Methods, 2024)
+- Led international consortium for cancer immunotherapy data standardization
+- Received NIH R01 grant for AI-driven immunotherapy response prediction ($2.1M, 2023-2028)
+- Published 45+ peer-reviewed papers in cancer immunology and AI journals
 
 ## Lab Philosophy
 
-Our lab environment promotes creativity, rigorous science, and work-life balance. We value diversity, inclusion, and mutual respect. Every team member contributes unique perspectives that strengthen our research and create a supportive learning environment.
+Our lab environment promotes innovative AI research, rigorous cancer biology science, and collaborative discovery. We value diversity, inclusion, and mutual respect while fostering creativity in applying artificial intelligence to solve complex immunooncology challenges. Every team member contributes unique perspectives that strengthen our mission to transform cancer treatment.
 
 ## Contact Information
 

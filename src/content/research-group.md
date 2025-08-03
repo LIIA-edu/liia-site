@@ -5,15 +5,15 @@ lastUpdated: "2024-12-15"
 
 # Our Research Team
 
-Our diverse team brings together expertise in computer science, biology, mathematics, and statistics to tackle complex computational biology challenges.
+Our diverse team brings together expertise in artificial intelligence, cancer immunology, computational biology, and clinical oncology to revolutionize cancer immunotherapy through cutting-edge AI research.
 
 ## Principal Investigator
 
 ### Dr. Sarah Chen, PhD
 **Position**: Associate Professor & Lab Director  
 **Education**: PhD in Computational Biology, Stanford University  
-**Research Interests**: Machine learning for genomics, protein structure prediction, systems biology  
-**Bio**: Dr. Chen established the lab in 2018 and has published over 50 papers in computational biology. She serves on editorial boards of multiple journals and has received several awards for her contributions to the field.
+**Research Interests**: AI for cancer immunotherapy, neoantigen prediction, immunogenomics  
+**Bio**: Dr. Chen established LIIA in 2018 and has published over 50 papers in cancer immunology and AI. She serves on editorial boards of multiple journals and has received several awards for her contributions to computational immunooncology.
 
 ## Postdoctoral Researchers
 

@@ -11,9 +11,9 @@ hIndex: 32
 
 ### Journal Articles
 
-1. **Chen, S.**, Rodriguez, M., Patel, P., Liu, J. (2024). "DeepFold2: Advanced Neural Architecture for Protein Structure Prediction." *Nature Methods*, 21(3), 234-245. [DOI: 10.1038/s41592-024-0123-4](https://doi.org/10.1038/s41592-024-0123-4)
+1. **Chen, S.**, Rodriguez, M., Patel, P., Liu, J. (2024). "NeoantigenAI: Deep Learning for Tumor Neoantigen Immunogenicity Prediction." *Nature Methods*, 21(3), 234-245. [DOI: 10.1038/s41592-024-0123-4](https://doi.org/10.1038/s41592-024-0123-4)
 
-2. Patel, P., **Chen, S.**, Wong, L. (2024). "Multi-omics Integration Reveals Novel Cancer Subtypes." *Nature Genetics*, 56(4), 456-467. [DOI: 10.1038/s41588-024-0234-5](https://doi.org/10.1038/s41588-024-0234-5)
+2. Patel, P., **Chen, S.**, Wong, L. (2024). "Multi-omics Integration Reveals Novel Cancer Immunotherapy Response Biomarkers." *Nature Genetics*, 56(4), 456-467. [DOI: 10.1038/s41588-024-0234-5](https://doi.org/10.1038/s41588-024-0234-5)
 
 3. Kim, D., **Chen, S.** (2024). "Graph Neural Networks for Protein-Protein Interaction Prediction." *Bioinformatics*, 40(8), 1234-1242. [DOI: 10.1093/bioinformatics/btab123](https://doi.org/10.1093/bioinformatics/btab123)
 
@@ -75,8 +75,8 @@ hIndex: 32
 
 ### Open Source Software
 
-- **DeepFold2**: Advanced computational tool for protein structure prediction
-  - GitHub: [github.com/chenlab/deepfold2](https://github.com/chenlab/deepfold2)
+- **NeoantigenAI**: AI-powered neoantigen immunogenicity prediction tool
+  - GitHub: [github.com/liia-lab/neoantigen-ai](https://github.com/liia-lab/neoantigen-ai)
   - Downloads: 50,000+
   - Citations: 150+
 
@@ -110,8 +110,8 @@ hIndex: 32
   - Downloads: 8,000+
   - Citations: 75+
 
-- **CancerPathways**: Cancer pathway analysis and biomarker discovery tool
-  - GitHub: [github.com/chenlab/cancer-pathways](https://github.com/chenlab/cancer-pathways)
+- **ImmunoPathways**: Cancer immunotherapy pathway analysis and biomarker discovery tool
+  - GitHub: [github.com/liia-lab/immuno-pathways](https://github.com/liia-lab/immuno-pathways)
   - Downloads: 20,000+
   - Citations: 110+
 
