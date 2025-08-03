@@ -16,7 +16,7 @@ const Header = () => {
             <Link to="/" className="text-foreground hover:text-primary transition-colors">
               Home
             </Link>
-            <a href="/#vision" className="text-foreground hover:text-primary transition-colors">
+            <a href={`${import.meta.env.PROD ? '/bio-bytes-blog' : ''}/#vision`} className="text-foreground hover:text-primary transition-colors">
               Vision
             </a>
             <Link to="/people" className="text-foreground hover:text-primary transition-colors">
@@ -31,7 +31,7 @@ const Header = () => {
             <Link to="/blog" className="text-foreground hover:text-primary transition-colors">
               Blog
             </Link>
-            <a href="/#contact" className="text-foreground hover:text-primary transition-colors">
+            <a href={`${import.meta.env.PROD ? '/bio-bytes-blog' : ''}/#contact`} className="text-foreground hover:text-primary transition-colors">
               Contact
             </a>
           </div>
