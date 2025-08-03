@@ -1,4 +1,4 @@
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, Navigate, Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
@@ -29,10 +29,10 @@ const Post = () => {
           {/* Back Button */}
           <div className="mb-8">
             <Button variant="ghost" asChild className="pl-0">
-              <a href="/blog" className="flex items-center gap-2 text-muted-foreground hover:text-foreground">
+              <Link to="/blog" className="flex items-center gap-2 text-muted-foreground hover:text-foreground">
                 <ArrowLeft className="h-4 w-4" />
                 Back to Blog
-              </a>
+              </Link>
             </Button>
           </div>
 
@@ -75,7 +75,7 @@ const Post = () => {
           <div className="mt-16 pt-8 border-t border-border">
             <div className="text-center">
               <Button variant="outline" asChild>
-                <a href="/blog">← Back to All Posts</a>
+                <Link to="/blog">← Back to All Posts</Link>
               </Button>
             </div>
           </div>

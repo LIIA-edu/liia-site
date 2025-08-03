@@ -1,6 +1,7 @@
 import BlogCard from "./BlogCard";
 import { Button } from "@/components/ui/button";
 import { getAllPosts } from "@/utils/postUtils";
+import { Link } from "react-router-dom";
 
 const BlogSection = () => {
   const blogPosts = getAllPosts().slice(0, 6); // Show first 6 posts
@@ -25,7 +26,7 @@ const BlogSection = () => {
 
         <div className="text-center">
           <Button variant="outline" size="lg" className="px-8" asChild>
-            <a href="/blog">View All Posts</a>
+            <Link to="/blog">View All Posts</Link>
           </Button>
         </div>
       </div>
