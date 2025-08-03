@@ -11,66 +11,6 @@ interface PublicationsRendererProps {
   limited?: boolean;
 }
 
-// Software tools configuration - extracted from hardcoded values
-const DEFAULT_SOFTWARE_TOOLS = [
-  {
-    name: 'DeepFold2',
-    description: 'Advanced computational tool for protein structure prediction',
-    downloads: '50,000+ downloads',
-    citations: '150+ citations',
-    github: 'https://github.com/yourlab/deepfold2'
-  },
-  {
-    name: 'scRNA-Insight',
-    description: 'Single-cell RNA sequencing analysis pipeline',
-    downloads: '25,000+ downloads',
-    citations: '80+ citations',
-    github: 'https://github.com/yourlab/scrna-insight'
-  },
-  {
-    name: 'CRISPR-ML',
-    description: 'Machine learning framework for CRISPR guide design',
-    downloads: '30,000+ downloads',
-    citations: '120+ citations',
-    github: 'https://github.com/yourlab/crispr-ml'
-  },
-  {
-    name: 'GenomeAssembler',
-    description: 'High-performance genome assembly toolkit with error correction',
-    downloads: '15,000+ downloads',
-    citations: '65+ citations',
-    github: 'https://github.com/yourlab/genome-assembler'
-  },
-  {
-    name: 'ProteomicsAnalyzer',
-    description: 'Comprehensive suite for mass spectrometry data analysis',
-    downloads: '18,000+ downloads',
-    citations: '90+ citations',
-    github: 'https://github.com/yourlab/proteomics-analyzer'
-  },
-  {
-    name: 'MetagenomeClassifier',
-    description: 'Taxonomic classification of metagenomic sequences',
-    downloads: '12,000+ downloads',
-    citations: '45+ citations',
-    github: 'https://github.com/yourlab/metagenome-classifier'
-  },
-  {
-    name: 'DrugTargetPredictor',
-    description: 'AI-powered drug-target interaction prediction platform',
-    downloads: '8,000+ downloads',
-    citations: '75+ citations',
-    github: 'https://github.com/yourlab/drug-target-predictor'
-  },
-  {
-    name: 'CancerPathways',
-    description: 'Cancer pathway analysis and biomarker discovery tool',
-    downloads: '20,000+ downloads',
-    citations: '110+ citations',
-    github: 'https://github.com/yourlab/cancer-pathways'
-  }
-];
-
 const PublicationsRenderer = memo(({ content, className, limited = false }: PublicationsRendererProps) => {
   // Extract publications from numbered list items
   const publicationEntries = content.match(/^\d+\.\s+.+$/gm) || [];
@@ -78,40 +18,38 @@ const PublicationsRenderer = memo(({ content, className, limited = false }: Publ
 
   // Extract software tools from the Software & Tools section
   const softwareSection = content.match(/## Software & Tools[\s\S]*?(?=##|$)/);
-  let softwareTools = [...DEFAULT_SOFTWARE_TOOLS];
+  const softwareTools = [];
   
   if (softwareSection) {
-    const toolEntries = softwareSection[0].match(/\*\*([^*]+)\*\*[\s\S]*?(?=\*\*|$)/g) || [];
+    const toolEntries = softwareSection[0].match(/- \*\*([^*]+)\*\*:[\s\S]*?(?=- \*\*|$)/g) || [];
     
-    if (toolEntries.length > 0) {
-      softwareTools = toolEntries.map((entry, index) => {
-        const nameMatch = entry.match(/\*\*([^*]+)\*\*/);
-        const name = nameMatch ? nameMatch[1] : `Tool ${index + 1}`;
-        
-        // Extract GitHub link
-        const githubMatch = entry.match(/\[GitHub\]\(([^)]+)\)/i) || entry.match(/GitHub:\s*([^\s\n]+)/i);
-        const github = githubMatch ? githubMatch[1] : null;
-        
-        // Extract downloads and citations
-        const downloadsMatch = entry.match(/(\d+[\d,]*)\s*downloads/i);
-        const downloads = downloadsMatch ? `${downloadsMatch[1]} downloads` : '10,000+ downloads';
-        
-        const citationsMatch = entry.match(/(\d+[\d,]*)\s*citations/i);
-        const citations = citationsMatch ? `${citationsMatch[1]} citations` : '50+ citations';
-        
-        // Extract description (first sentence after the name)
-        const descMatch = entry.match(/\*\*[^*]+\*\*\s*[-:]?\s*([^.\n]+)/);
-        const description = descMatch ? descMatch[1].trim() : 'Advanced computational tool for biological analysis';
-        
-        return {
-          name,
-          description,
-          downloads,
-          citations,
-          github
-        };
+    toolEntries.forEach((entry, index) => {
+      const nameMatch = entry.match(/- \*\*([^*]+)\*\*:/);
+      const name = nameMatch ? nameMatch[1] : `Tool ${index + 1}`;
+      
+      // Extract GitHub link
+      const githubMatch = entry.match(/GitHub:\s*\[.*?\]\(([^)]+)\)/i);
+      const github = githubMatch ? githubMatch[1] : null;
+      
+      // Extract downloads and citations
+      const downloadsMatch = entry.match(/Downloads:\s*([^\n]+)/i);
+      const downloads = downloadsMatch ? downloadsMatch[1].trim() : '0 downloads';
+      
+      const citationsMatch = entry.match(/Citations:\s*([^\n]+)/i);
+      const citations = citationsMatch ? citationsMatch[1].trim() : '0 citations';
+      
+      // Extract description (text after the colon and before GitHub)
+      const descMatch = entry.match(/- \*\*[^*]+\*\*:\s*([^\n]+)/);
+      const description = descMatch ? descMatch[1].trim() : 'Computational biology tool';
+      
+      softwareTools.push({
+        name,
+        description,
+        downloads,
+        citations,
+        github
       });
-    }
+    });
   }
 
   // Extract metrics from frontmatter
