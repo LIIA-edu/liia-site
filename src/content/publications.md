@@ -75,20 +75,45 @@ hIndex: 32
 
 ### Open Source Software
 
-- **DeepFold2**: Protein structure prediction using deep learning
+- **DeepFold2**: Advanced computational tool for protein structure prediction
   - GitHub: [github.com/chenlab/deepfold2](https://github.com/chenlab/deepfold2)
   - Downloads: 50,000+
   - Citations: 150+
 
-- **scRNA-Insight**: Single-cell RNA-seq analysis toolkit
+- **scRNA-Insight**: Single-cell RNA sequencing analysis pipeline
   - GitHub: [github.com/chenlab/scrna-insight](https://github.com/chenlab/scrna-insight)
   - Downloads: 25,000+
+  - Citations: 80+
+
+- **CRISPR-ML**: Machine learning framework for CRISPR guide design
+  - GitHub: [github.com/chenlab/crispr-ml](https://github.com/chenlab/crispr-ml)
+  - Downloads: 30,000+
+  - Citations: 120+
+
+- **GenomeAssembler**: High-performance genome assembly toolkit with error correction
+  - GitHub: [github.com/chenlab/genome-assembler](https://github.com/chenlab/genome-assembler)
+  - Downloads: 15,000+
+  - Citations: 65+
+
+- **ProteomicsAnalyzer**: Comprehensive suite for mass spectrometry data analysis
+  - GitHub: [github.com/chenlab/proteomics-analyzer](https://github.com/chenlab/proteomics-analyzer)
+  - Downloads: 18,000+
+  - Citations: 90+
+
+- **MetagenomeClassifier**: Taxonomic classification of metagenomic sequences
+  - GitHub: [github.com/chenlab/metagenome-classifier](https://github.com/chenlab/metagenome-classifier)
+  - Downloads: 12,000+
+  - Citations: 45+
+
+- **DrugTargetPredictor**: AI-powered drug-target interaction prediction platform
+  - GitHub: [github.com/chenlab/drug-target-predictor](https://github.com/chenlab/drug-target-predictor)
+  - Downloads: 8,000+
   - Citations: 75+
 
-- **CRISPR-ML**: Machine learning for CRISPR screen analysis
-  - GitHub: [github.com/chenlab/crispr-ml](https://github.com/chenlab/crispr-ml)
-  - Downloads: 15,000+
-  - Citations: 45+
+- **CancerPathways**: Cancer pathway analysis and biomarker discovery tool
+  - GitHub: [github.com/chenlab/cancer-pathways](https://github.com/chenlab/cancer-pathways)
+  - Downloads: 20,000+
+  - Citations: 110+
 
 ### Web Tools
 
