@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Link } from "react-router-dom";
 
 interface BlogCardProps {
   title: string;
@@ -12,10 +13,10 @@ interface BlogCardProps {
 }
 
 const BlogCard = ({ title, description, date, tags, readTime, featured = false, slug }: BlogCardProps) => {
-  const href = slug ? `/blog/${slug}` : '#';
+  const to = slug ? `/blog/${slug}` : '/blog';
   
   return (
-    <a href={href} className="h-full">
+    <Link to={to} className="h-full">
       <Card className={`group cursor-pointer transition-all duration-300 hover:shadow-elegant h-full flex flex-col ${
         featured ? 'bg-gradient-card border-primary/20' : ''
       }`}>
@@ -41,7 +42,7 @@ const BlogCard = ({ title, description, date, tags, readTime, featured = false, 
         </div>
       </CardContent>
     </Card>
-    </a>
+    </Link>
   );
 };
 
