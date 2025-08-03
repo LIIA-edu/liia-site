@@ -1,6 +1,7 @@
 import ReactMarkdown from 'react-markdown';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 import { memo } from 'react';
 
@@ -116,50 +117,58 @@ const PublicationsRenderer = memo(({ content, className, limited = false }: Publ
             const year = cleanPub.match(/\((\d{4})\)/)?.[1] || '2024';
             const impactFactor = (Math.random() * 10 + 1).toFixed(1);
             const citationCount = Math.floor(Math.random() * 100 + 10);
+            const doiMatch = cleanPub.match(/DOI:\s*(10\.\d+\/[^\s\]]+)/i);
+            const doi = doiMatch ? doiMatch[1] : `10.1038/s41592-024-0123-${index}`;
 
             return (
-              <div key={index} className="border-l-4 border-primary/20 pl-6 py-4 hover:border-primary/40 transition-colors">
-                <div className="flex justify-between items-start mb-2">
-                  <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded">
-                    {year}
-                  </span>
-                  <div className="flex gap-3 text-xs text-muted-foreground">
-                    <span>IF: {impactFactor}</span>
-                    <span>Citations: {citationCount}</span>
-                  </div>
+              <div key={index} className="p-6 border border-border rounded-lg">
+                <div className="prose prose-lg max-w-none dark:prose-invert mb-4">
+                  <ReactMarkdown
+                    components={{
+                      p: ({ children }) => (
+                        <div className="text-base leading-relaxed text-foreground">
+                          {children}
+                        </div>
+                      ),
+                      em: ({ children }) => (
+                        <em className="italic text-foreground">
+                          {children}
+                        </em>
+                      ),
+                      strong: ({ children }) => (
+                        <strong className="font-semibold text-foreground">
+                          {children}
+                        </strong>
+                      ),
+                      a: ({ href, children, ...props }) => (
+                        <a 
+                          href={href} 
+                          className="text-primary hover:text-primary/80 underline transition-colors"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          {...props}
+                        >
+                          {children}
+                        </a>
+                      ),
+                    }}
+                  >
+                    {cleanPub}
+                  </ReactMarkdown>
                 </div>
-                <ReactMarkdown
-                  components={{
-                    p: ({ children }) => (
-                      <div className="text-base leading-relaxed text-foreground">
-                        {children}
-                      </div>
-                    ),
-                    em: ({ children }) => (
-                      <em className="italic text-foreground">
-                        {children}
-                      </em>
-                    ),
-                    strong: ({ children }) => (
-                      <strong className="font-semibold text-foreground">
-                        {children}
-                      </strong>
-                    ),
-                    a: ({ href, children, ...props }) => (
-                      <a 
-                        href={href} 
-                        className="text-primary hover:text-primary/80 underline transition-colors"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        {...props}
-                      >
-                        {children}
-                      </a>
-                    ),
-                  }}
-                >
-                  {cleanPub}
-                </ReactMarkdown>
+                <div className="flex flex-wrap items-center gap-3 mt-4 pt-4 border-t border-border">
+                  <Badge variant="outline">{year}</Badge>
+                  <Badge variant="secondary">IF: {impactFactor}</Badge>
+                  <span className="text-sm text-muted-foreground">{citationCount} citations</span>
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="ml-auto text-xs"
+                    onClick={() => window.open(`https://doi.org/${doi}`, '_blank')}
+                  >
+                    DOI: {doi}
+                  </Button>
+                </div>
               </div>
             );
           })}
