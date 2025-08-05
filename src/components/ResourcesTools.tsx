@@ -3,6 +3,7 @@ import { Code, Database, BookOpen, ArrowRight, Download, Star } from "lucide-rea
 import { Link } from "react-router-dom";
 import { getResourcesContent } from "@/utils/contentUtils";
 import { useMemo } from "react";
+import { Card, CardContent } from "@/components/ui/card";
 
 const ResourcesTools = () => {
   const content = useMemo(() => getResourcesContent(), []);
@@ -59,28 +60,33 @@ const ResourcesTools = () => {
           {toolPreviews.map((tool, index) => {
             const IconComponent = tool.icon;
             return (
-              <div key={index} className="bg-card rounded-lg p-6 border hover:shadow-lg transition-shadow">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 bg-primary/10 rounded-lg">
-                    <IconComponent className="h-6 w-6 text-primary" />
+              <Card
+                key={index}
+                className="shadow-card hover:shadow-elegant transition-shadow"
+              >
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 bg-primary/10 rounded-lg">
+                      <IconComponent className="h-6 w-6 text-primary" />
+                    </div>
+                    <span className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium text-muted-foreground">
+                      {tool.category}
+                    </span>
                   </div>
-                  <span className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium text-muted-foreground">
-                    {tool.category}
-                  </span>
-                </div>
-                <h3 className="text-xl font-semibold mb-3">{tool.name}</h3>
-                <p className="text-muted-foreground mb-4">{tool.description}</p>
-                <div className="flex items-center justify-between text-sm text-muted-foreground">
-                  <div className="flex items-center gap-1">
-                    <Download className="h-4 w-4" />
-                    <span>{tool.downloads}</span>
+                  <h3 className="text-xl font-semibold mb-3">{tool.name}</h3>
+                  <p className="text-muted-foreground mb-4">{tool.description}</p>
+                  <div className="flex items-center justify-between text-sm text-muted-foreground">
+                    <div className="flex items-center gap-1">
+                      <Download className="h-4 w-4" />
+                      <span>{tool.downloads}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Star className="h-4 w-4" />
+                      <span>{tool.stars}</span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <Star className="h-4 w-4" />
-                    <span>{tool.stars}</span>
-                  </div>
-                </div>
-              </div>
+                </CardContent>
+              </Card>
             );
           })}
         </div>

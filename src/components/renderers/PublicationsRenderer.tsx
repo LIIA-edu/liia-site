@@ -18,12 +18,19 @@ const PublicationsRenderer = memo(({ content, className, limited = false }: Publ
 
   // Extract software tools from the Open Source Software section - simplified approach
   const softwareSection = content.match(/### Open Source Software[\s\S]*?(?=###|##|$)/);
-  const softwareTools: any[] = [];
+  interface SoftwareTool {
+    name: string;
+    description: string;
+    downloads: string;
+    citations: string;
+    github: string | null;
+  }
+  const softwareTools: SoftwareTool[] = [];
   
   if (softwareSection) {
     // Split by lines starting with "- **" to get each tool
     const lines = softwareSection[0].split('\n');
-    let currentTool: any = null;
+    let currentTool: SoftwareTool | null = null;
     
     lines.forEach((line) => {
       // Check if this is a tool name line
