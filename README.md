@@ -38,8 +38,8 @@ A modern, responsive website for the Laboratory of Research in Immunooncology an
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/liia-website.git
-   cd liia-website
+   git clone https://github.com/your-username/liia-site.git
+   cd liia-site
    ```
 
 2. **Install dependencies**:
@@ -853,7 +853,7 @@ npm audit            # Security audit
 ### Project Structure
 
 ```
-liia-website/
+liia-site/
 ├── .github/workflows/     # GitHub Actions
 ├── public/               # Static assets
 │   ├── team-photos/
@@ -889,8 +889,8 @@ liia-website/
 
 1. **Fork & Clone**:
    ```bash
-   git clone https://github.com/your-username/liia-website.git
-   cd liia-website
+   git clone https://github.com/your-username/liia-site.git
+   cd liia-site
    npm install
    ```
 
