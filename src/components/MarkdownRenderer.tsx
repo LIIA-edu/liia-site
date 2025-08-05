@@ -4,10 +4,18 @@ import AboutRenderer from './renderers/AboutRenderer';
 import PublicationsRenderer from './renderers/PublicationsRenderer';
 import LaboratoryVisionRenderer from './renderers/LaboratoryVisionRenderer';
 import ResearchGroupRenderer from './renderers/ResearchGroupRenderer';
+import CollaborationsRenderer from './renderers/CollaborationsRenderer';
 
 interface MarkdownRendererProps {
   content: string;
-  type?: 'default' | 'about' | 'publications' | 'publications-full' | 'laboratory-vision' | 'research-group';
+  type?:
+    | 'default'
+    | 'about'
+    | 'publications'
+    | 'publications-full'
+    | 'laboratory-vision'
+    | 'research-group'
+    | 'collaborations';
   className?: string;
 }
 
@@ -25,6 +33,8 @@ const MarkdownRenderer = memo(({ content, type = 'default', className = "" }: Ma
       return <LaboratoryVisionRenderer {...rendererProps} />;
     case 'research-group':
       return <ResearchGroupRenderer {...rendererProps} />;
+    case 'collaborations':
+      return <CollaborationsRenderer {...rendererProps} />;
     default:
       return <DefaultRenderer {...rendererProps} />;
   }
