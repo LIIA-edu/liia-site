@@ -11,21 +11,22 @@ const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTag, setSelectedTag] = useState("");
 
-  const blogPosts = getAllPosts();
-  const allTags = getAllTags();
+  const blogPosts = useMemo(() => getAllPosts(), []);
+  const allTags = useMemo(() => getAllTags(), []);
 
   // Filter posts based on search term and selected tag
   const filteredPosts = useMemo(() => {
     return blogPosts.filter(post => {
-      const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           post.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
-      
+      const matchesSearch =
+        post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+
       const matchesTag = selectedTag === "" || post.tags.includes(selectedTag);
-      
+
       return matchesSearch && matchesTag;
     });
-  }, [searchTerm, selectedTag]);
+  }, [blogPosts, searchTerm, selectedTag]);
 
   return (
     <div className="min-h-screen bg-background">
