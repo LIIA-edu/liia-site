@@ -36,7 +36,7 @@ const Collaborations = () => {
       {/* Content Section */}
       <SectionLayout className="py-20">
         <div className="max-w-6xl mx-auto">
-          <MarkdownRenderer content={content.content} />
+          <MarkdownRenderer content={content.content} type="collaborations" />
         </div>
       </SectionLayout>
     </PageLayout>
