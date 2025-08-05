@@ -1,45 +1,23 @@
 import { Button } from "@/components/ui/button";
 import { Building2, Globe, Users, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { getCollaborationsContent } from "@/utils/contentUtils";
-import { useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import {
+  activeCollaborations,
+  collaborationIntro,
+} from "@/data/collaborations";
 
 const Collaborations = () => {
-  const content = useMemo(() => getCollaborationsContent(), []);
-  
-  if (!content) {
-    return null;
-  }
+  const collaborationPreviews = activeCollaborations.slice(0, 3).map((collab, index) => ({
+    name: collab.name,
+    type: collab.type,
+    focus: collab.focus,
+    status: "Active",
+    icon: [Building2, Users, Globe][index],
+  }));
 
-  // Extract preview information from markdown content
-  const collaborationPreviews = [
-    {
-      name: "Stanford Cancer Institute",
-      type: "Academic Partnership",
-      focus: "Neoantigen Prediction Research",
-      status: "Active",
-      icon: Building2
-    },
-    {
-      name: "MIT Computer Science",
-      type: "Research Collaboration", 
-      focus: "AI Model Development",
-      status: "Active",
-      icon: Users
-    },
-    {
-      name: "Genentech Inc.",
-      type: "Industry Partnership",
-      focus: "Drug Discovery Platform", 
-      status: "Active",
-      icon: Globe
-    }
-  ];
-
-  // Extract title and description from content
   const sectionTitle = "Global Collaborations";
-  const sectionDescription = content.description || "Partnering with leading institutions and organizations worldwide to accelerate cancer immunotherapy research and bring AI-driven solutions to patients faster.";
+  const sectionDescription = collaborationIntro;
 
   return (
     <section id="collaborations" className="py-20 bg-muted/30">

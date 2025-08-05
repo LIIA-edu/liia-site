@@ -49,10 +49,6 @@ export const getLaboratoryVisionContent = (): Content | undefined => {
   return getContent('laboratory-vision');
 };
 
-export const getCollaborationsContent = (): Content | undefined => {
-  return getContent('collaborations');
-};
-
 export const getResourcesContent = (): Content | undefined => {
   return getContent('resources');
 };
