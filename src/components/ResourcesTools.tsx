@@ -1,8 +1,17 @@
 import { Button } from "@/components/ui/button";
-import { Code, Database, BookOpen, ArrowRight, Download, Star } from "lucide-react";
+import {
+  Code,
+  Database,
+  BookOpen,
+  ArrowRight,
+  Download,
+  Star,
+  type LucideIcon,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { getResourcesContent } from "@/utils/contentUtils";
 import { useMemo } from "react";
+import { Card, CardContent } from "@/components/ui/card";
 
 const ResourcesTools = () => {
   const content = useMemo(() => getResourcesContent(), []);
@@ -11,33 +20,53 @@ const ResourcesTools = () => {
     return null;
   }
 
-  // Extract preview information from markdown content
-  const toolPreviews = [
-    {
-      name: "NeoantigenAI",
-      category: "AI Models",
-      description: "Deep learning tool for tumor neoantigen immunogenicity prediction",
-      downloads: "50K+",
-      stars: "1.2K",
-      icon: Code
-    },
-    {
-      name: "Cancer Genomics Dataset", 
-      category: "Datasets",
-      description: "Curated multi-omics cancer data with immune profiling",
-      downloads: "25K+",
-      stars: "850",
-      icon: Database
-    },
-    {
-      name: "Immunooncology Protocols",
-      category: "Documentation", 
-      description: "Comprehensive guides for computational immunology analysis",
-      downloads: "15K+",
-      stars: "600",
-      icon: BookOpen
-    }
-  ];
+  interface ToolPreview {
+    name: string;
+    category: string;
+    description: string;
+    downloads: string;
+    stars: string;
+    icon: LucideIcon;
+  }
+
+  const toolPreviews = useMemo<ToolPreview[]>(() => {
+    const markdown = content.content;
+
+    const extractPreview = (
+      sectionTitle: string,
+      icon: LucideIcon
+    ): ToolPreview | null => {
+      const section = markdown.split(`## ${sectionTitle}`)[1];
+      if (!section) return null;
+      const match = section.match(/### (.+)\n([\s\S]+?)(?=\n### |\n## |$)/);
+      if (!match) return null;
+      const name = match[1].trim();
+      const body = match[2];
+      const meta: Record<string, string> = {};
+      body
+        .split("\n")
+        .filter((l) => l.startsWith("**"))
+        .forEach((line) => {
+          const m = line.match(/\*\*(.+?)\*\*: (.+)/);
+          if (m) meta[m[1]] = m[2];
+        });
+      const descriptionMatch = body.match(/\n\n([^*][\s\S]+?)\n\n/);
+      return {
+        name,
+        category: meta["Category"] || sectionTitle,
+        description: descriptionMatch ? descriptionMatch[1].trim() : "",
+        downloads: meta["Downloads"] || "",
+        stars: meta["GitHub Stars"] || meta["Citations"] || "",
+        icon,
+      };
+    };
+
+    return [
+      extractPreview("Software Tools", Code),
+      extractPreview("Datasets", Database),
+      extractPreview("Documentation & Protocols", BookOpen),
+    ].filter((p): p is ToolPreview => Boolean(p));
+  }, [content]);
 
   // Extract title and description from content
   const sectionTitle = "Research Resources & Tools";
@@ -59,28 +88,33 @@ const ResourcesTools = () => {
           {toolPreviews.map((tool, index) => {
             const IconComponent = tool.icon;
             return (
-              <div key={index} className="bg-card rounded-lg p-6 border hover:shadow-lg transition-shadow">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 bg-primary/10 rounded-lg">
-                    <IconComponent className="h-6 w-6 text-primary" />
+              <Card
+                key={index}
+                className="shadow-card hover:shadow-elegant transition-shadow"
+              >
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 bg-primary/10 rounded-lg">
+                      <IconComponent className="h-6 w-6 text-primary" />
+                    </div>
+                    <span className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium text-muted-foreground">
+                      {tool.category}
+                    </span>
                   </div>
-                  <span className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium text-muted-foreground">
-                    {tool.category}
-                  </span>
-                </div>
-                <h3 className="text-xl font-semibold mb-3">{tool.name}</h3>
-                <p className="text-muted-foreground mb-4">{tool.description}</p>
-                <div className="flex items-center justify-between text-sm text-muted-foreground">
-                  <div className="flex items-center gap-1">
-                    <Download className="h-4 w-4" />
-                    <span>{tool.downloads}</span>
+                  <h3 className="text-xl font-semibold mb-3">{tool.name}</h3>
+                  <p className="text-muted-foreground mb-4">{tool.description}</p>
+                  <div className="flex items-center justify-between text-sm text-muted-foreground">
+                    <div className="flex items-center gap-1">
+                      <Download className="h-4 w-4" />
+                      <span>{tool.downloads}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Star className="h-4 w-4" />
+                      <span>{tool.stars}</span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <Star className="h-4 w-4" />
-                    <span>{tool.stars}</span>
-                  </div>
-                </div>
-              </div>
+                </CardContent>
+              </Card>
             );
           })}
         </div>
