@@ -3,7 +3,7 @@ import '../lib/buffer-polyfill';
 
 export interface ContentMetadata {
   title: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export interface Content extends ContentMetadata {
