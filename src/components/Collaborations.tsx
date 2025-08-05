@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Building2, Globe, Users, ArrowRight } from "lucide-react";
+import { Building2, Globe, Users, ArrowRight, type LucideIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import { getCollaborationsContent } from "@/utils/contentUtils";
 import { useMemo } from "react";
@@ -12,30 +12,43 @@ const Collaborations = () => {
     return null;
   }
 
-  // Extract preview information from markdown content
-  const collaborationPreviews = [
-    {
-      name: "Stanford Cancer Institute",
-      type: "Academic Partnership",
-      focus: "Neoantigen Prediction Research",
-      status: "Active",
-      icon: Building2
-    },
-    {
-      name: "MIT Computer Science",
-      type: "Research Collaboration", 
-      focus: "AI Model Development",
-      status: "Active",
-      icon: Users
-    },
-    {
-      name: "Genentech Inc.",
-      type: "Industry Partnership",
-      focus: "Drug Discovery Platform", 
-      status: "Active",
-      icon: Globe
-    }
-  ];
+  interface CollaborationPreview {
+    name: string;
+    type: string;
+    focus: string;
+    status: string;
+    icon: LucideIcon;
+  }
+
+  const collaborationPreviews = useMemo<CollaborationPreview[]>(() => {
+    const markdown = content.content;
+    const section = markdown.split("## Active Collaborations")[1];
+    if (!section) return [];
+
+    const matches = [...section.matchAll(/### (.+)\n([\s\S]+?)(?=\n### |\n## |$)/g)];
+
+    return matches.slice(0, 3).map((match) => {
+      const name = match[1].trim();
+      const body = match[2];
+      const type = (body.match(/\*\*Type\*\*: (.+)/) || [])[1] || "";
+      const focus = (body.match(/\*\*Focus\*\*: (.+)/) || [])[1] || "";
+
+      let icon: LucideIcon = Building2;
+      if (/Industry|International/i.test(type)) {
+        icon = Globe;
+      } else if (/Research/i.test(type)) {
+        icon = Users;
+      }
+
+      return {
+        name,
+        type,
+        focus,
+        status: "Active",
+        icon,
+      };
+    });
+  }, [content]);
 
   // Extract title and description from content
   const sectionTitle = "Global Collaborations";

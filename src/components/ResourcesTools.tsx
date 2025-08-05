@@ -1,5 +1,13 @@
 import { Button } from "@/components/ui/button";
-import { Code, Database, BookOpen, ArrowRight, Download, Star } from "lucide-react";
+import {
+  Code,
+  Database,
+  BookOpen,
+  ArrowRight,
+  Download,
+  Star,
+  type LucideIcon,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { getResourcesContent } from "@/utils/contentUtils";
 import { useMemo } from "react";
@@ -12,33 +20,53 @@ const ResourcesTools = () => {
     return null;
   }
 
-  // Extract preview information from markdown content
-  const toolPreviews = [
-    {
-      name: "NeoantigenAI",
-      category: "AI Models",
-      description: "Deep learning tool for tumor neoantigen immunogenicity prediction",
-      downloads: "50K+",
-      stars: "1.2K",
-      icon: Code
-    },
-    {
-      name: "Cancer Genomics Dataset", 
-      category: "Datasets",
-      description: "Curated multi-omics cancer data with immune profiling",
-      downloads: "25K+",
-      stars: "850",
-      icon: Database
-    },
-    {
-      name: "Immunooncology Protocols",
-      category: "Documentation", 
-      description: "Comprehensive guides for computational immunology analysis",
-      downloads: "15K+",
-      stars: "600",
-      icon: BookOpen
-    }
-  ];
+  interface ToolPreview {
+    name: string;
+    category: string;
+    description: string;
+    downloads: string;
+    stars: string;
+    icon: LucideIcon;
+  }
+
+  const toolPreviews = useMemo<ToolPreview[]>(() => {
+    const markdown = content.content;
+
+    const extractPreview = (
+      sectionTitle: string,
+      icon: LucideIcon
+    ): ToolPreview | null => {
+      const section = markdown.split(`## ${sectionTitle}`)[1];
+      if (!section) return null;
+      const match = section.match(/### (.+)\n([\s\S]+?)(?=\n### |\n## |$)/);
+      if (!match) return null;
+      const name = match[1].trim();
+      const body = match[2];
+      const meta: Record<string, string> = {};
+      body
+        .split("\n")
+        .filter((l) => l.startsWith("**"))
+        .forEach((line) => {
+          const m = line.match(/\*\*(.+?)\*\*: (.+)/);
+          if (m) meta[m[1]] = m[2];
+        });
+      const descriptionMatch = body.match(/\n\n([^*][\s\S]+?)\n\n/);
+      return {
+        name,
+        category: meta["Category"] || sectionTitle,
+        description: descriptionMatch ? descriptionMatch[1].trim() : "",
+        downloads: meta["Downloads"] || "",
+        stars: meta["GitHub Stars"] || meta["Citations"] || "",
+        icon,
+      };
+    };
+
+    return [
+      extractPreview("Software Tools", Code),
+      extractPreview("Datasets", Database),
+      extractPreview("Documentation & Protocols", BookOpen),
+    ].filter((p): p is ToolPreview => Boolean(p));
+  }, [content]);
 
   // Extract title and description from content
   const sectionTitle = "Research Resources & Tools";
