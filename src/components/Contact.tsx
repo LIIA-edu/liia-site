@@ -1,16 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, Github, Linkedin, Twitter, MapPin, University } from "lucide-react";
+import SectionTitle from "@/components/SectionTitle";
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-20 bg-background">
+    <section id="contact" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-muted-foreground">
-              Get In Touch
-            </h2>
+            <SectionTitle>Get In Touch</SectionTitle>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Interested in collaboration, have questions about my research, or want to discuss computational biology?
               I'd love to hear from you.

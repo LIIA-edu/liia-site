@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { getResourcesContent } from "@/utils/contentUtils";
 import { useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import SectionTitle from "@/components/SectionTitle";
 
 const ResourcesTools = () => {
   const content = useMemo(() => getResourcesContent(), []);
@@ -76,12 +77,10 @@ const ResourcesTools = () => {
     "Open-source tools, datasets, and documentation to advance computational immunooncology research. All resources are freely available to the scientific community.";
 
   return (
-    <section id="resources" className="py-20 bg-muted/30">
+    <section id="resources" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-muted-foreground">
-            {sectionTitle.split(' ').slice(0, 1)} <span className="text-primary">{sectionTitle.split(' ').slice(1).join(' ')}</span>
-          </h2>
+          <SectionTitle>{sectionTitle}</SectionTitle>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             {sectionDescription}
           </p>
