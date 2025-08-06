@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import SectionTitle from "@/components/SectionTitle";
 
 const Research = () => {
   const researchLines = [
@@ -28,13 +29,11 @@ const Research = () => {
   ];
 
   return (
-    <section className="py-20 bg-background">
+    <section className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-muted-foreground">
-              Research Lines
-            </h2>
+            <SectionTitle>Research Lines</SectionTitle>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Our interdisciplinary research combines computational methods with biological insights to advance understanding in immunooncology and artificial intelligence applications.
             </p>

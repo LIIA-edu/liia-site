@@ -1,12 +1,13 @@
 import MarkdownRenderer from "./MarkdownRenderer";
 import { getPublicationsContent } from "@/utils/contentUtils";
+import SectionTitle from "@/components/SectionTitle";
 
 const Publications = () => {
   const publicationsContent = getPublicationsContent();
 
   if (!publicationsContent) {
     return (
-      <section id="publications" className="py-20 bg-muted/30">
+      <section id="publications" className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center">
             <p className="text-muted-foreground">Publications content not found.</p>
@@ -17,13 +18,11 @@ const Publications = () => {
   }
 
   return (
-    <section id="publications" className="py-20 bg-muted/30">
+    <section id="publications" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-muted-foreground">
-              Publications
-            </h2>
+            <SectionTitle>Publications</SectionTitle>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Our research contributions to computational biology and machine learning.
             </p>

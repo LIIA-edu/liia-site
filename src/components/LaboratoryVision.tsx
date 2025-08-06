@@ -2,13 +2,14 @@ import MarkdownRenderer from "./MarkdownRenderer";
 import { getLaboratoryVisionContent } from "@/utils/contentUtils";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import SectionTitle from "@/components/SectionTitle";
 
 const LaboratoryVision = () => {
   const visionContent = getLaboratoryVisionContent();
 
   if (!visionContent) {
     return (
-      <section id="vision" className="py-20 bg-muted/30">
+      <section id="vision" className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center">
             <p className="text-muted-foreground">Laboratory vision content not found.</p>
@@ -19,13 +20,11 @@ const LaboratoryVision = () => {
   }
 
   return (
-    <section id="vision" className="py-20 bg-muted/30">
+    <section id="vision" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-muted-foreground">
-            Laboratory Vision
-          </h2>
+          <SectionTitle>Laboratory Vision</SectionTitle>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Our mission and guiding principles in computational biology research.
           </p>

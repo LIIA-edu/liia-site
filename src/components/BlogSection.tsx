@@ -2,17 +2,16 @@ import BlogCard from "./BlogCard";
 import { Button } from "@/components/ui/button";
 import { getAllPosts } from "@/utils/postUtils";
 import { Link } from "react-router-dom";
+import SectionTitle from "@/components/SectionTitle";
 
 const BlogSection = () => {
   const blogPosts = getAllPosts().slice(0, 6); // Show first 6 posts
 
   return (
-    <section id="blog" className="py-20 bg-background">
+    <section id="blog" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-muted-foreground">
-            Latest Research Posts
-          </h2>
+          <SectionTitle>Latest Research Posts</SectionTitle>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Sharing computational biology insights, tutorials, and research findings from the cutting edge of bioinformatics.
           </p>

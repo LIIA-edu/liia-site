@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { getCollaborationsContent } from "@/utils/contentUtils";
 import { useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import SectionTitle from "@/components/SectionTitle";
 
 const Collaborations = () => {
   const content = useMemo(() => getCollaborationsContent(), []);
@@ -58,14 +59,10 @@ const Collaborations = () => {
     "Partnering with leading institutions and organizations worldwide to accelerate cancer immunotherapy research and bring AI-driven solutions to patients faster.";
 
   return (
-    <section id="collaborations" className="py-20 bg-background">
+    <section id="collaborations" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-muted-foreground">
-            {sectionTitle.split(' ').map((word, index) =>
-              index === 1 ? <span key={index} className="text-primary">{word}</span> : word + ' '
-            )}
-          </h2>
+          <SectionTitle>{sectionTitle}</SectionTitle>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             {sectionDescription}
           </p>
