@@ -10,7 +10,7 @@ const BlogSection = () => {
     <section id="blog" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-muted-foreground">
             Latest Research Posts
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -25,7 +25,11 @@ const BlogSection = () => {
         </div>
 
         <div className="text-center">
-          <Button size="lg" className="px-8" asChild>
+          <Button
+            size="lg"
+            className="px-8 transition-transform hover:scale-105"
+            asChild
+          >
             <Link to="/blog">View All Posts</Link>
           </Button>
         </div>

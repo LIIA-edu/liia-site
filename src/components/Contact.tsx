@@ -8,11 +8,11 @@ const Contact = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-muted-foreground">
               Get In Touch
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Interested in collaboration, have questions about my research, or want to discuss computational biology? 
+              Interested in collaboration, have questions about my research, or want to discuss computational biology?
               I'd love to hear from you.
             </p>
           </div>
@@ -64,19 +64,31 @@ const Contact = () => {
 
           <div className="text-center">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-              <Button variant="outline" className="flex items-center gap-2 h-12">
+              <Button
+                variant="outline"
+                className="flex items-center gap-2 h-12 transition-transform hover:scale-105"
+              >
                 <Mail className="h-5 w-5" />
                 <span className="hidden sm:inline">Email</span>
               </Button>
-              <Button variant="outline" className="flex items-center gap-2 h-12">
+              <Button
+                variant="outline"
+                className="flex items-center gap-2 h-12 transition-transform hover:scale-105"
+              >
                 <Github className="h-5 w-5" />
                 <span className="hidden sm:inline">GitHub</span>
               </Button>
-              <Button variant="outline" className="flex items-center gap-2 h-12">
+              <Button
+                variant="outline"
+                className="flex items-center gap-2 h-12 transition-transform hover:scale-105"
+              >
                 <Linkedin className="h-5 w-5" />
                 <span className="hidden sm:inline">LinkedIn</span>
               </Button>
-              <Button variant="outline" className="flex items-center gap-2 h-12">
+              <Button
+                variant="outline"
+                className="flex items-center gap-2 h-12 transition-transform hover:scale-105"
+              >
                 <Twitter className="h-5 w-5" />
                 <span className="hidden sm:inline">Twitter</span>
               </Button>
@@ -88,7 +100,10 @@ const Contact = () => {
                 I'm always interested in discussing new research projects, reviewing manuscripts, 
                 speaking at conferences, or consulting on bioinformatics challenges.
               </p>
-              <Button size="lg" className="px-8">
+              <Button
+                size="lg"
+                className="px-8 transition-transform hover:scale-105"
+              >
                 Send Message
               </Button>
             </div>

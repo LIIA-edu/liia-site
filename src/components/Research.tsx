@@ -32,7 +32,7 @@ const Research = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-muted-foreground">
               Research Lines
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -69,10 +69,14 @@ const Research = () => {
           </div>
           
           <div className="text-center mt-12">
-            <Button asChild size="lg" className="hover-scale">
+            <Button
+              asChild
+              size="lg"
+              className="px-8 group transition-transform hover:scale-105"
+            >
               <Link to="/research" className="flex items-center gap-2">
                 View All Projects
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
           </div>

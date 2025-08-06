@@ -61,7 +61,7 @@ const Collaborations = () => {
     <section id="collaborations" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-muted-foreground">
             {sectionTitle.split(' ').map((word, index) =>
               index === 1 ? <span key={index} className="text-primary">{word}</span> : word + ' '
             )}
@@ -98,12 +98,16 @@ const Collaborations = () => {
         </div>
 
         <div className="text-center">
-          <Link to="/collaborations">
-            <Button size="lg" className="group">
+          <Button
+            asChild
+            size="lg"
+            className="px-8 group transition-transform hover:scale-105"
+          >
+            <Link to="/collaborations" className="flex items-center gap-2">
               View All Collaborations
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Button>
-          </Link>
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </Button>
         </div>
       </div>
     </section>

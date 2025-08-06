@@ -79,7 +79,7 @@ const ResourcesTools = () => {
     <section id="resources" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-muted-foreground">
             {sectionTitle.split(' ').slice(0, 1)} <span className="text-primary">{sectionTitle.split(' ').slice(1).join(' ')}</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -123,12 +123,16 @@ const ResourcesTools = () => {
         </div>
 
         <div className="text-center">
-          <Link to="/resources">
-            <Button size="lg" className="group">
+          <Button
+            asChild
+            size="lg"
+            className="px-8 group transition-transform hover:scale-105"
+          >
+            <Link to="/resources" className="flex items-center gap-2">
               Explore All Resources
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Button>
-          </Link>
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </Button>
         </div>
       </div>
     </section>

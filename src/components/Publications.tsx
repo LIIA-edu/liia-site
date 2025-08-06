@@ -21,15 +21,15 @@ const Publications = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-muted-foreground">
               Publications
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Our research contributions to computational biology and machine learning.
             </p>
           </div>
-          <MarkdownRenderer 
-            content={publicationsContent.content} 
+          <MarkdownRenderer
+            content={publicationsContent.content}
             type="publications"
           />
         </div>
