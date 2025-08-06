@@ -21,18 +21,21 @@ const Publications = () => {
 
   return (
     <PageLayout>
+      <SectionLayout className="py-20 bg-gradient-to-r from-primary/10 to-accent/10">
+        <div className="text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+            All Publications
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Complete list of our research contributions to computational biology and machine learning.
+          </p>
+        </div>
+      </SectionLayout>
+
       <SectionLayout className="py-20">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-              All Publications
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Complete list of our research contributions to computational biology and machine learning.
-            </p>
-          </div>
-          <MarkdownRenderer 
-            content={publicationsContent.content} 
+          <MarkdownRenderer
+            content={publicationsContent.content}
             type="publications-full"
           />
         </div>
