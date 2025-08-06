@@ -9,13 +9,14 @@ interface CollaborationsRendererProps {
 
 const CollaborationsRenderer = memo(({ content, className = "" }: CollaborationsRendererProps) => {
   const extractSection = (title: string) => {
-    const regex = new RegExp(`## ${title}[\\s\\S]*?(?=##|$)`);
+    const regex = new RegExp(`## ${title}[\\s\\S]*?(?=\n## [^#]|$)`);
     const match = content.match(regex);
     return match ? match[0] : '';
   };
 
   const parseCollaborations = (section: string) => {
-    const blocks = section.match(/###[^#][^\n]*[\s\S]*?(?=###|##|$)/g) || [];
+    const blocks =
+      section.match(/###[^#][^\n]*[\s\S]*?(?=###|\n## [^#]|$)/g) || [];
     return blocks.map((block) => {
       const title = block.match(/###\s+([^\n]+)/)?.[1] || '';
       const body = block.replace(/###\s+[^\n]+\n?/, '');
