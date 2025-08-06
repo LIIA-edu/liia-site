@@ -15,10 +15,6 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const ResourcesTools = () => {
   const content = useMemo(() => getResourcesContent(), []);
-  
-  if (!content) {
-    return null;
-  }
 
   interface ToolPreview {
     name: string;
@@ -30,6 +26,7 @@ const ResourcesTools = () => {
   }
 
   const toolPreviews = useMemo<ToolPreview[]>(() => {
+    if (!content) return [];
     const markdown = content.content;
 
     const extractPreview = (
@@ -68,9 +65,15 @@ const ResourcesTools = () => {
     ].filter((p): p is ToolPreview => Boolean(p));
   }, [content]);
 
+  if (!content) {
+    return null;
+  }
+
   // Extract title and description from content
   const sectionTitle = "Research Resources & Tools";
-  const sectionDescription = content.description || "Open-source tools, datasets, and documentation to advance computational immunooncology research. All resources are freely available to the scientific community.";
+  const sectionDescription =
+    content.description ||
+    "Open-source tools, datasets, and documentation to advance computational immunooncology research. All resources are freely available to the scientific community.";
 
   return (
     <section id="resources" className="py-20 bg-background">

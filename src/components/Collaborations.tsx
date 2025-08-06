@@ -7,10 +7,6 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const Collaborations = () => {
   const content = useMemo(() => getCollaborationsContent(), []);
-  
-  if (!content) {
-    return null;
-  }
 
   interface CollaborationPreview {
     name: string;
@@ -21,6 +17,7 @@ const Collaborations = () => {
   }
 
   const collaborationPreviews = useMemo<CollaborationPreview[]>(() => {
+    if (!content) return [];
     const markdown = content.content;
     const section = markdown.split("## Active Collaborations")[1];
     if (!section) return [];
@@ -50,9 +47,15 @@ const Collaborations = () => {
     });
   }, [content]);
 
+  if (!content) {
+    return null;
+  }
+
   // Extract title and description from content
   const sectionTitle = "Global Collaborations";
-  const sectionDescription = content.description || "Partnering with leading institutions and organizations worldwide to accelerate cancer immunotherapy research and bring AI-driven solutions to patients faster.";
+  const sectionDescription =
+    content.description ||
+    "Partnering with leading institutions and organizations worldwide to accelerate cancer immunotherapy research and bring AI-driven solutions to patients faster.";
 
   return (
     <section id="collaborations" className="py-20 bg-muted/30">
