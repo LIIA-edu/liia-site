@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import PageLayout from "@/components/layout/PageLayout";
+import SectionLayout from "@/components/layout/SectionLayout";
 import BlogCard from "@/components/BlogCard";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -29,21 +29,20 @@ const Blog = () => {
   }, [blogPosts, searchTerm, selectedTag]);
 
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      
-      <main className="pt-24 pb-16">
-        <div className="container mx-auto px-4">
-          {/* Header Section */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-              Research Blog
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-              Computational biology insights, tutorials, and research findings from the cutting edge of bioinformatics.
-            </p>
-          </div>
+    <PageLayout>
+      <SectionLayout className="py-20 bg-gradient-to-r from-primary/10 to-accent/10">
+        <div className="text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+            Research Blog
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Computational biology insights, tutorials, and research findings from the cutting edge of bioinformatics.
+          </p>
+        </div>
+      </SectionLayout>
 
+      <SectionLayout className="py-20">
+        <div className="max-w-6xl mx-auto">
           {/* Search and Filter Section */}
           <div className="mb-12 space-y-6">
             {/* Search Bar */}
@@ -109,10 +108,8 @@ const Blog = () => {
             </div>
           )}
         </div>
-      </main>
-
-      <Footer />
-    </div>
+      </SectionLayout>
+    </PageLayout>
   );
 };
 

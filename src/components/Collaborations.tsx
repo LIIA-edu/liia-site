@@ -58,11 +58,11 @@ const Collaborations = () => {
     "Partnering with leading institutions and organizations worldwide to accelerate cancer immunotherapy research and bring AI-driven solutions to patients faster.";
 
   return (
-    <section id="collaborations" className="py-20 bg-muted/30">
+    <section id="collaborations" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-foreground">
-            {sectionTitle.split(' ').map((word, index) => 
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+            {sectionTitle.split(' ').map((word, index) =>
               index === 1 ? <span key={index} className="text-primary">{word}</span> : word + ' '
             )}
           </h2>

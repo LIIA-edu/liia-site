@@ -6,7 +6,7 @@ const Publications = () => {
 
   if (!publicationsContent) {
     return (
-      <section id="publications" className="py-20 bg-gradient-subtle">
+      <section id="publications" className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center">
             <p className="text-muted-foreground">Publications content not found.</p>
@@ -17,7 +17,7 @@ const Publications = () => {
   }
 
   return (
-    <section id="publications" className="py-20 bg-gradient-subtle">
+    <section id="publications" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">

@@ -41,6 +41,18 @@ const Collaborations = () => {
           className="max-w-6xl mx-auto"
         />
       </SectionLayout>
+
+      {/* Collaboration Opportunities */}
+      <SectionLayout className="py-20 bg-muted/30">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
+            Collaboration Opportunities
+          </h2>
+          <p className="text-muted-foreground">
+            We're eager to partner with institutions, industry, and researchers to push the boundaries of cancer immunotherapy. Contact us to explore collaboration opportunities.
+          </p>
+        </div>
+      </SectionLayout>
     </PageLayout>
   );
 };
