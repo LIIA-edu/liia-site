@@ -8,9 +8,6 @@ const Header = () => {
         <nav className="flex items-center justify-between">
           <div className="flex flex-col">
             <div className="font-bold text-xl text-primary">LIIA</div>
-            <div className="text-xs text-muted-foreground">
-              Laboratório de pesquisa em Imunooncologia e Inteligência Artificial
-            </div>
           </div>
           <div className="hidden md:flex items-center space-x-8">
             <Link to="/" className="text-foreground hover:text-primary transition-colors">
@@ -41,7 +38,10 @@ const Header = () => {
               Contact
             </a>
           </div>
-          <Button variant="outline" className="md:hidden">
+          <Button
+            variant="outline"
+            className="md:hidden transition-transform hover:scale-105"
+          >
             Menu
           </Button>
         </nav>
