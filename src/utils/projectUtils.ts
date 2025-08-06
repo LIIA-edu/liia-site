@@ -1,5 +1,4 @@
-import matter from 'gray-matter';
-import '../lib/buffer-polyfill';
+import { parseMarkdownModules } from './markdownUtils';
 
 export interface ProjectMetadata {
   id: string;
@@ -20,37 +19,29 @@ export interface Project extends ProjectMetadata {
   content: string;
 }
 
-const projectModules = import.meta.glob('/src/projects/*.md', { 
+const projectModules = import.meta.glob('/src/projects/*.md', {
   query: '?raw',
   import: 'default',
-  eager: true 
+  eager: true,
 });
 
-export const getAllProjects = (): Project[] => {
-  const projects: Project[] = [];
-  
-  Object.entries(projectModules).forEach(([path, content]) => {
-    const { data, content: markdownContent } = matter(content as string);
-    projects.push({
-      ...(data as ProjectMetadata),
-      content: markdownContent,
-    });
-  });
-  
-  return projects.sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime());
-};
+const projects: Project[] = parseMarkdownModules<ProjectMetadata>(projectModules)
+  .map(({ path, ...project }) => project)
+  .sort(
+    (a, b) =>
+      new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
+  );
+
+export const getAllProjects = (): Project[] => projects;
 
 export const getProjectById = (id: string): Project | undefined => {
-  const projects = getAllProjects();
-  return projects.find(project => project.id === id);
+  return projects.find((project) => project.id === id);
 };
 
 export const getFeaturedProjects = (): Project[] => {
-  const projects = getAllProjects();
-  return projects.filter(project => project.featured);
+  return projects.filter((project) => project.featured);
 };
 
 export const getProjectsByStatus = (status: string): Project[] => {
-  const projects = getAllProjects();
-  return projects.filter(project => project.status === status);
+  return projects.filter((project) => project.status === status);
 };

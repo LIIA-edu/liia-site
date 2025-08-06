@@ -1,5 +1,4 @@
-import matter from 'gray-matter';
-import '../lib/buffer-polyfill';
+import { parseMarkdownModules } from './markdownUtils';
 
 export interface ContentMetadata {
   title: string;
@@ -10,27 +9,22 @@ export interface Content extends ContentMetadata {
   content: string;
 }
 
-// Import all content files
-const contentModules = import.meta.glob('/src/content/*.md', { 
+const contentModules = import.meta.glob('/src/content/*.md', {
   query: '?raw',
   import: 'default',
-  eager: true 
+  eager: true,
 });
+
+const contents = parseMarkdownModules<ContentMetadata>(contentModules);
 
 export const getContent = (filename: string): Content | undefined => {
   const path = `/src/content/${filename}.md`;
-  const rawContent = contentModules[path];
-  
-  if (!rawContent) {
+  const match = contents.find((c) => c.path === path);
+  if (!match) {
     return undefined;
   }
-  
-  const { data, content } = matter(rawContent as string);
-  
-  return {
-    ...(data as ContentMetadata),
-    content,
-  };
+  const { path: _path, ...content } = match;
+  return content;
 };
 
 export const getAboutContent = (): Content | undefined => {
