@@ -59,7 +59,7 @@ That's it! Your development environment is ready. 🎉
 
 ## 📝 Content Management
 
-This website uses a **file-based content management system** where all content is stored in Markdown files with YAML frontmatter. This approach provides:
+This website uses a **Quarto-based file content system** where content is stored in `.qmd` files with YAML frontmatter. This approach provides:
 
 - ✅ **Version Control**: Track all changes with Git
 - ✅ **Easy Editing**: Write content in simple Markdown
@@ -82,7 +82,7 @@ This website uses a **file-based content management system** where all content i
 ### Creating a New Blog Post
 
 1. Navigate to `src/posts/`
-2. Create a file: `YYYY-MM-DD-descriptive-title.md`
+2. Create a file: `YYYY-MM-DD-descriptive-title.qmd`
 3. Add frontmatter and content
 
 ### Blog Post Template
@@ -165,6 +165,23 @@ Summarize key findings and implications...
 | `author` | ❌ | Author name | `"Dr. Sarah Chen"` |
 | `image` | ❌ | Featured image | `"/blog-images/post.jpg"` |
 
+### Quarto Notes (`.qmd`)
+
+- All CMS content is authored in `.qmd` files in `src/posts`, `src/profiles`, `src/projects`, and `src/content`.
+- YAML frontmatter is required and parsed by the app for metadata routing and page generation.
+- Most standard Markdown content works directly; Quarto-only execution features (for example, notebook/code execution) are not run by this frontend app.
+
+### How the Quarto-compatible CMS flow works
+
+1. Vite imports `.qmd` files as raw strings from each content folder.
+2. Gray Matter parses frontmatter + body content into JavaScript objects.
+3. The loaders map records by identity:
+   - posts by `slug`
+   - profiles by `id`
+   - projects by `id`
+   - static content by filename lookup
+4. The resulting content is rendered by the existing React Markdown renderers.
+
 ---
 
 ## 👥 Team Profiles
@@ -172,7 +189,7 @@ Summarize key findings and implications...
 ### Creating a New Team Profile
 
 1. Navigate to `src/profiles/`
-2. Create a file: `firstname-lastname.md`
+2. Create a file: `firstname-lastname.qmd`
 3. Use consistent naming (lowercase, hyphenated)
 
 ### Team Profile Template
@@ -273,7 +290,7 @@ Interested in collaboration or joining the lab? Dr. Chen welcomes inquiries abou
 ### Creating a New Research Project
 
 1. Navigate to `src/projects/`
-2. Create a file: `descriptive-project-name.md`
+2. Create a file: `descriptive-project-name.qmd`
 3. Use URL-friendly naming
 
 ### Research Project Template

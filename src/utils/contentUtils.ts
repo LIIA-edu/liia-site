@@ -9,7 +9,7 @@ export interface Content extends ContentMetadata {
   content: string;
 }
 
-const contentModules = import.meta.glob('/src/content/*.md', {
+const contentModules = import.meta.glob('/src/content/*.qmd', {
   query: '?raw',
   import: 'default',
   eager: true,
@@ -18,7 +18,7 @@ const contentModules = import.meta.glob('/src/content/*.md', {
 const contents = parseMarkdownModules<ContentMetadata>(contentModules);
 
 export const getContent = (filename: string): Content | undefined => {
-  const path = `/src/content/${filename}.md`;
+  const path = `/src/content/${filename}.qmd`;
   const match = contents.find((c) => c.path === path);
   if (!match) {
     return undefined;

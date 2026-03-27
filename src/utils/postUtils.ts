@@ -14,15 +14,15 @@ export interface Post extends PostMetadata {
   content: string;
 }
 
-// Import all post files
-const postModules = import.meta.glob('/src/posts/*.md', {
+// Import all Quarto post files
+const postModules = import.meta.glob('/src/posts/*.qmd', {
   query: '?raw',
   import: 'default',
   eager: true,
 });
 
 const posts: Post[] = parseMarkdownModules<PostMetadata>(postModules)
-  .map(({ path, ...post }) => post)
+  .map(({ path: _path, ...post }) => post)
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 export const getAllPosts = (): Post[] => posts;
