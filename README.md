@@ -57,6 +57,12 @@ A modern, responsive website for the Laboratory of Research in Immunooncology an
 
 That's it! Your development environment is ready. 🎉
 
+### 🐳 Containerized Development
+
+- A project `Dockerfile` is included for running the app with Node.js + Quarto CLI.
+- A `.devcontainer/` setup is included for VS Code Dev Containers and installs dependencies with `npm ci` automatically.
+- Default dev server port in containers: `8080`.
+
 ## 📝 Content Management
 
 This website uses a **Quarto-based file content system** where content is stored in `.qmd` files with YAML frontmatter. This approach provides:
