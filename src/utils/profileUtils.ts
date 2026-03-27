@@ -22,7 +22,7 @@ export interface Profile extends ProfileMetadata {
   content: string;
 }
 
-const profileModules = import.meta.glob('/src/profiles/*.md', {
+const profileModules = import.meta.glob('/src/profiles/*.qmd', {
   query: '?raw',
   import: 'default',
   eager: true,
@@ -35,7 +35,7 @@ const positionOrder = [
 ];
 
 const profiles: Profile[] = parseMarkdownModules<ProfileMetadata>(profileModules)
-  .map(({ path, ...profile }) => profile)
+  .map(({ path: _path, ...profile }) => profile)
   .sort((a, b) => {
     const aOrder = positionOrder.findIndex((pos) => a.position.includes(pos));
     const bOrder = positionOrder.findIndex((pos) => b.position.includes(pos));
