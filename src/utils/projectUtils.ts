@@ -19,14 +19,14 @@ export interface Project extends ProjectMetadata {
   content: string;
 }
 
-const projectModules = import.meta.glob('/src/projects/*.md', {
+const projectModules = import.meta.glob('/src/projects/*.qmd', {
   query: '?raw',
   import: 'default',
   eager: true,
 });
 
 const projects: Project[] = parseMarkdownModules<ProjectMetadata>(projectModules)
-  .map(({ path, ...project }) => project)
+  .map(({ path: _path, ...project }) => project)
   .sort(
     (a, b) =>
       new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
