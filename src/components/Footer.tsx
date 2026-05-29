@@ -1,42 +1,49 @@
+import { siteConfig } from "@/utils/siteConfig";
+
 const Footer = () => {
   return (
     <footer className="bg-primary text-primary-foreground py-12">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-xl font-bold mb-4">LIIA</h3>
+            <h3 className="text-xl font-bold mb-4">{siteConfig.siteName}</h3>
             <p className="text-primary-foreground/80 mb-4">
-              Laboratório de pesquisa em Imunooncologia e Inteligência Artificial - Explorando biologia computacional através de pesquisa, inovação e ciência aberta.
+              {siteConfig.siteFullName}
             </p>
             <p className="text-sm text-primary-foreground/60">
-              © 2024 LIIA. All rights reserved.
+              {siteConfig.copyright}
             </p>
           </div>
           
           <div>
             <h4 className="font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-primary-foreground/80">
-              <li><a href="/blog" className="hover:text-primary-foreground transition-colors">Blog</a></li>
-              <li><a href="#about" className="hover:text-primary-foreground transition-colors">About</a></li>
-              <li><a href="#publications" className="hover:text-primary-foreground transition-colors">Publications</a></li>
-              <li><a href="#contact" className="hover:text-primary-foreground transition-colors">Contact</a></li>
+              {siteConfig.quickLinks.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className="hover:text-primary-foreground transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
           
           <div>
             <h4 className="font-semibold mb-4">Research Areas</h4>
             <ul className="space-y-2 text-primary-foreground/80">
-              <li>Computational Biology</li>
-              <li>Machine Learning</li>
-              <li>Genomics & Single-Cell</li>
-              <li>Bioinformatics Tools</li>
+              {siteConfig.footerResearchAreas.map((area) => (
+                <li key={area}>{area}</li>
+              ))}
             </ul>
           </div>
         </div>
         
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center">
           <p className="text-primary-foreground/60">
-            Built with modern web technologies for the scientific community
+            {siteConfig.footerNote}
           </p>
         </div>
       </div>

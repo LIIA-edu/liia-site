@@ -1,0 +1,11 @@
+title: Machine Learning in Biology
+order: 3
+description: >-
+  Deep learning and AI applications for biological data interpretation, drug
+  discovery, and precision medicine.
+technologies:
+  - TensorFlow
+  - PyTorch
+  - Scikit-learn
+  - Neural Networks
+  - NLP

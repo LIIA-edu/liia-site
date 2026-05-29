@@ -1,0 +1,11 @@
+title: Systems Biology
+order: 4
+description: >-
+  Network analysis, pathway modeling, and multi-omics integration to understand
+  complex biological systems.
+technologies:
+  - Cytoscape
+  - KEGG
+  - Reactome
+  - Multi-omics
+  - Network analysis
