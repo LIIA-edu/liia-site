@@ -55,7 +55,7 @@ const Collaborations = () => {
   // Extract title and description from content
   const sectionTitle = "Global Collaborations";
   const sectionDescription =
-    content.description ||
+    (content.description as string | undefined) ||
     "Partnering with leading institutions and organizations worldwide to accelerate cancer immunotherapy research and bring AI-driven solutions to patients faster.";
 
   return (
