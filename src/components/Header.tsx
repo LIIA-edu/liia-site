@@ -13,9 +13,6 @@ const Header = () => {
             <Link to="/" className="text-foreground hover:text-primary transition-colors">
               Home
             </Link>
-            <a href={`${import.meta.env.PROD ? '/liia-site' : ''}/#vision`} className="text-foreground hover:text-primary transition-colors">
-              Vision
-            </a>
             <Link to="/people" className="text-foreground hover:text-primary transition-colors">
               People
             </Link>
