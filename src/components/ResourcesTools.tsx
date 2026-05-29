@@ -13,6 +13,9 @@ import { getResourcesContent } from "@/utils/contentUtils";
 import { useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import SectionTitle from "@/components/SectionTitle";
+import { getFeaturedSoftware } from "@/utils/softwareUtils";
+import { getAllDatasets } from "@/utils/datasetsUtils";
+import { getAllDocumentation } from "@/utils/documentationUtils";
 
 const ResourcesTools = () => {
   const content = useMemo(() => getResourcesContent(), []);
@@ -27,44 +30,46 @@ const ResourcesTools = () => {
   }
 
   const toolPreviews = useMemo<ToolPreview[]>(() => {
-    if (!content) return [];
-    const markdown = content.content;
+    const previews: ToolPreview[] = [];
 
-    const extractPreview = (
-      sectionTitle: string,
-      icon: LucideIcon
-    ): ToolPreview | null => {
-      const section = markdown.split(`## ${sectionTitle}`)[1];
-      if (!section) return null;
-      const match = section.match(/### (.+)\n([\s\S]+?)(?=\n### |\n## |$)/);
-      if (!match) return null;
-      const name = match[1].trim();
-      const body = match[2];
-      const meta: Record<string, string> = {};
-      body
-        .split("\n")
-        .filter((l) => l.startsWith("**"))
-        .forEach((line) => {
-          const m = line.match(/\*\*(.+?)\*\*: (.+)/);
-          if (m) meta[m[1]] = m[2];
-        });
-      const descriptionMatch = body.match(/\n\n([^*][\s\S]+?)\n\n/);
-      return {
-        name,
-        category: meta["Category"] || sectionTitle,
-        description: descriptionMatch ? descriptionMatch[1].trim() : "",
-        downloads: meta["Downloads"] || "",
-        stars: meta["GitHub Stars"] || meta["Citations"] || "",
-        icon,
-      };
-    };
+    const featuredSoftware = getFeaturedSoftware(1)[0];
+    if (featuredSoftware) {
+      previews.push({
+        name: featuredSoftware.name,
+        category: featuredSoftware.category || "Software Tools",
+        description: featuredSoftware.description,
+        downloads: featuredSoftware.downloads || "",
+        stars: featuredSoftware.githubStars || featuredSoftware.citations || "",
+        icon: Code,
+      });
+    }
 
-    return [
-      extractPreview("Software Tools", Code),
-      extractPreview("Datasets", Database),
-      extractPreview("Documentation & Protocols", BookOpen),
-    ].filter((p): p is ToolPreview => Boolean(p));
-  }, [content]);
+    const firstDataset = getAllDatasets()[0];
+    if (firstDataset) {
+      previews.push({
+        name: firstDataset.name,
+        category: "Datasets",
+        description: firstDataset.description,
+        downloads: firstDataset.downloads || "",
+        stars: firstDataset.citations || "",
+        icon: Database,
+      });
+    }
+
+    const firstDoc = getAllDocumentation()[0];
+    if (firstDoc) {
+      previews.push({
+        name: firstDoc.name,
+        category: "Documentation & Protocols",
+        description: firstDoc.description,
+        downloads: firstDoc.downloads || "",
+        stars: firstDoc.readTime || "",
+        icon: BookOpen,
+      });
+    }
+
+    return previews;
+  }, []);
 
   if (!content) {
     return null;
