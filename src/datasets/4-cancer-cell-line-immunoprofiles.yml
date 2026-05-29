@@ -1,0 +1,12 @@
+name: Cancer Cell Line Immunoprofiles
+description: >-
+  Comprehensive immune profiling of cancer cell lines including response to
+  immunomodulatory compounds.
+size: "120 GB"
+samples: "1,500"
+access: open
+downloads: "2,800+"
+citations: "180+"
+doi: "10.5281/zenodo.4567890"
+url: "https://doi.org/10.5281/zenodo.4567890"
+order: 4

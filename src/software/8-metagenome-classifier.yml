@@ -1,0 +1,7 @@
+name: MetagenomeClassifier
+description: Taxonomic classification of metagenomic sequences.
+category: Metagenomics
+github: https://github.com/chenlab/metagenome-classifier
+downloads: "12,000+"
+citations: "45+"
+order: 8

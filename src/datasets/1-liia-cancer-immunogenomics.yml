@@ -1,0 +1,13 @@
+name: LIIA Cancer Immunogenomics Dataset
+description: >-
+  Comprehensive multi-omics dataset of cancer samples with immune profiling and
+  clinical outcomes. Includes genomics, transcriptomics, proteomics, and
+  clinical data.
+size: "2.5 TB"
+samples: "5,247"
+access: controlled
+downloads: "1,200+"
+citations: "150+"
+doi: "10.5281/zenodo.1234567"
+url: "https://doi.org/10.5281/zenodo.1234567"
+order: 1

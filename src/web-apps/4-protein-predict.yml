@@ -1,0 +1,6 @@
+name: ProteinPredict
+description: Online protein structure prediction service.
+type: Prediction Service
+url: https://proteinpredict.chenlab.org
+metric: "100,000+ predictions completed"
+order: 4

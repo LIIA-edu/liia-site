@@ -1,0 +1,10 @@
+name: Clinical Data Analysis Workflows
+description: >-
+  Standardized workflows for analyzing clinical trial data and real-world
+  evidence in cancer immunotherapy.
+type: workflow
+chapters: 10
+readTime: "6 hours"
+downloads: "4,100+"
+lastUpdated: "2024-10-15"
+order: 4
