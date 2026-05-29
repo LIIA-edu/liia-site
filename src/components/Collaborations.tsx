@@ -5,54 +5,30 @@ import { getCollaborationsContent } from "@/utils/contentUtils";
 import { useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import SectionTitle from "@/components/SectionTitle";
+import { getActiveCollaborations } from "@/utils/collaborationsUtils";
 
 const Collaborations = () => {
   const content = useMemo(() => getCollaborationsContent(), []);
 
-  interface CollaborationPreview {
-    name: string;
-    type: string;
-    focus: string;
-    status: string;
-    icon: LucideIcon;
-  }
-
-  const collaborationPreviews = useMemo<CollaborationPreview[]>(() => {
-    if (!content) return [];
-    const markdown = content.content;
-    const section = markdown.split("## Active Collaborations")[1];
-    if (!section) return [];
-
-    const matches = [...section.matchAll(/### (.+)\n([\s\S]+?)(?=\n### |\n## |$)/g)];
-
-    return matches.slice(0, 3).map((match) => {
-      const name = match[1].trim();
-      const body = match[2];
-      const type = (body.match(/\*\*Type\*\*: (.+)/) || [])[1] || "";
-      const focus = (body.match(/\*\*Focus\*\*: (.+)/) || [])[1] || "";
-
+  const collaborationPreviews = useMemo(() => {
+    return getActiveCollaborations().slice(0, 3).map((c) => {
       let icon: LucideIcon = Building2;
-      if (/Industry|International/i.test(type)) {
-        icon = Globe;
-      } else if (/Research/i.test(type)) {
-        icon = Users;
-      }
-
+      if (/Industry|International/i.test(c.type ?? "")) icon = Globe;
+      else if (/Research/i.test(c.type ?? "")) icon = Users;
       return {
-        name,
-        type,
-        focus,
+        name: c.name,
+        type: c.type ?? "",
+        focus: c.focus ?? "",
         status: "Active",
         icon,
       };
     });
-  }, [content]);
+  }, []);
 
   if (!content) {
     return null;
   }
 
-  // Extract title and description from content
   const sectionTitle = "Global Collaborations";
   const sectionDescription =
     (content.description as string | undefined) ||
