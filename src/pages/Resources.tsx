@@ -3,6 +3,17 @@ import SectionLayout from "@/components/layout/SectionLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { getResourcesContent } from "@/utils/contentUtils";
+import { getAllSoftware } from "@/utils/softwareUtils";
+import { getAllDatasets } from "@/utils/datasetsUtils";
+import { getAllDocumentation } from "@/utils/documentationUtils";
+import { getAllWebApps } from "@/utils/webAppsUtils";
+
+interface ResourceItem {
+  name: string;
+  description: string;
+  metadata: string[];
+  links?: { label: string; url: string }[];
+}
 
 const Resources = () => {
   const content = getResourcesContent();
@@ -20,241 +31,65 @@ const Resources = () => {
     );
   }
 
-  interface ResourceItem {
-    name: string;
-    description: string;
-    metadata: string[];
-    links?: { label: string; url: string }[];
-  }
+  const softwareTools: ResourceItem[] = getAllSoftware().map((s) => ({
+    name: s.name,
+    description: s.description,
+    metadata: [
+      s.category && `Category: ${s.category}`,
+      s.language && `Language: ${s.language}`,
+      s.license && `License: ${s.license}`,
+      s.downloads && `Downloads: ${s.downloads}`,
+      s.githubStars && `GitHub Stars: ${s.githubStars}`,
+      s.lastUpdated && `Last Updated: ${s.lastUpdated}`,
+    ].filter((m): m is string => Boolean(m)),
+    links: [
+      s.github ? { label: "GitHub", url: s.github } : null,
+      s.documentation ? { label: "Documentation", url: s.documentation } : null,
+    ].filter((l): l is { label: string; url: string } => Boolean(l)),
+  }));
 
-  const softwareTools: ResourceItem[] = [
-    {
-      name: "NeoantigenAI",
-      description:
-        "Deep learning tool for tumor neoantigen immunogenicity prediction with state-of-the-art accuracy. Features pre-trained models, custom training pipeline, clinical integration readiness, and multi-HLA support.",
-      metadata: [
-        "Category: AI Models",
-        "Language: Python",
-        "License: MIT",
-        "Downloads: 50,000+",
-        "GitHub Stars: 1,200",
-        "Last Updated: 2024-12-10",
-      ],
-      links: [
-        { label: "GitHub", url: "https://github.com/liia-lab/neoantigen-ai" },
-        { label: "Documentation", url: "https://neoantigen-ai.readthedocs.io" },
-      ],
-    },
-    {
-      name: "ImmunoPathways",
-      description:
-        "Cancer immunotherapy pathway analysis and biomarker discovery tool for multi-omics data. Includes pathway visualization, statistical analysis, and biomarker identification.",
-      metadata: [
-        "Category: Analysis Tools",
-        "Language: R/Python",
-        "License: GPL-3.0",
-        "Downloads: 20,000+",
-        "GitHub Stars: 850",
-        "Last Updated: 2024-11-25",
-      ],
-      links: [
-        { label: "GitHub", url: "https://github.com/liia-lab/immuno-pathways" },
-        { label: "Documentation", url: "https://immuno-pathways.readthedocs.io" },
-      ],
-    },
-    {
-      name: "scRNA-Immune",
-      description:
-        "Single-cell RNA sequencing analysis pipeline specialized for immune cell profiling in cancer, featuring cell annotation, trajectory analysis, and visualization tools.",
-      metadata: [
-        "Category: Genomics",
-        "Language: Python/R",
-        "License: Apache-2.0",
-        "Downloads: 25,000+",
-        "GitHub Stars: 950",
-        "Last Updated: 2024-12-05",
-      ],
-      links: [
-        { label: "GitHub", url: "https://github.com/liia-lab/scrna-immune" },
-        { label: "Documentation", url: "https://scrna-immune.readthedocs.io" },
-      ],
-    },
-    {
-      name: "DrugTargetAI",
-      description:
-        "AI-powered drug-target interaction prediction platform for cancer immunotherapy compounds, including virtual screening and drug repurposing capabilities.",
-      metadata: [
-        "Category: Drug Discovery",
-        "Language: Python",
-        "License: MIT",
-        "Downloads: 8,000+",
-        "GitHub Stars: 420",
-        "Last Updated: 2024-11-30",
-      ],
-      links: [
-        { label: "GitHub", url: "https://github.com/liia-lab/drug-target-ai" },
-        { label: "Documentation", url: "https://drug-target-ai.readthedocs.io" },
-      ],
-    },
-    {
-      name: "CRISPR-ImmunoScreen",
-      description:
-        "Machine learning framework for CRISPR guide design and screen analysis in immunooncology research.",
-      metadata: [
-        "Category: CRISPR Analysis",
-        "Language: Python/R",
-        "License: MIT",
-        "Downloads: 12,000+",
-        "GitHub Stars: 650",
-        "Last Updated: 2024-11-20",
-      ],
-      links: [
-        { label: "GitHub", url: "https://github.com/liia-lab/crispr-immunoscreen" },
-        { label: "Documentation", url: "https://crispr-immunoscreen.readthedocs.io" },
-      ],
-    },
-  ];
+  const datasets: ResourceItem[] = getAllDatasets().map((d) => ({
+    name: d.name,
+    description: d.description,
+    metadata: [
+      d.size && `Size: ${d.size}`,
+      d.samples && `Samples: ${d.samples}`,
+      d.access && `Access: ${d.access.charAt(0).toUpperCase()}${d.access.slice(1)}`,
+      d.downloads && `Downloads: ${d.downloads}`,
+      d.citations && `Citations: ${d.citations}`,
+      d.doi && `DOI: ${d.doi}`,
+    ].filter((m): m is string => Boolean(m)),
+    links: d.url ? [{ label: "DOI", url: d.url }] : undefined,
+  }));
 
-  const datasets: ResourceItem[] = [
-    {
-      name: "LIIA Cancer Immunogenomics Dataset",
-      description:
-        "Comprehensive multi-omics dataset of cancer samples with immune profiling and clinical outcomes.",
-      metadata: [
-        "Size: 2.5 TB",
-        "Samples: 5,247",
-        "Access: Controlled",
-        "Downloads: 1,200+",
-        "Citations: 150+",
-        "DOI: 10.5281/zenodo.1234567",
-      ],
-      links: [
-        { label: "DOI", url: "https://doi.org/10.5281/zenodo.1234567" },
-      ],
-    },
-    {
-      name: "Neoantigen Prediction Benchmark",
-      description:
-        "Curated dataset for benchmarking neoantigen prediction algorithms with experimental validation.",
-      metadata: [
-        "Size: 45 GB",
-        "Samples: 2,100",
-        "Access: Open",
-        "Downloads: 3,500+",
-        "Citations: 280+",
-        "DOI: 10.5281/zenodo.2345678",
-      ],
-      links: [
-        { label: "DOI", url: "https://doi.org/10.5281/zenodo.2345678" },
-      ],
-    },
-    {
-      name: "Immune Repertoire Atlas",
-      description:
-        "Large-scale T-cell and B-cell receptor sequencing data from cancer patients across multiple tumor types.",
-      metadata: [
-        "Size: 1.8 TB",
-        "Samples: 8,900",
-        "Access: Controlled",
-        "Downloads: 800+",
-        "Citations: 95+",
-        "DOI: 10.5281/zenodo.3456789",
-      ],
-      links: [
-        { label: "DOI", url: "https://doi.org/10.5281/zenodo.3456789" },
-      ],
-    },
-    {
-      name: "Cancer Cell Line Immunoprofiles",
-      description:
-        "Comprehensive immune profiling of cancer cell lines including response to immunomodulatory compounds.",
-      metadata: [
-        "Size: 120 GB",
-        "Samples: 1,500",
-        "Access: Open",
-        "Downloads: 2,800+",
-        "Citations: 180+",
-        "DOI: 10.5281/zenodo.4567890",
-      ],
-      links: [
-        { label: "DOI", url: "https://doi.org/10.5281/zenodo.4567890" },
-      ],
-    },
-  ];
+  const typeLabels: Record<string, string> = {
+    tutorial: "Tutorial",
+    "best-practices": "Best Practices",
+    protocol: "Protocol",
+    workflow: "Workflow",
+  };
 
-  const documentation: ResourceItem[] = [
-    {
-      name: "Computational Immunooncology Handbook",
-      description:
-        "Comprehensive guide to computational methods in cancer immunology research, from data preprocessing to advanced AI models.",
-      metadata: [
-        "Type: Tutorial",
-        "Chapters: 12",
-        "Read Time: 8 hours",
-        "Downloads: 15,000+",
-        "Last Updated: 2024-12-01",
-      ],
-    },
-    {
-      name: "AI Model Development Guide",
-      description:
-        "Best practices for developing and validating AI models for cancer research, including ethical guidelines and clinical validation.",
-      metadata: [
-        "Type: Best Practices",
-        "Chapters: 8",
-        "Read Time: 4 hours",
-        "Downloads: 8,500+",
-        "Last Updated: 2024-11-15",
-      ],
-    },
-    {
-      name: "Multi-omics Integration Protocols",
-      description:
-        "Step-by-step protocols for integrating genomics, transcriptomics, and proteomics data in cancer immunology research.",
-      metadata: [
-        "Type: Protocol",
-        "Chapters: 6",
-        "Read Time: 3 hours",
-        "Downloads: 6,200+",
-        "Last Updated: 2024-10-20",
-      ],
-    },
-    {
-      name: "Clinical Data Analysis Workflows",
-      description:
-        "Standardized workflows for analyzing clinical trial data and real-world evidence in cancer immunotherapy.",
-      metadata: [
-        "Type: Workflow",
-        "Chapters: 10",
-        "Read Time: 6 hours",
-        "Downloads: 4,100+",
-        "Last Updated: 2024-10-15",
-      ],
-    },
-  ];
+  const documentation: ResourceItem[] = getAllDocumentation().map((d) => ({
+    name: d.name,
+    description: d.description,
+    metadata: [
+      d.type && `Type: ${typeLabels[d.type] ?? d.type}`,
+      d.chapters && `Chapters: ${d.chapters}`,
+      d.readTime && `Read Time: ${d.readTime}`,
+      d.downloads && `Downloads: ${d.downloads}`,
+      d.lastUpdated && `Last Updated: ${d.lastUpdated}`,
+    ].filter((m): m is string => Boolean(m)),
+    links: d.url ? [{ label: "Open", url: d.url }] : undefined,
+  }));
 
-  const webApps: ResourceItem[] = [
-    {
-      name: "ImmunoViz",
-      description:
-        "Interactive platform for visualizing immune system data and cancer-immune interactions.",
-      metadata: [
-        "Type: Visualization Platform",
-        "Users: 10,000+ registered",
-      ],
-      links: [{ label: "Launch", url: "https://immunoviz.liia.edu.br" }],
-    },
-    {
-      name: "NeoPredictWeb",
-      description:
-        "Online neoantigen prediction service with a user-friendly interface for researchers worldwide.",
-      metadata: [
-        "Type: Prediction Service",
-        "Predictions: 100,000+ completed",
-      ],
-      links: [{ label: "Launch", url: "https://neopredict.liia.edu.br" }],
-    },
-  ];
+  const webApps: ResourceItem[] = getAllWebApps().map((w) => ({
+    name: w.name,
+    description: w.description,
+    metadata: [w.type && `Type: ${w.type}`, w.metric].filter(
+      (m): m is string => Boolean(m)
+    ),
+    links: [{ label: "Launch", url: w.url }],
+  }));
 
   return (
     <PageLayout>
