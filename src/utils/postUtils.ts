@@ -50,7 +50,7 @@ export const getAllTags = (): string[] => {
   const tags = new Set<string>();
 
   posts.forEach((post) => {
-    post.tags.forEach((tag) => tags.add(tag));
+    (post.tags ?? []).forEach((tag) => tags.add(tag));
   });
 
   return Array.from(tags).sort();
