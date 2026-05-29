@@ -1,0 +1,17 @@
+name: Genentech Inc.
+status: active
+order: 3
+location: South San Francisco, CA, USA
+type: Industry Partnership
+focus: Drug Discovery & Development
+duration: 2023 - 2026
+principalInvestigator: Dr. Lisa Park
+website: https://gene.com
+description: >-
+  Collaborative development of AI-powered drug discovery platform for cancer
+  immunotherapies. This partnership aims to translate our computational models
+  into clinical applications that can improve patient outcomes.
+keyProjects:
+  - Drug-Target Interaction Prediction
+  - Biomarker Discovery Platform
+  - Clinical Trial Optimization
