@@ -1,0 +1,17 @@
+name: MIT Computer Science & Artificial Intelligence Laboratory
+location: Cambridge, MA, USA
+type: Research Collaboration
+focus: Machine Learning for Cancer Biology
+duration: "2023 - Present"
+status: active
+order: 2
+principalInvestigator: Dr. James Thompson
+website: https://csail.mit.edu
+description: >-
+  Developing novel deep learning architectures for understanding cancer-immune
+  system interactions. This partnership combines MIT's expertise in artificial
+  intelligence with our specialized knowledge in cancer immunology.
+keyProjects:
+  - Graph Neural Networks for Immune Networks
+  - Transformer Models for Genomics
+  - Federated Learning for Medical Data

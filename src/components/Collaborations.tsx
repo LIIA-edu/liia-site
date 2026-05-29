@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Building2, Globe, Users, ArrowRight, type LucideIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import { getCollaborationsContent } from "@/utils/contentUtils";
+import { getActiveCollaborations } from "@/utils/collaborationsUtils";
 import { useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import SectionTitle from "@/components/SectionTitle";
@@ -18,35 +19,24 @@ const Collaborations = () => {
   }
 
   const collaborationPreviews = useMemo<CollaborationPreview[]>(() => {
-    if (!content) return [];
-    const markdown = content.content;
-    const section = markdown.split("## Active Collaborations")[1];
-    if (!section) return [];
-
-    const matches = [...section.matchAll(/### (.+)\n([\s\S]+?)(?=\n### |\n## |$)/g)];
-
-    return matches.slice(0, 3).map((match) => {
-      const name = match[1].trim();
-      const body = match[2];
-      const type = (body.match(/\*\*Type\*\*: (.+)/) || [])[1] || "";
-      const focus = (body.match(/\*\*Focus\*\*: (.+)/) || [])[1] || "";
-
-      let icon: LucideIcon = Building2;
-      if (/Industry|International/i.test(type)) {
-        icon = Globe;
-      } else if (/Research/i.test(type)) {
-        icon = Users;
-      }
-
-      return {
-        name,
-        type,
-        focus,
-        status: "Active",
-        icon,
-      };
-    });
-  }, [content]);
+    return getActiveCollaborations()
+      .slice(0, 3)
+      .map((collab) => {
+        let icon: LucideIcon = Building2;
+        if (/Industry|International/i.test(collab.type)) {
+          icon = Globe;
+        } else if (/Research/i.test(collab.type)) {
+          icon = Users;
+        }
+        return {
+          name: collab.name,
+          type: collab.type,
+          focus: collab.focus,
+          status: "Active",
+          icon,
+        };
+      });
+  }, []);
 
   if (!content) {
     return null;
