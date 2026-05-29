@@ -1,11 +1,59 @@
-import ReactMarkdown from 'react-markdown';
 import { Card, CardContent } from "@/components/ui/card";
 import { memo } from 'react';
+import {
+  getActiveCollaborations,
+  getPastCollaborations,
+  type Collaboration,
+} from "@/utils/collaborationsUtils";
 
 interface CollaborationsRendererProps {
   content: string;
   className?: string;
 }
+
+const CollaborationCard = ({ collab }: { collab: Collaboration }) => (
+  <Card className="shadow-card h-full">
+    <CardContent className="p-6 space-y-3">
+      <h4 className="font-semibold text-primary">{collab.name}</h4>
+      <div className="text-sm text-muted-foreground space-y-1">
+        {collab.location && (
+          <div><strong className="text-foreground">Location:</strong> {collab.location}</div>
+        )}
+        {collab.type && (
+          <div><strong className="text-foreground">Type:</strong> {collab.type}</div>
+        )}
+        {collab.focus && (
+          <div><strong className="text-foreground">Focus:</strong> {collab.focus}</div>
+        )}
+        {collab.duration && (
+          <div><strong className="text-foreground">Duration:</strong> {collab.duration}</div>
+        )}
+        {collab.principalInvestigator && (
+          <div><strong className="text-foreground">PI:</strong> {collab.principalInvestigator}</div>
+        )}
+        {collab.website && (
+          <div>
+            <strong className="text-foreground">Website:</strong>{" "}
+            <a href={collab.website} target="_blank" rel="noreferrer" className="text-primary hover:underline">
+              {collab.website.replace(/^https?:\/\//, '')}
+            </a>
+          </div>
+        )}
+      </div>
+      {collab.description && (
+        <p className="text-foreground">{collab.description}</p>
+      )}
+      {collab.keyProjects && collab.keyProjects.length > 0 && (
+        <div>
+          <p className="font-medium text-foreground mb-1">Key Projects:</p>
+          <ul className="list-disc ml-5 text-sm text-muted-foreground space-y-1">
+            {collab.keyProjects.map((p, i) => <li key={i}>{p}</li>)}
+          </ul>
+        </div>
+      )}
+    </CardContent>
+  </Card>
+);
 
 const CollaborationsRenderer = memo(({ content, className = "" }: CollaborationsRendererProps) => {
   const extractSection = (title: string) => {
@@ -14,23 +62,11 @@ const CollaborationsRenderer = memo(({ content, className = "" }: Collaborations
     return match ? match[0] : '';
   };
 
-  const parseCollaborations = (section: string) => {
-    const blocks =
-      section.match(/###[^#][^\n]*[\s\S]*?(?=###|\n## [^#]|$)/g) || [];
-    return blocks.map((block) => {
-      const title = block.match(/###\s+([^\n]+)/)?.[1] || '';
-      const body = block.replace(/###\s+[^\n]+\n?/, '');
-      return { title, body };
-    });
-  };
-
-  const activeSection = extractSection('Active Collaborations');
-  const pastSection = extractSection('Past Collaborations');
   const impactSection = extractSection('Partnership Impact');
   const opportunitiesSection = extractSection('Partnership Opportunities');
 
-  const activeCollabs = parseCollaborations(activeSection);
-  const pastCollabs = parseCollaborations(pastSection);
+  const activeCollabs = getActiveCollaborations();
+  const pastCollabs = getPastCollaborations();
 
   const impactItems = Array.from(impactSection.matchAll(/- \*\*(.+?)\*\*\s*(.+)/g)).map(m => ({
     metric: m[1],
@@ -60,14 +96,7 @@ const CollaborationsRenderer = memo(({ content, className = "" }: Collaborations
           <h3 className="text-2xl font-semibold mb-6 text-foreground">Active Collaborations</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {activeCollabs.map((collab, idx) => (
-              <Card key={idx} className="shadow-card h-full">
-                <CardContent className="p-6">
-                  <h4 className="font-semibold text-primary mb-4">{collab.title}</h4>
-                  <div className="prose prose-lg dark:prose-invert">
-                    <ReactMarkdown>{collab.body}</ReactMarkdown>
-                  </div>
-                </CardContent>
-              </Card>
+              <CollaborationCard key={idx} collab={collab} />
             ))}
           </div>
         </section>
@@ -78,14 +107,7 @@ const CollaborationsRenderer = memo(({ content, className = "" }: Collaborations
           <h3 className="text-2xl font-semibold mb-6 text-foreground">Past Collaborations</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {pastCollabs.map((collab, idx) => (
-              <Card key={idx} className="shadow-card h-full">
-                <CardContent className="p-6">
-                  <h4 className="font-semibold text-primary mb-4">{collab.title}</h4>
-                  <div className="prose prose-lg dark:prose-invert">
-                    <ReactMarkdown>{collab.body}</ReactMarkdown>
-                  </div>
-                </CardContent>
-              </Card>
+              <CollaborationCard key={idx} collab={collab} />
             ))}
           </div>
         </section>
