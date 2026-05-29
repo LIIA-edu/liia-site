@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-bioinformatics.jpg";
+import { heroContent } from "@/utils/siteConfig";
 
 const Hero = () => {
   return (
@@ -13,12 +14,11 @@ const Hero = () => {
       <div className="container mx-auto px-4 py-20 relative z-10">
         <div className="max-w-4xl">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white leading-tight">
-            Advancing
-            <span className="block text-accent"> Immunooncology with AI</span>
+            {heroContent.headline}
+            <span className="block text-accent"> {heroContent.highlight}</span>
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl">
-            Pioneering computational methods that harness artificial intelligence to understand cancer biology, 
-            develop personalized treatments, and accelerate drug discovery.
+            {heroContent.tagline}
           </p>
         </div>
       </div>
