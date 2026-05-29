@@ -3,30 +3,10 @@ import { ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import SectionTitle from "@/components/SectionTitle";
+import { getResearchLines } from "@/utils/researchLinesUtils";
 
 const Research = () => {
-  const researchLines = [
-    {
-      title: "Computational Genomics",
-      description: "Advanced algorithms for genome analysis, variant calling, and genomic data interpretation using machine learning approaches.",
-      technologies: ["Python", "R", "GATK", "BWA", "SAMtools", "Bioconductor"]
-    },
-    {
-      title: "Immunooncology Data Analysis",
-      description: "Computational methods for analyzing immune responses in cancer, biomarker discovery, and treatment response prediction.",
-      technologies: ["Single-cell RNA-seq", "Flow cytometry", "Immunogenomics", "TCR/BCR analysis"]
-    },
-    {
-      title: "Machine Learning in Biology",
-      description: "Deep learning and AI applications for biological data interpretation, drug discovery, and precision medicine.",
-      technologies: ["TensorFlow", "PyTorch", "Scikit-learn", "Neural Networks", "NLP"]
-    },
-    {
-      title: "Systems Biology",
-      description: "Network analysis, pathway modeling, and multi-omics integration to understand complex biological systems.",
-      technologies: ["Cytoscape", "KEGG", "Reactome", "Multi-omics", "Network analysis"]
-    }
-  ];
+  const researchLines = getResearchLines();
 
   return (
     <section className="py-20 bg-muted/30">
