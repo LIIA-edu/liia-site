@@ -12,7 +12,7 @@ interface BlogCardProps {
   slug?: string;
 }
 
-const BlogCard = ({ title, description, date, tags, readTime, featured = false, slug }: BlogCardProps) => {
+const BlogCard = ({ title, description, date, tags = [], readTime, featured = false, slug }: BlogCardProps) => {
   const to = slug ? `/blog/${slug}` : '/blog';
   
   return (
