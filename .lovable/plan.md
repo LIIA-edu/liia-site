@@ -1,42 +1,36 @@
-## Diagnóstico
+## Setup de testes + cobertura dos parsers
 
-Há **dois problemas independentes**, ambos precisam ser resolvidos:
+### Setup (não existe ainda)
+- Instalar devDeps: `vitest`, `@testing-library/jest-dom`, `jsdom` (já não precisamos de RTL aqui — só testes de utilitário puros, mas instalo junto para futuros component tests).
+- Criar `vitest.config.ts` (env `jsdom`, alias `@`).
+- Criar `src/test/setup.ts` (matchMedia mock).
+- Adicionar `"types": ["vitest/globals"]` em `tsconfig.app.json`.
+- Adicionar script `"test": "vitest run"` em `package.json`.
 
-### 1. Preview do Lovable está desatualizado
-O arquivo `src/posts/2026-05-29-new-post.qmd` **não existe no sandbox** — só os 3 posts antigos estão lá. A conexão Lovable↔GitHub está ativa, mas o sandbox **não puxou** o commit que o Pages CMS criou no GitHub. Os posts são carregados via `import.meta.glob('/src/posts/*.qmd', { eager: true })` em `postUtils.ts`, ou seja, só aparecem se o arquivo estiver fisicamente no projeto do Lovable.
+### Testes — `src/utils/__tests__/yamlContent.test.ts`
+Cobre `parseYaml` e `parseYamlModules`:
+- Parse YAML válido → objeto tipado.
+- YAML malformado → retorna fallback (não lança).
+- Vazio → fallback.
+- **Datas YAML (`2024-12-15`) viram string `"2024-12-15"`** (regressão do bug atual).
+- Datas aninhadas em objetos e arrays também convertidas.
+- `parseYamlModules` agrega múltiplos arquivos e anexa `path`.
+- Módulo com YAML inválido é descartado (não derruba a lista).
 
-### 2. Build do GitHub Pages está falhando
-O workflow `Deploy to GitHub Pages` saiu vermelho após o commit do CMS. Mesmo se o sandbox sincronizar, o site público (`/bio-bytes-blog/`) **não atualiza** enquanto o build falhar. Causa provável: frontmatter do novo `.qmd` faltando campos obrigatórios (`title`, `date`, `slug`) ou com formato inválido, fazendo `parseMarkdownModules` quebrar o build.
+### Testes — `src/utils/__tests__/markdownUtils.test.ts`
+Cobre `parseMarkdownModules`:
+- Frontmatter + body → objeto com `content` e campos do frontmatter.
+- Frontmatter com `date: 2024-12-15` → vira string (regressão).
+- Arquivo sem frontmatter → ainda devolve `content` com fallbacks vazios.
+- Arquivo malformado (frontmatter quebrado) → descartado com warning, não lança.
 
-## Plano
+### Testes — `src/utils/__tests__/postUtils.test.ts` (opcional, light)
+- Verifica que posts sem `title`/`date`/`slug` são filtrados (regressão da blindagem que já fizemos).
+- Como `postUtils` usa `import.meta.glob` no top-level, vou testar apenas a função de filtragem extraindo-a para um helper exportado OU pulando esse arquivo se ficar invasivo. Decido durante implementação — preferência por **não** refatorar `postUtils` agora.
 
-### Passo A — Forçar sync Lovable ← GitHub
-No topo do chat do Lovable, abrir o menu do GitHub e clicar em **"Pull latest changes"** (ou desconectar/reconectar o GitHub). Sem isso o preview nunca vai ver o post novo, independente do que façamos no código.
+### Sem mudanças no workflow do GitHub Pages
+Os testes rodam localmente / sob demanda. Não vou adicionar step ao `deploy.yml` para não arriscar quebrar o deploy enquanto a configuração de Pages ainda está fresca.
 
-### Passo B — Investigar e corrigir o build vermelho
-1. Abrir o run vermelho em **github.com/<seu-usuário>/bio-bytes-blog/actions** e copiar a mensagem de erro do step "Build" para mim.
-2. Inspecionar o frontmatter de `src/posts/2026-05-29-new-post.qmd`. Deve ser exatamente:
-   ```yaml
-   ---
-   title: "Título"
-   date: 2026-05-29
-   slug: "new-post"
-   description: "..."
-   tags: [tag1, tag2]
-   readTime: "5 min"
-   featured: false
-   ---
-   ```
-   Campos obrigatórios pelo `.pages.yml` são `title`, `date` e `slug`. Se algum estiver faltando ou com aspas/indentação errada, o build quebra.
-3. Aplicar a correção (geralmente: adicionar `slug` ou ajustar `date` para formato `YYYY-MM-DD`) e commitar.
-
-### Passo C — Garantir resiliência futura
-Tornar `postUtils.ts` tolerante a entradas malformadas: posts sem frontmatter mínimo são **descartados com warning** em vez de derrubar o build. Assim um post novo quebrado deixa de quebrar o site inteiro.
-
-## O que preciso de você
-
-1. Confirme que clicou em **Pull latest changes** para sincronizar o sandbox.
-2. Cole aqui o erro exato do step "Build" do workflow vermelho (ou um print).
-3. Se possível, cole o conteúdo completo de `2026-05-29-new-post.qmd` (ou só o frontmatter entre `---`).
-
-Com isso eu corrijo o arquivo problemático e implemento o Passo C de uma vez.
+### Arquivos
+- Criar: `vitest.config.ts`, `src/test/setup.ts`, `src/utils/__tests__/yamlContent.test.ts`, `src/utils/__tests__/markdownUtils.test.ts`.
+- Modificar: `package.json` (devDeps + script `test`), `tsconfig.app.json` (types).
