@@ -11,8 +11,15 @@ export type MarkdownFile<T> = T & {
  * @param modules Result of import.meta.glob with `eager: true` and `?raw` query.
  */
 export function parseMarkdownModules<T>(modules: Record<string, unknown>): MarkdownFile<T>[] {
-  return Object.entries(modules).map(([path, raw]) => {
-    const { data, content } = matter(raw as string);
-    return { ...(data as T), content, path };
-  });
+  return Object.entries(modules)
+    .map(([path, raw]) => {
+      try {
+        const { data, content } = matter(raw as string);
+        return { ...(data as T), content, path };
+      } catch (err) {
+        console.warn(`[markdown] Skipping ${path}: failed to parse frontmatter`, err);
+        return null;
+      }
+    })
+    .filter((entry): entry is MarkdownFile<T> => entry !== null);
 }
