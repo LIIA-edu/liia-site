@@ -1,0 +1,16 @@
+siteName: LIIA
+siteFullName: >-
+  Laboratório de pesquisa em Imunooncologia e Inteligência Artificial -
+  Explorando biologia computacional através de pesquisa, inovação e ciência aberta.
+copyright: "© 2024 LIIA. All rights reserved."
+footerNote: Built with modern web technologies for the scientific community
+footerResearchAreas:
+  - Computational Biology
+  - Machine Learning
+  - Genomics & Single-Cell
+  - Bioinformatics Tools
+quickLinks:
+  - { label: Blog, href: "/blog" }
+  - { label: About, href: "#about" }
+  - { label: Publications, href: "#publications" }
+  - { label: Contact, href: "#contact" }
