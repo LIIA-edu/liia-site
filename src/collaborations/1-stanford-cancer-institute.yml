@@ -1,0 +1,18 @@
+name: Stanford Cancer Institute
+status: active
+order: 1
+location: Stanford, CA, USA
+type: Academic Partnership
+focus: Neoantigen Prediction & Immunogenomics
+duration: 2022 - Present
+principalInvestigator: Dr. Maria Rodriguez
+website: https://cancer.stanford.edu
+description: >-
+  Joint research on AI-driven neoantigen prediction algorithms for personalized
+  cancer immunotherapy. Our collaboration focuses on developing novel deep
+  learning architectures that can accurately predict which neoantigens will
+  elicit strong immune responses.
+keyProjects:
+  - NeoantigenAI Development
+  - Clinical Data Integration
+  - Immunotherapy Response Prediction
