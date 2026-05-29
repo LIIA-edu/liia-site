@@ -1,0 +1,10 @@
+---
+title: Outro post
+date: 2026-05-29
+description: Post de teste
+readTime: 12 min read
+featured: false
+slug: test-post-2
+---
+## Qualquer coisa
+
