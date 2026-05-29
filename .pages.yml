@@ -154,3 +154,53 @@ content:
       - { name: description, label: Description, type: text }
       - { name: lastUpdated, label: Last Updated, type: date }
       - { name: body, label: Body, type: rich-text }
+
+  # ---------- Site-wide settings (YAML singletons) ----------
+
+  - name: hero
+    label: Homepage Hero
+    type: file
+    path: src/content/hero.yml
+    format: yaml
+    fields:
+      - { name: headline, label: Headline, type: string }
+      - { name: highlight, label: Highlighted Text, type: string }
+      - { name: tagline, label: Tagline, type: text }
+
+  - name: site-config
+    label: Site Settings
+    type: file
+    path: src/content/site-config.yml
+    format: yaml
+    fields:
+      - { name: siteName, label: Site Name, type: string }
+      - { name: siteFullName, label: Full Lab Name / Footer Description, type: text }
+      - { name: copyright, label: Copyright Notice, type: string }
+      - { name: footerNote, label: Footer Note, type: string }
+      - { name: footerResearchAreas, label: Footer Research Areas, type: string, list: true }
+      - name: quickLinks
+        label: Quick Links
+        type: object
+        list: true
+        fields:
+          - { name: label, label: Label, type: string }
+          - { name: href, label: URL, type: string }
+
+  - name: research-lines
+    label: Research Lines
+    type: collection
+    path: src/research-lines
+    extension: yml
+    format: yaml
+    view:
+      fields: [title, order]
+      primary: title
+      sort: [order, title]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: order, label: Display Order, type: number }
+      - { name: description, label: Description, type: text }
+      - { name: technologies, label: Technologies, type: string, list: true }
