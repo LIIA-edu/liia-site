@@ -28,7 +28,7 @@ const Collaborations = () => {
             Global <span className="text-primary">Collaborations</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            {content.description}
+            {content.description as string}
           </p>
         </div>
       </SectionLayout>
