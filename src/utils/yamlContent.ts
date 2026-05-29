@@ -1,5 +1,23 @@
 import yaml from "js-yaml";
 
+/** Recursively convert Date instances to ISO date strings so React can render them. */
+function stringifyDates<T>(value: T): T {
+  if (value instanceof Date) {
+    return value.toISOString().slice(0, 10) as unknown as T;
+  }
+  if (Array.isArray(value)) {
+    return value.map(stringifyDates) as unknown as T;
+  }
+  if (value && typeof value === "object") {
+    const out: Record<string, unknown> = {};
+    for (const [k, v] of Object.entries(value as Record<string, unknown>)) {
+      out[k] = stringifyDates(v);
+    }
+    return out as T;
+  }
+  return value;
+}
+
 /**
  * Parse a raw YAML string into a typed object.
  * Returns the provided fallback (or null) when parsing fails or produces no document.
@@ -7,7 +25,7 @@ import yaml from "js-yaml";
 export function parseYaml<T>(raw: string, fallback: T | null = null): T | null {
   try {
     const parsed = yaml.load(raw);
-    return (parsed ?? fallback) as T | null;
+    return (parsed == null ? fallback : stringifyDates(parsed)) as T | null;
   } catch (err) {
     console.error("Failed to parse YAML content:", err);
     return fallback;
