@@ -1,18 +1,13 @@
 ---
-title: Editei!
-date: 2024-12-15
-description: A comprehensive guide to analyzing CRISPR-Cas9 screening data using
-  R and Python. We explore statistical methods for identifying essential genes
-  and compare different normalization approaches.
-tags:
-  - CRISPR
-  - R
-  - Python
-  - Statistics
-readTime: 12 min read
+title: "CRISPR-Cas9 Analysis Pipeline: From Raw Data to Insights"
+date: "2024-12-15"
+tags: ["CRISPR", "R", "Python", "Statistics"]
+description: "A comprehensive guide to analyzing CRISPR-Cas9 screening data using R and Python. We explore statistical methods for identifying essential genes and compare different normalization approaches."
+readTime: "12 min read"
 featured: true
-slug: crispr-analysis-pipeline
+slug: "crispr-analysis-pipeline"
 ---
+
 # CRISPR-Cas9 Analysis Pipeline: From Raw Data to Insights
 
 CRISPR-Cas9 screening has revolutionized functional genomics by enabling genome-wide loss-of-function studies. This comprehensive guide walks through the entire analysis pipeline, from raw sequencing data to biological insights.
@@ -174,4 +169,3 @@ The combination of R and Python tools offers flexibility and powerful analysis c
 - [MAGeCK Documentation](https://sourceforge.net/projects/mageck/)
 - [MAGeCKFlute Tutorial](https://bioconductor.org/packages/MAGeCKFlute/)
 - [CRISPR Screen Analysis Best Practices](https://genomebiology.biomedcentral.com/)
-
