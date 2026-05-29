@@ -342,3 +342,33 @@ content:
       - { name: url, label: URL, type: string, required: true }
       - { name: metric, label: Usage Metric, type: string }
       - { name: order, label: Display Order, type: number }
+
+  - name: collaborations
+    label: Collaborations
+    type: collection
+    path: src/collaborations
+    extension: yml
+    format: yaml
+    view:
+      fields: [name, status, order]
+      primary: name
+      sort: [order, name]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - { name: name, label: Name, type: string, required: true }
+      - name: status
+        label: Status
+        type: select
+        options:
+          values: [active, past]
+      - { name: order, label: Display Order, type: number }
+      - { name: location, label: Location, type: string }
+      - { name: type, label: Type, type: string }
+      - { name: focus, label: Focus, type: string }
+      - { name: duration, label: Duration, type: string }
+      - { name: principalInvestigator, label: Principal Investigator, type: string }
+      - { name: website, label: Website URL, type: string }
+      - { name: description, label: Description, type: text }
+      - { name: keyProjects, label: Key Projects, type: string, list: true }
