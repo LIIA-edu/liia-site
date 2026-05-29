@@ -1,0 +1,12 @@
+title: Computational Genomics
+order: 1
+description: >-
+  Advanced algorithms for genome analysis, variant calling, and genomic data
+  interpretation using machine learning approaches.
+technologies:
+  - Python
+  - R
+  - GATK
+  - BWA
+  - SAMtools
+  - Bioconductor
