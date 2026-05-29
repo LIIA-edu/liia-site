@@ -25,19 +25,6 @@ content:
       - { name: slug, label: Slug, type: string, required: true }
       - { name: body, label: Body, type: rich-text }
 
-  - name: pages
-    label: Content Pages
-    type: collection
-    path: src/content
-    extension: qmd
-    format: yaml-frontmatter
-    view:
-      fields: [title]
-      primary: title
-    fields:
-      - { name: title, label: Title, type: string, required: true }
-      - { name: body, label: Body, type: rich-text }
-
   - name: profiles
     label: Team Profiles
     type: collection
@@ -45,12 +32,26 @@ content:
     extension: qmd
     format: yaml-frontmatter
     view:
-      fields: [title, role]
-      primary: title
+      fields: [name, position]
+      primary: name
     fields:
-      - { name: title, label: Name, type: string, required: true }
-      - { name: role, label: Role, type: string }
-      - { name: body, label: Bio, type: rich-text }
+      - { name: id, label: ID (slug), type: string, required: true }
+      - { name: name, label: Name, type: string, required: true }
+      - { name: position, label: Position, type: string }
+      - { name: image, label: Photo, type: image }
+      - { name: email, label: Email, type: string }
+      - { name: bio, label: Short Bio, type: text }
+      - { name: researchInterests, label: Research Interests, type: string, list: true }
+      - { name: education, label: Education, type: string, list: true }
+      - { name: awards, label: Awards, type: string, list: true }
+      - name: socialLinks
+        label: Social Links
+        type: object
+        fields:
+          - { name: linkedin, label: LinkedIn URL, type: string }
+          - { name: google_scholar, label: Google Scholar URL, type: string }
+          - { name: orcid, label: ORCID URL, type: string }
+      - { name: body, label: Extended Bio, type: rich-text }
 
   - name: projects
     label: Research Projects
@@ -59,9 +60,97 @@ content:
     extension: qmd
     format: yaml-frontmatter
     view:
-      fields: [title]
+      fields: [title, status, featured]
       primary: title
     fields:
+      - { name: id, label: ID (slug), type: string, required: true }
       - { name: title, label: Title, type: string, required: true }
+      - { name: description, label: Short Description, type: text }
+      - name: status
+        label: Status
+        type: select
+        options:
+          values: [ongoing, completed, planned]
+      - { name: startDate, label: Start Date, type: date }
+      - { name: endDate, label: End Date, type: date }
+      - { name: funding, label: Funding, type: string }
+      - { name: technologies, label: Technologies, type: string, list: true }
+      - { name: collaborators, label: Collaborators, type: string, list: true }
+      - { name: team, label: Team Member IDs, type: string, list: true }
+      - { name: image, label: Image, type: image }
+      - { name: featured, label: Featured, type: boolean, default: false }
+      - { name: body, label: Project Details, type: rich-text }
+
+  # ---------- Content singletons (one form per file) ----------
+
+  - name: about
+    label: About / PI Bio
+    type: file
+    path: src/content/about.qmd
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: Title, type: string }
+      - { name: position, label: Position, type: string }
+      - { name: department, label: Department, type: string }
+      - { name: institution, label: Institution, type: string }
+      - { name: email, label: Email, type: string }
+      - { name: phone, label: Phone, type: string }
+      - { name: office, label: Office, type: string }
+      - { name: body, label: Bio & Research Description, type: rich-text }
+
+  - name: laboratory-vision
+    label: Laboratory Vision
+    type: file
+    path: src/content/laboratory-vision.qmd
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: Title, type: string }
       - { name: description, label: Description, type: text }
+      - { name: lastUpdated, label: Last Updated, type: date }
+      - { name: body, label: Body, type: rich-text }
+
+  - name: publications-page
+    label: Publications Page
+    type: file
+    path: src/content/publications.qmd
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: Title, type: string }
+      - { name: description, label: Description, type: text }
+      - { name: totalPublications, label: Total Publications, type: number }
+      - { name: hIndex, label: h-Index, type: number }
+      - { name: lastUpdated, label: Last Updated, type: date }
+      - { name: body, label: Body, type: rich-text }
+
+  - name: collaborations-page
+    label: Collaborations Page
+    type: file
+    path: src/content/collaborations.qmd
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: Title, type: string }
+      - { name: description, label: Description, type: text }
+      - { name: lastUpdated, label: Last Updated, type: date }
+      - { name: body, label: Body, type: rich-text }
+
+  - name: resources-page
+    label: Resources Page
+    type: file
+    path: src/content/resources.qmd
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: Title, type: string }
+      - { name: description, label: Description, type: text }
+      - { name: lastUpdated, label: Last Updated, type: date }
+      - { name: body, label: Body, type: rich-text }
+
+  - name: research-group-page
+    label: Research Group Page
+    type: file
+    path: src/content/research-group.qmd
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: Title, type: string }
+      - { name: description, label: Description, type: text }
+      - { name: lastUpdated, label: Last Updated, type: date }
       - { name: body, label: Body, type: rich-text }
