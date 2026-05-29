@@ -1,0 +1,10 @@
+name: Computational Immunooncology Handbook
+description: >-
+  Comprehensive guide to computational methods in cancer immunology research,
+  covering everything from data preprocessing to advanced AI model development.
+type: tutorial
+chapters: 12
+readTime: "8 hours"
+downloads: "15,000+"
+lastUpdated: "2024-12-01"
+order: 1

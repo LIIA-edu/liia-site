@@ -1,0 +1,7 @@
+name: GenomeAssembler
+description: High-performance genome assembly toolkit with error correction.
+category: Genomics
+github: https://github.com/chenlab/genome-assembler
+downloads: "15,000+"
+citations: "65+"
+order: 6

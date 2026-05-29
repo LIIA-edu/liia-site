@@ -1,0 +1,12 @@
+name: Immune Repertoire Atlas
+description: >-
+  Large-scale T-cell and B-cell receptor sequencing data from cancer patients
+  across multiple tumor types. Includes TCR-seq, BCR-seq, and clinical metadata.
+size: "1.8 TB"
+samples: "8,900"
+access: controlled
+downloads: "800+"
+citations: "95+"
+doi: "10.5281/zenodo.3456789"
+url: "https://doi.org/10.5281/zenodo.3456789"
+order: 3

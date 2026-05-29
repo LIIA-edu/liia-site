@@ -1,0 +1,8 @@
+name: ImmunoViz
+description: >-
+  Interactive platform for visualizing immune system data and cancer-immune
+  interactions.
+type: Visualization Platform
+url: https://immunoviz.liia.edu.br
+metric: "10,000+ registered users"
+order: 1

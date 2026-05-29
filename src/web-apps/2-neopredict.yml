@@ -1,0 +1,8 @@
+name: NeoPredictWeb
+description: >-
+  Online neoantigen prediction service with user-friendly interface for
+  researchers worldwide.
+type: Prediction Service
+url: https://neopredict.liia.edu.br
+metric: "100,000+ predictions completed"
+order: 2

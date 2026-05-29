@@ -1,0 +1,10 @@
+name: Multi-omics Integration Protocols
+description: >-
+  Step-by-step protocols for integrating genomics, transcriptomics, and
+  proteomics data in cancer immunology research.
+type: protocol
+chapters: 6
+readTime: "3 hours"
+downloads: "6,200+"
+lastUpdated: "2024-10-20"
+order: 3

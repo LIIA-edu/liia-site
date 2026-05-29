@@ -1,0 +1,16 @@
+name: NeoantigenAI
+description: >-
+  Deep learning tool for tumor neoantigen immunogenicity prediction with
+  state-of-the-art accuracy. Features pre-trained models, custom training
+  pipeline, clinical integration readiness, and multi-HLA support.
+category: AI Models
+language: Python
+license: MIT
+github: https://github.com/liia-lab/neoantigen-ai
+documentation: https://neoantigen-ai.readthedocs.io
+downloads: "50,000+"
+githubStars: "1,200"
+citations: "150+"
+lastUpdated: "2024-12-10"
+featured: true
+order: 1

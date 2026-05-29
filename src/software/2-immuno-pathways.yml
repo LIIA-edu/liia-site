@@ -1,0 +1,16 @@
+name: ImmunoPathways
+description: >-
+  Cancer immunotherapy pathway analysis and biomarker discovery tool for
+  multi-omics data. Includes pathway visualization, statistical analysis,
+  and biomarker identification.
+category: Analysis Tools
+language: R/Python
+license: GPL-3.0
+github: https://github.com/liia-lab/immuno-pathways
+documentation: https://immuno-pathways.readthedocs.io
+downloads: "20,000+"
+githubStars: "850"
+citations: "110+"
+lastUpdated: "2024-11-25"
+featured: true
+order: 2
