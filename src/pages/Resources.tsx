@@ -265,7 +265,7 @@ const Resources = () => {
             Research <span className="text-primary">Resources & Tools</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            {content.description}
+            {content.description as string}
           </p>
         </div>
       </SectionLayout>

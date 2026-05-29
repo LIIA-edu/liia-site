@@ -73,7 +73,7 @@ const ResourcesTools = () => {
   // Extract title and description from content
   const sectionTitle = "Research Resources & Tools";
   const sectionDescription =
-    content.description ||
+    (content.description as string | undefined) ||
     "Open-source tools, datasets, and documentation to advance computational immunooncology research. All resources are freely available to the scientific community.";
 
   return (

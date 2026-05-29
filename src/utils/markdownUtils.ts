@@ -1,10 +1,10 @@
 import matter from 'gray-matter';
 import '../lib/buffer-polyfill';
 
-export interface MarkdownFile<T> extends T {
+export type MarkdownFile<T> = T & {
   content: string;
   path: string;
-}
+};
 
 /**
  * Convert a Vite import.meta.glob result into typed markdown objects.
