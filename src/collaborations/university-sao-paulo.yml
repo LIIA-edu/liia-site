@@ -1,0 +1,17 @@
+name: University of São Paulo
+location: São Paulo, Brazil
+type: International Collaboration
+focus: Cancer Genomics in Latin American Populations
+duration: "2021 - Present"
+status: active
+order: 4
+principalInvestigator: Dr. Carlos Mendez
+website: https://usp.br
+description: >-
+  Studying cancer genomics diversity in underrepresented populations for
+  equitable AI model development. This collaboration ensures our AI models work
+  effectively across diverse genetic backgrounds.
+keyProjects:
+  - Population Genomics Analysis
+  - Health Equity in AI
+  - Cross-Population Validation
