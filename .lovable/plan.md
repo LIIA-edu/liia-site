@@ -1,86 +1,129 @@
-# Mapeamento de textos editáveis via Pages CMS
+# Refatorar todas as listas "que crescem" em collections do Pages CMS
 
-Inventário completo dos textos do site agrupados por situação atual e prioridade para inclusão no `.pages.yml`.
+Auditoria do site e plano para que **cada item adicionado/removido no Pages CMS reflita automaticamente** na página correspondente.
 
 ## Estado atual
 
-**Já em arquivos Markdown/Quarto (prontos para CMS):**
-- `src/posts/*.qmd` — 3 posts do blog (collection `posts` ✅ bem configurada)
-- `src/profiles/*.qmd` — 4 perfis de equipe (collection existe, mas só expõe 3 de ~12 campos)
-- `src/projects/*.qmd` — projetos de pesquisa (collection existe, mas só expõe 3 de ~12 campos)
-- `src/content/*.qmd` — about, collaborations, laboratory-vision, publications, research-group, resources (collection `pages` genérica — frontmatter rico não está exposto)
+| Seção | Origem | Status |
+|---|---|---|
+| Blog Posts | `src/posts/*.qmd` | ✅ collection real |
+| Team Profiles (People) | `src/profiles/*.qmd` | ✅ collection real |
+| Research Projects | `src/projects/*.qmd` | ✅ collection real |
+| Research Lines | `src/research-lines/*.yml` | ✅ collection real |
+| Collaborations | `src/collaborations/*.yml` | ✅ collection real |
+| **Publications** | bloco grande em `publications.qmd`, parseado por regex | ❌ collection fake |
+| **Open Source Software** | duplicado: `publications.qmd` + `resources.qmd` + array JS em `pages/Resources.tsx` | ❌ não editável |
+| **Datasets** | seção `## Datasets` em `resources.qmd` + array JS hardcoded em `pages/Resources.tsx` | ❌ não editável |
+| **Documentation & Protocols** | seção em `resources.qmd` + array JS em `pages/Resources.tsx` | ❌ não editável |
+| **Web Applications** | seção em `resources.qmd` + array JS em `pages/Resources.tsx` | ❌ não editável |
+| **Preprints** | seção em `publications.qmd` | ❌ não editável (mas pode virar tipo dentro de publications) |
 
-**Hardcoded no código (precisam virar arquivos editáveis):**
-- `Hero.tsx` — título principal e tagline da home
-- `Research.tsx` — 4 linhas de pesquisa (array JS)
-- `Footer.tsx` — nome do laboratório, tagline, copyright, áreas de pesquisa
-- `Contact.tsx` — dados de contato (duplicam/contradizem `about.qmd`)
-- `BlogSection.tsx`, `Publications.tsx`, `LaboratoryVision.tsx` — subtítulos de seção
-- `People.tsx`, `ResearchProjects.tsx` — textos introdutórios de página
+## Recomendações ranqueadas (alta → baixa prioridade)
 
-## Recomendações ranqueadas
+### Alta — itens "que crescem" claramente
 
-### Prioridade alta — corrigir collections já existentes
+1. **`publications` collection** (`src/publications/*.yml`, 1 arquivo por publicação). Substitui o parser regex em `PublicationsRenderer.tsx`. Inclui preprints como tipo. Filtros por ano e tipo já viram código.
+2. **`software` collection** (`src/software/*.yml`, 1 por ferramenta). Fonte única para "Open Source Software" — homepage continua mostrando top 3, página Publications/Resources mostra tudo. Elimina duplicação entre `publications.qmd` e `resources.qmd`.
+3. **`datasets` collection** (`src/datasets/*.yml`, 1 por dataset). Consumido por `pages/Resources.tsx`.
+4. **`documentation` collection** (`src/documentation/*.yml`, 1 por documento). Consumido por `pages/Resources.tsx`.
+5. **`web-apps` collection** (`src/web-apps/*.yml`, 1 por web app). Consumido por `pages/Resources.tsx`.
 
-**1. `profiles`** — adicionar campos: `name`, `position`, `image`, `email`, `bio`, `researchInterests[]`, `education[]`, `awards[]`, `socialLinks.{linkedin,google_scholar,orcid}`, `body` rich-text.
+### Baixa — listas pequenas/estáveis, fica como rich-text
 
-**2. `projects`** — adicionar: `status` (select: ongoing/completed/planned), `startDate`, `endDate`, `funding`, `technologies[]`, `collaborators[]`, `team[]`, `image`, `featured`, `body`.
+- Awards & Recognition, Editorial Activities, Metrics, Usage Statistics, Contributing, Support → continuam dentro dos singletons `publications.qmd` / `resources.qmd` como rich-text editável.
 
-**3. Substituir collection genérica `pages` por singletons (`type: file`)** — um por arquivo, com frontmatter real:
-- `about.qmd` → `position`, `department`, `institution`, `email`, `phone`, `office`, `body`
-- `publications.qmd` → `totalPublications`, `hIndex`, `description`, `body`
-- `laboratory-vision.qmd`, `collaborations.qmd`, `resources.qmd`, `research-group.qmd` → `title`, `description`, `lastUpdated`, `body`
+## Schema das novas collections
 
-### Prioridade média — novos arquivos para textos hardcoded
-
-**4. Singleton `src/content/hero.yml`** — texto mais visível da home:
+**`publications`** (`src/publications/*.yml`):
+```yaml
+title: string (required)
+authors: string                 # texto livre: "Chen, S., Rodriguez, M., Patel, P."
+year: number
+type: select [journal-article, conference, book-chapter, review, preprint]
+venue: string                   # "Nature Methods, 21(3), 234-245"
+doi: string                     # opcional
+url: string                     # opcional
+preprintServer: select [bioRxiv, arXiv, medRxiv]   # só para preprints
+order: number                   # opcional, default por ano desc
+featured: boolean
 ```
-headline, subheadline, tagline
+
+**`software`** (`src/software/*.yml`):
+```yaml
+name: string (required)
+description: text
+category: string                # "AI Models", "Genomics", etc
+language: string
+license: string
+github: string
+documentation: string
+downloads: string               # "50,000+"
+githubStars: string
+citations: string
+lastUpdated: date
+featured: boolean               # top 3 da homepage
+order: number
 ```
 
-**5. Singleton `src/content/site-config.yml`** — strings globais:
+**`datasets`** (`src/datasets/*.yml`):
+```yaml
+name: string (required)
+description: text
+size: string
+samples: string
+access: select [open, controlled]
+downloads: string
+citations: string
+doi: string
+url: string
+order: number
 ```
-siteName, siteFullName, footerTagline, copyright, footerResearchAreas[]
+
+**`documentation`** (`src/documentation/*.yml`):
+```yaml
+name: string (required)
+description: text
+type: select [tutorial, best-practices, protocol, workflow]
+chapters: number
+readTime: string
+downloads: string
+url: string
+lastUpdated: date
+order: number
 ```
 
-**6. Nova collection `src/research-lines/*.yml`** — uma linha de pesquisa por arquivo:
+**`web-apps`** (`src/web-apps/*.yml`):
+```yaml
+name: string (required)
+description: text
+type: string
+url: string                     (required)
+metric: string                  # "10,000+ registered users"
+order: number
 ```
-title, description, technologies[], order
-```
 
-### Prioridade baixa
+## Arquivos a criar
 
-**7. Singletons opcionais** para textos introdutórios de páginas (`people-page.yml`, `research-projects-page.yml`) — só se houver demanda de edição frequente.
+- **Conteúdo:** ~30 arquivos `.yml` (1 por publicação, 1 por software, 1 por dataset, 1 por doc, 1 por web-app — extraídos do conteúdo atual de `publications.qmd` e `resources.qmd`).
+- **Utilitários:** `src/utils/publicationsUtils.ts`, `softwareUtils.ts`, `datasetsUtils.ts`, `documentationUtils.ts`, `webAppsUtils.ts`. Cada um expõe `getAll…()` ordenado, mais helpers como `getFeaturedSoftware()`.
 
-**Fora de escopo (não editorial):** labels do menu, botões, mensagens de loading, rótulos de formulário.
+## Arquivos a modificar
 
-## O que será entregue na implementação
+- **`PublicationsRenderer.tsx`** — remove todo o parser regex; recebe lista tipada das utils. Continua respeitando flag `limited` (homepage = top 5 publicações + top 3 software) — preserva a regra registrada em memória.
+- **`pages/Publications.tsx`** — passa listas tipadas ao renderer (full).
+- **`pages/Resources.tsx`** — remove os 4 arrays hardcoded e passa a ler das utils (`getAllSoftware()`, `getAllDatasets()`, etc).
+- **`components/ResourcesTools.tsx`** (preview na home) — remove o parser regex e usa `getFeaturedSoftware()` / primeira de cada categoria.
+- **`src/content/publications.qmd`** — enxuga: remove `# Recent Publications`, `## Software & Tools`, `## Preprints`. Mantém frontmatter (`totalPublications`, `hIndex`) + seções editoriais (Metrics, Awards, Editorial Activities).
+- **`src/content/resources.qmd`** — enxuga: remove `## Software Tools`, `## Datasets`, `## Documentation & Protocols`, `## Web Applications`. Mantém intro, Usage Statistics, Contributing, Support.
+- **`.pages.yml`** — adiciona 5 novas collections (`publications`, `software`, `datasets`, `documentation`, `web-apps`) com views ordenadas e filtráveis.
 
-1. `.pages.yml` reescrito com:
-   - Esquemas completos para `profiles`, `projects`, `posts`
-   - Singletons (`type: file`) para cada `.qmd` em `src/content/`
-   - Singletons novos para `hero.yml` e `site-config.yml`
-   - Collection nova `research-lines`
-2. Criação dos arquivos novos com os textos atuais extraídos do código:
-   - `src/content/hero.yml`
-   - `src/content/site-config.yml`
-   - `src/research-lines/*.yml` (4 arquivos)
-3. Refatoração dos componentes `Hero.tsx`, `Footer.tsx`, `Research.tsx` (e opcionalmente `BlogSection.tsx`, `Publications.tsx`, `LaboratoryVision.tsx`) para lerem os textos desses arquivos via utilitários em `src/utils/` (seguindo o padrão de `postUtils.ts`/`profileUtils.ts`).
-4. `Contact.tsx` passa a ler de `about.qmd` em vez de strings hardcoded conflitantes.
+## Notas
 
-## Notas técnicas
+- Mantém a regra de "Top 3 software na home, lista completa na subpage" via flag `featured` ou `slice(0, 3)`.
+- Datas em `lastUpdated` permitem ordenar por mais recente.
+- Continuamos dependendo da sincronização Lovable ↔ GitHub para que edições feitas no Pages CMS apareçam aqui — reconexão segue pendente do seu lado.
+- Edição da página Publications principal (intro, metrics) continua via singleton `publications.qmd` já configurado.
 
-- Manter `format: yaml-frontmatter` para `.qmd` (Quarto) e `format: yaml` para `.yml` puros.
-- Para singletons, usar `type: file` em vez de `type: collection` no Pages CMS — habilita um formulário único e estável por arquivo.
-- `media` permanece em `public/` como já configurado.
-- Mudar `Research.tsx` de array hardcoded para leitura de glob via Vite (`import.meta.glob`) seguindo o padrão já usado em `postUtils.ts`.
-- Importante: a sincronização Lovable → GitHub precisa estar ativa antes dessa implementação ter efeito no repositório (ver verificação anterior — sync atualmente parece interrompido).
+## Tamanho
 
-## Sugestão de escopo para a primeira iteração
-
-Se preferir entregar em etapas, recomendo nesta ordem:
-1. **Etapa 1 (essencial):** corrigir `.pages.yml` para expor todos os campos de `profiles`, `projects` e singletons de `src/content/` — zero mudanças de código, apenas YAML.
-2. **Etapa 2 (alto impacto):** criar `hero.yml` + `site-config.yml` e refatorar `Hero.tsx` + `Footer.tsx`.
-3. **Etapa 3:** mover linhas de pesquisa para `src/research-lines/`.
-
-Qual escopo prefere implementar?
+Será um diff grande: ~30 arquivos `.yml` novos, 5 utils novas, 4 componentes/páginas refatoradas, 2 `.qmd` enxutos, `.pages.yml` atualizado. Sem mudanças visuais — apenas troca de fonte de dados. Implemento tudo de uma vez.
