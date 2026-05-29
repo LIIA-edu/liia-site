@@ -1,0 +1,67 @@
+media: public/uploads
+
+content:
+  - name: posts
+    label: Blog Posts
+    type: collection
+    path: src/posts
+    filename: "{year}-{month}-{day}-{primary}.qmd"
+    extension: qmd
+    format: yaml-frontmatter
+    view:
+      fields: [title, date, featured]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: date, label: Date, type: date, required: true }
+      - { name: description, label: Description, type: text }
+      - { name: tags, label: Tags, type: string, list: true }
+      - { name: readTime, label: Read Time, type: string }
+      - { name: featured, label: Featured, type: boolean, default: false }
+      - { name: slug, label: Slug, type: string, required: true }
+      - { name: body, label: Body, type: rich-text }
+
+  - name: pages
+    label: Content Pages
+    type: collection
+    path: src/content
+    extension: qmd
+    format: yaml-frontmatter
+    view:
+      fields: [title]
+      primary: title
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: body, label: Body, type: rich-text }
+
+  - name: profiles
+    label: Team Profiles
+    type: collection
+    path: src/profiles
+    extension: qmd
+    format: yaml-frontmatter
+    view:
+      fields: [title, role]
+      primary: title
+    fields:
+      - { name: title, label: Name, type: string, required: true }
+      - { name: role, label: Role, type: string }
+      - { name: body, label: Bio, type: rich-text }
+
+  - name: projects
+    label: Research Projects
+    type: collection
+    path: src/projects
+    extension: qmd
+    format: yaml-frontmatter
+    view:
+      fields: [title]
+      primary: title
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: description, label: Description, type: text }
+      - { name: body, label: Body, type: rich-text }
