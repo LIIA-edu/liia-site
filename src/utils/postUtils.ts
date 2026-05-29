@@ -22,6 +22,13 @@ const postModules = import.meta.glob('/src/posts/*.qmd', {
 });
 
 const posts: Post[] = parseMarkdownModules<PostMetadata>(postModules)
+  .filter((p) => {
+    const ok = p.title && p.date && p.slug;
+    if (!ok) {
+      console.warn(`[posts] Skipping ${p.path}: missing required frontmatter (title/date/slug)`);
+    }
+    return ok;
+  })
   .map(({ path: _path, ...post }) => post)
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
