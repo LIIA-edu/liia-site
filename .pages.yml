@@ -204,3 +204,141 @@ content:
       - { name: order, label: Display Order, type: number }
       - { name: description, label: Description, type: text }
       - { name: technologies, label: Technologies, type: string, list: true }
+  - name: publications
+    label: Publications
+    type: collection
+    path: src/publications
+    extension: yml
+    format: yaml
+    view:
+      fields: [title, year, type, featured]
+      primary: title
+      sort: [year, order, title]
+      default:
+        sort: year
+        order: desc
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: authors, label: Authors, type: string }
+      - { name: year, label: Year, type: number }
+      - name: type
+        label: Type
+        type: select
+        options:
+          values: [journal-article, conference, book-chapter, review, preprint]
+      - { name: venue, label: Venue / Citation, type: string }
+      - { name: doi, label: DOI, type: string }
+      - { name: url, label: URL, type: string }
+      - name: preprintServer
+        label: Preprint Server
+        type: select
+        options:
+          values: [bioRxiv, arXiv, medRxiv]
+      - { name: order, label: Display Order, type: number }
+      - { name: featured, label: Featured, type: boolean, default: false }
+
+  - name: software
+    label: Open Source Software
+    type: collection
+    path: src/software
+    extension: yml
+    format: yaml
+    view:
+      fields: [name, category, featured, order]
+      primary: name
+      sort: [order, name]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - { name: name, label: Name, type: string, required: true }
+      - { name: description, label: Description, type: text }
+      - { name: category, label: Category, type: string }
+      - { name: language, label: Language, type: string }
+      - { name: license, label: License, type: string }
+      - { name: github, label: GitHub URL, type: string }
+      - { name: documentation, label: Documentation URL, type: string }
+      - { name: downloads, label: Downloads, type: string }
+      - { name: githubStars, label: GitHub Stars, type: string }
+      - { name: citations, label: Citations, type: string }
+      - { name: lastUpdated, label: Last Updated, type: date }
+      - { name: featured, label: Featured (homepage top 3), type: boolean, default: false }
+      - { name: order, label: Display Order, type: number }
+
+  - name: datasets
+    label: Datasets
+    type: collection
+    path: src/datasets
+    extension: yml
+    format: yaml
+    view:
+      fields: [name, access, order]
+      primary: name
+      sort: [order, name]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - { name: name, label: Name, type: string, required: true }
+      - { name: description, label: Description, type: text }
+      - { name: size, label: Size, type: string }
+      - { name: samples, label: Samples, type: string }
+      - name: access
+        label: Access
+        type: select
+        options:
+          values: [open, controlled]
+      - { name: downloads, label: Downloads, type: string }
+      - { name: citations, label: Citations, type: string }
+      - { name: doi, label: DOI, type: string }
+      - { name: url, label: URL, type: string }
+      - { name: order, label: Display Order, type: number }
+
+  - name: documentation
+    label: Documentation & Protocols
+    type: collection
+    path: src/documentation
+    extension: yml
+    format: yaml
+    view:
+      fields: [name, type, order]
+      primary: name
+      sort: [order, name]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - { name: name, label: Name, type: string, required: true }
+      - { name: description, label: Description, type: text }
+      - name: type
+        label: Type
+        type: select
+        options:
+          values: [tutorial, best-practices, protocol, workflow]
+      - { name: chapters, label: Chapters, type: number }
+      - { name: readTime, label: Read Time, type: string }
+      - { name: downloads, label: Downloads, type: string }
+      - { name: url, label: URL, type: string }
+      - { name: lastUpdated, label: Last Updated, type: date }
+      - { name: order, label: Display Order, type: number }
+
+  - name: web-apps
+    label: Web Applications
+    type: collection
+    path: src/web-apps
+    extension: yml
+    format: yaml
+    view:
+      fields: [name, type, order]
+      primary: name
+      sort: [order, name]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - { name: name, label: Name, type: string, required: true }
+      - { name: description, label: Description, type: text }
+      - { name: type, label: Type, type: string }
+      - { name: url, label: URL, type: string, required: true }
+      - { name: metric, label: Usage Metric, type: string }
+      - { name: order, label: Display Order, type: number }
