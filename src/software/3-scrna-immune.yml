@@ -1,0 +1,16 @@
+name: scRNA-Immune
+description: >-
+  Single-cell RNA sequencing analysis pipeline specialized for immune cell
+  profiling in cancer. Features immune cell annotation, trajectory analysis,
+  tumor-immune interactions, and visualization tools.
+category: Genomics
+language: Python/R
+license: Apache-2.0
+github: https://github.com/liia-lab/scrna-immune
+documentation: https://scrna-immune.readthedocs.io
+downloads: "25,000+"
+githubStars: "950"
+citations: "80+"
+lastUpdated: "2024-12-05"
+featured: true
+order: 3

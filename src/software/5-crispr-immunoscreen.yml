@@ -1,0 +1,14 @@
+name: CRISPR-ImmunoScreen
+description: >-
+  Machine learning framework for CRISPR guide design and screen analysis in
+  immunooncology research.
+category: CRISPR Analysis
+language: Python/R
+license: MIT
+github: https://github.com/liia-lab/crispr-immunoscreen
+documentation: https://crispr-immunoscreen.readthedocs.io
+downloads: "12,000+"
+githubStars: "650"
+citations: "120+"
+lastUpdated: "2024-11-20"
+order: 5

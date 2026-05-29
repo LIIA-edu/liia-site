@@ -1,0 +1,6 @@
+name: GenomeViz
+description: Interactive genomic data visualization platform.
+type: Visualization Platform
+url: https://genomeviz.chenlab.org
+metric: "10,000+ registered users"
+order: 3

@@ -1,0 +1,13 @@
+name: Neoantigen Prediction Benchmark
+description: >-
+  Curated dataset for benchmarking neoantigen prediction algorithms with
+  experimental validation. Contains genomics data, HLA typing, and experimental
+  validation results.
+size: "45 GB"
+samples: "2,100"
+access: open
+downloads: "3,500+"
+citations: "280+"
+doi: "10.5281/zenodo.2345678"
+url: "https://doi.org/10.5281/zenodo.2345678"
+order: 2

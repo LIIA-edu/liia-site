@@ -1,0 +1,11 @@
+name: AI Model Development Guide
+description: >-
+  Best practices for developing and validating AI models for cancer research,
+  including guidelines for ethical AI, model interpretability, and clinical
+  validation.
+type: best-practices
+chapters: 8
+readTime: "4 hours"
+downloads: "8,500+"
+lastUpdated: "2024-11-15"
+order: 2

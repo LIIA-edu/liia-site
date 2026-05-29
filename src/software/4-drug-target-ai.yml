@@ -1,0 +1,15 @@
+name: DrugTargetAI
+description: >-
+  AI-powered drug-target interaction prediction platform for cancer
+  immunotherapy compounds. Includes molecular fingerprinting, interaction
+  scoring, virtual screening, and drug repurposing capabilities.
+category: Drug Discovery
+language: Python
+license: MIT
+github: https://github.com/liia-lab/drug-target-ai
+documentation: https://drug-target-ai.readthedocs.io
+downloads: "8,000+"
+githubStars: "420"
+citations: "75+"
+lastUpdated: "2024-11-30"
+order: 4
