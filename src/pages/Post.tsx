@@ -54,7 +54,7 @@ const Post = () => {
             </div>
 
             <div className="flex flex-wrap justify-center gap-2 mb-8">
-              {post.tags.map((tag, index) => (
+              {(post.tags ?? []).map((tag, index) => (
                 <Badge key={index} variant="secondary">
                   {tag}
                 </Badge>
