@@ -7,7 +7,7 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <nav className="flex items-center justify-between">
           <div className="flex flex-col">
-            <div className="font-bold text-xl text-primary">LIIA</div>
+            <div className="font-bold text-xl text-primary">LABIIT</div>
           </div>
           <div className="hidden md:flex items-center space-x-8">
             <Link to="/" className="text-foreground hover:text-primary transition-colors">
