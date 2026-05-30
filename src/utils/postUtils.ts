@@ -29,7 +29,17 @@ const posts: Post[] = parseMarkdownModules<PostMetadata>(postModules)
     }
     return ok;
   })
-  .map(({ path: _path, ...post }) => post)
+  .map(({ path, ...post }) => {
+    if (!Array.isArray(post.tags)) {
+      if (post.tags !== undefined && post.tags !== null) {
+        console.warn(`[posts] ${path}: "tags" should be a list. Coercing to empty array.`);
+      } else {
+        console.warn(`[posts] ${path}: missing "tags" in frontmatter. Defaulting to [].`);
+      }
+      post.tags = [];
+    }
+    return post;
+  })
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 export const getAllPosts = (): Post[] => posts;

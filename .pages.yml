@@ -19,7 +19,7 @@ content:
       - { name: title, label: Title, type: string, required: true }
       - { name: date, label: Date, type: date, required: true }
       - { name: description, label: Description, type: text }
-      - { name: tags, label: Tags, type: string, list: true }
+      - { name: tags, label: Tags, type: string, list: true, default: [], description: "Required. Will default to an empty list if omitted." }
       - { name: readTime, label: Read Time, type: string }
       - { name: featured, label: Featured, type: boolean, default: false }
       - { name: slug, label: Slug, type: string, required: true }
