@@ -30,10 +30,10 @@ const heroFallback: HeroContent = {
 };
 
 const siteConfigFallback: SiteConfig = {
-  siteName: "LIIA",
+  siteName: "LABIIT",
   siteFullName:
-    "Laboratório de pesquisa em Imunooncologia e Inteligência Artificial - Explorando biologia computacional através de pesquisa, inovação e ciência aberta.",
-  copyright: "© 2024 LIIA. All rights reserved.",
+    "Laboratório de Bioinformática, Inteligência Artificial e Inovação Tecnológica - Explorando biologia computacional através de pesquisa, inovação e ciência aberta.",
+  copyright: "© 2024 LABIIT. All rights reserved.",
   footerNote: "Built with modern web technologies for the scientific community",
   footerResearchAreas: [
     "Computational Biology",
