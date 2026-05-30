@@ -1,7 +1,19 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    if (location.pathname === "/") {
+      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/#contact");
+    }
+  };
+
   return (
     <header className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
       <div className="container mx-auto px-4 py-4">
@@ -31,7 +43,11 @@ const Header = () => {
             <Link to="/blog" className="text-foreground hover:text-primary transition-colors">
               Blog
             </Link>
-            <a href={`${import.meta.env.PROD ? '/liia-site' : ''}/#contact`} className="text-foreground hover:text-primary transition-colors">
+            <a
+              href="/#contact"
+              onClick={handleContactClick}
+              className="text-foreground hover:text-primary transition-colors"
+            >
               Contact
             </a>
           </div>
