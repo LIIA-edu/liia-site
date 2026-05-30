@@ -30,7 +30,7 @@ const ResearchProjects = () => {
 
   return (
     <PageLayout>
-      <SectionLayout className="pt-0 pb-20 bg-gradient-to-r from-primary/10 to-accent/10">
+      <SectionLayout className="-mt-20 pt-20 pb-12 min-h-[40vh] flex items-center bg-gradient-to-r from-primary/10 to-accent/10">
         <div className="text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
             Research Projects
